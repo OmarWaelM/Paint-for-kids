@@ -3,7 +3,7 @@
 
 int main()
 {
-
+	//test
 	ActionType ActType;
 	//Create an object of ApplicationManager
 	ApplicationManager AppManager;
