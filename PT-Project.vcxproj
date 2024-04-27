@@ -175,6 +175,7 @@
     <ClCompile Include="GUI\Output.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Other.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCircle.h" />
