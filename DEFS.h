@@ -20,6 +20,7 @@ enum ActionType //The actions supported (you can add more if needed)
 	SEL_RED,
 	SEL_GREEN,
 	SEL_BLUE,
+	TO_SELECT,
 	TO_DELETEFIGURE,
 	TO_CLEARALL,
 	TO_COPYFIGURE,
