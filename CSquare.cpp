@@ -18,6 +18,8 @@ void CSquare::PrintInfo(Output* pOut)
 
 	msg = msg + ", Centre Point is : (" + to_string(Centre.x) + "," + to_string(Centre.y) + ")";
 
+	msg = msg + ", Side Length= 200 " ;
+
 	pOut->PrintMessage(msg);
 
 }
