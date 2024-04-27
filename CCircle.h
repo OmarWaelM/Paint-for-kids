@@ -15,6 +15,6 @@ public:
 
 	virtual void PrintInfo(Output* pOut);
 
-
+	//
 };
 #endif
