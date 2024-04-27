@@ -65,6 +65,7 @@ ActionType Input::GetUserAction() const
 			case ITM_RED: return SEL_RED;
 			case ITM_GREEN: return SEL_GREEN;
 			case ITM_BLUE: return SEL_BLUE;
+			case ITM_SELECT: return TO_SELECT;
 			case ITM_DELETEFIGURE: return TO_DELETEFIGURE;
 			case ITM_CLEARALL: return TO_CLEARALL;
 			case ITM_COPYFIGURE: return TO_COPYFIGURE;
