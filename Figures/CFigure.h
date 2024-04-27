@@ -31,6 +31,9 @@ public:
 	///Decide the parameters that you should pass to each function	
 	virtual void PrintInfo(Output* pOut) = 0;
 
+	static int Number_Of_Figures;
+	static int Get_Number_Of_Figures();
+
 
 	//virtual void Save(ofstream &OutFile) = 0;	//Save the figure parameters to the file
 	//virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file

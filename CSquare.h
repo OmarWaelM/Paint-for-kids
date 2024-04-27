@@ -1,22 +1,21 @@
-#ifndef CHEXA_H
-#define CHEXA_H
-
+#ifndef CSQUARE_H
+#define CSQUARE_H
 #include"Figures/CFigure.h"
 
-class CHexagon :public CFigure
+class CSquare :public CFigure
 {
 private:
 	Point Centre;
 
 public:
-	CHexagon(Point, GfxInfo FigureGfxInfo);
+	CSquare(Point, GfxInfo FigureGfxInfo);
 
 	virtual void Draw(Output* pOut) const;
 
 	virtual void PrintInfo(Output* pOut);
 
-
-
+	
 
 };
-#endif
+#endif;
+

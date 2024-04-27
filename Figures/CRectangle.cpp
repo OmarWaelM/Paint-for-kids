@@ -4,6 +4,9 @@ CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(Figure
 {
 	Corner1 = P1;
 	Corner2 = P2;
+
+	ID = Get_Number_Of_Figures();
+}
 }
 	
 
