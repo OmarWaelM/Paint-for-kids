@@ -1,0 +1,19 @@
+#ifndef CHEXA_H
+#define CHEXA_H
+
+#include"Figures/CFigure.h"
+
+class CHexagon :public CFigure
+{
+private:
+	Point P;
+
+public:
+	CHexagon(Point, GfxInfo FigureGfxInfo);
+
+	virtual void Draw(Output* pOut) const;
+
+
+
+};
+#endif
