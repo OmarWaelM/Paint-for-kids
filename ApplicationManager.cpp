@@ -8,12 +8,15 @@ ApplicationManager::ApplicationManager()
 	//Create Input and output
 	pOut = new Output;
 	pIn = pOut->CreateInput();
-	
+
 	FigCount = 0;
-		
+	SelCount = 0;
 	//Create an array of figure pointers and set them to NULL		
-	for(int i=0; i<MaxFigCount; i++)
-		FigList[i] = NULL;	
+	for (int i = 0; i < MaxFigCount; i++)
+	{
+		FigList[i] = NULL;
+		SelectedFig[i] = NULL;
+	}
 }
 
 //==================================================================================//
@@ -82,6 +85,35 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 
 	return NULL;
 }
+////////////////////////////////////////////////////////////////////////////////////
+void ApplicationManager::AddSelected(CFigure* sFig)
+{
+	SelectedFig[SelCount++] = sFig;
+	sFig->SetSelected(true);
+}
+////////////////////////////////////////////////////////////////////////////////////
+void ApplicationManager::DeleteSelected(int i, CFigure* Fig)
+{
+	if (Fig == NULL)
+	{
+		SelectedFig[i]->SetSelected(false);
+	}
+	else
+	{
+		for (int j = 0; i < SelCount; i++)
+		{
+			if (SelectedFig[j] == Fig)
+			{
+				SelectedFig[j]->SetSelected(false);
+				i = j;
+			}
+		}
+	}
+	for (int j = i; i < SelCount - 1; i++)
+			SelectedFig[i] = SelectedFig[i + 1];
+	SelectedFig[SelCount] = NULL;
+	SelCount--;
+}
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
@@ -103,8 +135,11 @@ Output *ApplicationManager::GetOutput() const
 //Destructor
 ApplicationManager::~ApplicationManager()
 {
-	for(int i=0; i<FigCount; i++)
+	for (int i = 0; i < FigCount; i++)
+	{
+		SelectedFig[i] = NULL;
 		delete FigList[i];
+	}
 	delete pIn;
 	delete pOut;
 	
