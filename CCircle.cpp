@@ -2,26 +2,36 @@
 
 CCircle::CCircle(Point p1, Point p2, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
-	P1 = p1;
-	P2 = p2;
+	Centre = p1;
+	Radius = p2;
 
-	ID = Get_Number_Of_Figures();
+	ID = Number_Of_Figures;
 
 }
 
 void CCircle::Draw(Output* pOut) const
 {
-	pOut->DrawCirc(P1, P2, FigGfxInfo, Selected);
+	pOut->DrawCirc(Centre, Radius, FigGfxInfo, Selected);
 }
 
 void CCircle::PrintInfo(Output* pOut)
 {
 	string msg = "Circle's Info : ID = " + to_string(ID);
 
-	msg =msg+ ", Point P1 ( " + to_string(P1.x) + "," + to_string(P1.x);
+	msg = msg + " , Center Point ( " + to_string(Centre.x) + " , " + to_string(Centre.x) + " )";
 
-	msg = msg + ",Point P2 ( " + to_string(P2.x) + "," + to_string(P2.x);
+	msg = msg + " , Radius = " + to_string(sqrt(pow(Centre.x - Radius.x, 2) + pow(Centre.y - Radius.y, 2)));
 
 	pOut->PrintMessage(msg);
 
+}
+
+bool CCircle::IsWithin(Point P)
+{
+	double r = sqrt(pow(Centre.x - P.x, 2) + pow(Centre.y - P.y, 2));
+	double rad = sqrt(pow(Centre.x - Radius.x, 2) + pow(Centre.y - Radius.y, 2));
+
+	if (r <= rad)
+		return true;
+	return false;
 }

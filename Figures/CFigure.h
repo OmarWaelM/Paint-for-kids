@@ -11,7 +11,7 @@ protected:
 	int ID;		//Each figure has an ID
 	bool Selected;	//true if the figure is selected.
 	GfxInfo FigGfxInfo;	//Figure graphics info
-	
+	static int Number_Of_Figures;
 	/// Add more parameters if needed.
 
 public:
@@ -25,12 +25,10 @@ public:
 
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure:
-	 virtual void Draw(Output* pOut) const  = 0 ;		//Draw the figure
-	 virtual void PrintInfo(Output* pOut) = 0;          //print all figure info on the status bar
-
+	virtual void Draw(Output* pOut) const  = 0 ;		//Draw the figure
+	virtual void PrintInfo(Output* pOut) = 0;          //print all figure info on the status bar
+	virtual bool IsWithin(Point P) = 0;
 	///Decide the parameters that you should pass to each function	
-	static int Number_Of_Figures;
-	static int Get_Number_Of_Figures();
 
 
 	//virtual void Save(ofstream &OutFile) = 0;	//Save the figure parameters to the file
