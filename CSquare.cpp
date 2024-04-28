@@ -3,7 +3,7 @@
 CSquare::CSquare(Point P, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	Centre = P;
-	ID = Get_Number_Of_Figures();
+	ID = Number_Of_Figures;
 
 }
 
@@ -16,11 +16,17 @@ void CSquare::PrintInfo(Output* pOut)
 {
 	string msg = "Square's Info : ID = " + to_string(ID);
 
-	msg = msg + ", Centre Point is : (" + to_string(Centre.x) + "," + to_string(Centre.y) + ")";
+	msg = msg + " , Centre Point is : ( " + to_string(Centre.x) + " , " + to_string(Centre.y) + " )";
 
-	msg = msg + ", Side Length= 200 " ;
+	msg = msg + " , Side Length = 200 ";
 
 	pOut->PrintMessage(msg);
 
 }
 
+bool CSquare::IsWithin(Point P)
+{
+	if (abs(P.x - Centre.x) <= 100 && abs(P.y - Centre.y) <= 100)
+		return true;
+	return false;
+}

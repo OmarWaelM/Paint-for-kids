@@ -14,7 +14,7 @@ public:
 
 	virtual void PrintInfo(Output* pOut);
 
-	
+	virtual bool IsWithin(Point P);
 
 };
 #endif;

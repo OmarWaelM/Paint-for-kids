@@ -6,7 +6,7 @@ CTriangle::CTriangle(Point p1, Point p2, Point p3, GfxInfo FigureGfxInfo):CFigur
 	P2 = p2;
 	P3 = p3;
 
-	ID = Get_Number_Of_Figures();
+	ID = Number_Of_Figures;
 
 }
 
@@ -19,12 +19,25 @@ void CTriangle::PrintInfo(Output* pOut)
 {
 	string msg = "Triangle's Info : ID =" + to_string(ID);
 
-	msg =msg + ",Point P1 : ( " + to_string(P1.x) + "," + to_string(P1.y);
+	msg =msg + " ,Point 1 : ( " + to_string(P1.x) + " , " + to_string(P1.y) + " )";
 
-	msg =msg + ",Point P2 : ( " + to_string(P2.x) + "," + to_string(P2.y);
+	msg =msg + " ,Point 2 : ( " + to_string(P2.x) + " , " + to_string(P2.y) + " )";
 
-	msg =msg + ",Point P3 : ( " + to_string(P3.x) + "," + to_string(P3.y);
+	msg =msg + " ,Point 3 : ( " + to_string(P3.x) + " , " + to_string(P3.y) + " )";
 
 	pOut->PrintMessage(msg);
 
+}
+
+bool CTriangle::IsWithin(Point P)
+{
+	int AT, A1, A2, A3;
+	AT = (P1.x * (P2.y - P3.y) + P2.x * (P3.y = P1.y) + P3.x * (P1.y - P2.y)) / 2;
+	A1 = (P.x * (P2.y - P3.y) + P2.x * (P3.y = P.y) + P3.x * (P.y - P2.y)) / 2;
+	A2 = (P1.x * (P.y - P3.y) + P.x * (P3.y = P1.y) + P3.x * (P1.y - P.y)) / 2;
+	A3 = (P1.x * (P2.y - P.y) + P2.x * (P.y = P1.y) + P.x * (P1.y - P2.y)) / 2;
+	
+	if (AT == (A1 + A2 + A3))
+		return true;
+	return false;
 }
