@@ -23,6 +23,7 @@ public:
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
 
+
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure:
 	virtual void Draw(Output* pOut) const  = 0 ;		//Draw the figure
