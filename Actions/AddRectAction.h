@@ -9,7 +9,10 @@ class AddRectAction: public Action
 private:
 	Point P1, P2; //Rectangle Corners
 	GfxInfo RectGfxInfo;
+	CFigure* Figure_Is_Saved;
+
 public:
+
 	AddRectAction(ApplicationManager *pApp);
 
 	//Reads rectangle parameters
@@ -17,7 +20,9 @@ public:
 	
 	//Add rectangle to the ApplicationManager
 	virtual void Execute() ;
-	////
+	
+	virtual void Undo_Execute();
+
 };
 
 #endif
