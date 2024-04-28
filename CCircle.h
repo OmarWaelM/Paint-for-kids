@@ -5,9 +5,9 @@
 class CCircle :public CFigure
 {
 private:
-	Point P1;
-	Point P2;
-
+	Point Centre;
+	Point Radius;
+	 
 public:
 	CCircle(Point, Point, GfxInfo FigureGfxInfo);
 
@@ -15,6 +15,7 @@ public:
 
 	virtual void PrintInfo(Output* pOut);
 
-	//
+	virtual bool IsWithin(Point P);
+	
 };
 #endif

@@ -17,6 +17,8 @@ public:
 	virtual void Draw(Output* pOut) const;
 
 	virtual void PrintInfo(Output* pOut);
+
+	virtual bool IsWithin(Point P);
 };
 
 #endif

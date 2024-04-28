@@ -27,8 +27,3 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.FillClr = Fclr; 
 }
 
-int CFigure::Get_Number_Of_Figures()
-{
-	return Number_Of_Figures;
-}
-
