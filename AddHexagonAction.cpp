@@ -37,7 +37,6 @@ void AddHexagonAction::Execute()
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(H);
 
-	Figure_Is_Saved = H;
 }
 
 

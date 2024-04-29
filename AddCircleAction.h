@@ -14,7 +14,7 @@ private:
 	Point Centre;
 	Point Radius;
 	GfxInfo CircleGfxInfo;
-	CFigure* Figure_Is_Saved;
+	
 
 public:
 	AddCircleAction(ApplicationManager* pApp);

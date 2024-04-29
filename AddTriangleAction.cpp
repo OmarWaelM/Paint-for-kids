@@ -44,6 +44,6 @@ void AddTriangleAction::Execute()
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(T);
 
-	Figure_Is_Saved = T;
+	
 }
 

@@ -10,7 +10,7 @@ class AddSquareAction :public Action
 private:
 	Point Centre;
 	GfxInfo SquareGfxInfo;
-	CFigure* Figure_Is_Saved;
+	
 
 public:
 	AddSquareAction(ApplicationManager* pApp);
