@@ -1,10 +1,9 @@
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
-#include"AddCircleAction.h"
-#include"AddHexagonAction.h"
-#include"AddSquareAction.h"
-#include"AddTriangleAction.h"
-#include"DeleteAction.h"
+#include "AddCircleAction.h"
+#include "AddHexagonAction.h"
+#include "AddSquareAction.h"
+#include "AddTriangleAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -63,6 +62,22 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DELETE:
 			pAct = new DeleteAction(this);
 
+		case DRAW_HEXAGON:
+			pAct = new AddHexagonAction(this);
+			break;
+
+		case DRAW_CIRCLE:
+			pAct = new AddCircleAction(this);
+			break;
+
+		case DRAW_TRIANGLE:
+			pAct = new AddTriangleAction(this);
+			break;
+
+		case DRAW_SQUARE:
+			pAct = new AddSquareAction(this);
+			break;
+
 		case EXIT:
 			///create ExitAction here
 			
@@ -100,14 +115,15 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 	if(FigCount < MaxFigCount )
 		FigList[FigCount++] = pFig;	
 }
+////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::Delete_Figure(CFigure* pFig)
 {
 	for (int i = 0; i < FigCount; i++)
 	{
 		if (FigList[i] == pFig)
 		{
+			delete FigList[i];
 			FigList[i] = FigList[FigCount - 1];
-			FigList[i]->SetSelected(false);
 			FigList[FigCount - 1] = NULL;
 			FigCount--;
 		}

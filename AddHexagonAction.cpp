@@ -38,5 +38,3 @@ void AddHexagonAction::Execute()
 	pManager->AddFigure(H);
 
 }
-
-

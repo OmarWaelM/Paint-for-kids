@@ -13,7 +13,6 @@ private:
 	Point P3;
 
 	GfxInfo TriangleGfxInfo;
-	
 
 public:
 	AddTriangleAction(ApplicationManager* pApp);
@@ -21,8 +20,6 @@ public:
 	virtual void ReadActionParameters();
 
 	virtual void Execute();
-
-
 };
 #endif
 

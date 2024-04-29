@@ -17,5 +17,6 @@ public:
 
 	virtual void Execute();
 
+	void PrintInfo() const;
 };
 #endif
