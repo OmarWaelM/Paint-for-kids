@@ -17,5 +17,6 @@ public:
 
 	virtual bool IsWithin(Point P);
 	
+
 };
 #endif

@@ -1,6 +1,11 @@
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
-
+#include "AddCircleAction.h"
+#include "AddHexagonAction.h"
+#include "AddSquareAction.h"
+#include "AddTriangleAction.h"
+#include "SelectFigure.h"
+#include "DeleteAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -8,12 +13,15 @@ ApplicationManager::ApplicationManager()
 	//Create Input and output
 	pOut = new Output;
 	pIn = pOut->CreateInput();
-	
+
 	FigCount = 0;
-		
+	SelCount = 0;
 	//Create an array of figure pointers and set them to NULL		
-	for(int i=0; i<MaxFigCount; i++)
-		FigList[i] = NULL;	
+	for (int i = 0; i < MaxFigCount; i++)
+	{
+		FigList[i] = NULL;
+		SelectedFig[i] = NULL;
+	}
 }
 
 //==================================================================================//
@@ -36,6 +44,30 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
 			break;
+			
+		case DRAW_HEXAGON:
+			pAct = new AddHexagonAction(this);
+			break;
+
+		case DRAW_CIRCLE:
+			pAct = new AddCircleAction(this);
+			break;
+
+		case DRAW_TRIANGLE:
+			pAct = new AddTriangleAction(this);
+			break;
+
+		case DRAW_SQUARE:
+			pAct = new AddSquareAction(this);
+			break;
+
+		case TO_SELECT:
+			pAct = new SelectFigure(this);
+			break;
+
+		case TO_DELETEFIGURE:
+			pAct = new DeleteAction(this);
+			break;
 
 		case EXIT:
 			///create ExitAction here
@@ -54,6 +86,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = NULL;
 	}
 }
+
 //==================================================================================//
 //						Figures Management Functions								//
 //==================================================================================//
@@ -63,6 +96,21 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 {
 	if(FigCount < MaxFigCount )
 		FigList[FigCount++] = pFig;	
+}
+////////////////////////////////////////////////////////////////////////////////////
+void ApplicationManager::Delete_Figure(CFigure* pFig)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i] == pFig)
+		{
+			delete FigList[i];
+			for (int j = i; j < FigCount - 1; j++)
+				FigList[j] = FigList[j + 1];
+			FigList[FigCount - 1] = NULL;
+			FigCount--;
+		}
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure *ApplicationManager::GetFigure(int x, int y) const
@@ -82,6 +130,35 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 
 	return NULL;
 }
+////////////////////////////////////////////////////////////////////////////////////
+void ApplicationManager::AddSelected(CFigure* sFig)
+{
+	SelectedFig[SelCount++] = sFig;
+	sFig->SetSelected(true);
+}
+////////////////////////////////////////////////////////////////////////////////////
+void ApplicationManager::DeleteSelected(int i, CFigure* Fig)
+{
+	if (Fig == NULL)
+	{
+		SelectedFig[i]->SetSelected(false);
+	}
+	else
+	{
+		for (int j = 0; j < SelCount; j++)
+		{
+			if (SelectedFig[j] == Fig)
+			{
+				SelectedFig[j]->SetSelected(false);
+				i = j;
+			}
+		}
+	}
+	for (int j = i; j < SelCount - 1; j++)
+			SelectedFig[j] = SelectedFig[j + 1];
+	SelectedFig[SelCount - 1] = NULL;
+	SelCount--;
+}
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
@@ -89,6 +166,7 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {	
+	pOut->ClearDrawArea();
 	for(int i=0; i<FigCount; i++)
 		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
 }
@@ -103,8 +181,11 @@ Output *ApplicationManager::GetOutput() const
 //Destructor
 ApplicationManager::~ApplicationManager()
 {
-	for(int i=0; i<FigCount; i++)
+	for (int i = 0; i < FigCount; i++)
+	{
+		SelectedFig[i] = NULL;
 		delete FigList[i];
+	}
 	delete pIn;
 	delete pOut;
 	
