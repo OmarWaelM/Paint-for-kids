@@ -14,6 +14,8 @@ void DeleteAction::Execute()
 {
 	ReadActionParameters();
 
+
+	//pFig = pManager->Get_Selected_Figure();
 	pOut = pManager->GetOutput();
 
 	if (pManager->GetSelectedCount() > 0)
@@ -28,4 +30,5 @@ void DeleteAction::Execute()
 	}
 	else
 		pOut->PrintMessage("No Items Selected.");
+  
 }

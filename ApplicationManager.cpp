@@ -4,8 +4,12 @@
 #include "AddHexagonAction.h"
 #include "AddSquareAction.h"
 #include "AddTriangleAction.h"
+
+#include"DeleteAction.h"
+
 #include "SelectFigure.h"
 #include "DeleteAction.h"
+
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -44,7 +48,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
 			break;
-			
+		
 		case DRAW_HEXAGON:
 			pAct = new AddHexagonAction(this);
 			break;
@@ -57,10 +61,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new AddTriangleAction(this);
 			break;
 
-		case DRAW_SQUARE:
+    case DRAW_SQUARE:
 			pAct = new AddSquareAction(this);
 			break;
-
+      
 		case TO_SELECT:
 			pAct = new SelectFigure(this);
 			break;
