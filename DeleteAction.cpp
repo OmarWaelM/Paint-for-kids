@@ -14,16 +14,21 @@ void DeleteAction::Execute()
 {
 	ReadActionParameters();
 
+
 	//pFig = pManager->Get_Selected_Figure();
 	pOut = pManager->GetOutput();
 
-	if (pFig)
+	if (pManager->GetSelectedCount() > 0)
 	{
-		pOut->ClearDrawArea();
-		pManager->Delete_Figure(pFig);
-		pOut->PrintMessage("The Selected Figure is Deleted ");
+		for (int i = pManager->GetSelectedCount() - 1; i >= 0; i--)
+		{
+			pFig = pManager->GetSelected(i);
+			pManager->DeleteSelected(0, pFig);
+			pManager->Delete_Figure(pFig);
+			pOut->ClearStatusBar();
+		}
 	}
 	else
-     	pOut->PrintMessage("No selected figure. Please select a figure first!");
-
+		pOut->PrintMessage("No Items Selected.");
+  
 }

@@ -8,6 +8,7 @@
 #include"DeleteAction.h"
 
 #include "SelectFigure.h"
+#include "DeleteAction.h"
 
 
 //Constructor
@@ -47,9 +48,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
 			break;
-			
-		case DRAW_SQUARE:
-			pAct = new AddSquareAction(this);
+		
+		case DRAW_HEXAGON:
+			pAct = new AddHexagonAction(this);
 			break;
 
 		case DRAW_CIRCLE:
@@ -60,15 +61,16 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new AddTriangleAction(this);
 			break;
 
-		case DRAW_HEXAGON:
-			pAct = new AddHexagonAction(this);
+    case DRAW_SQUARE:
+			pAct = new AddSquareAction(this);
+			break;
+      
+		case TO_SELECT:
+			pAct = new SelectFigure(this);
 			break;
 
 		case TO_DELETEFIGURE:
 			pAct = new DeleteAction(this);
-
-		case TO_SELECT:
-			pAct = new SelectFigure(this);
 			break;
 
 		case EXIT:
@@ -89,9 +91,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	}
 }
 
-
-
-
 //==================================================================================//
 //						Figures Management Functions								//
 //==================================================================================//
@@ -110,7 +109,8 @@ void ApplicationManager::Delete_Figure(CFigure* pFig)
 		if (FigList[i] == pFig)
 		{
 			delete FigList[i];
-			FigList[i] = FigList[FigCount - 1];
+			for (int j = i; j < FigCount - 1; j++)
+				FigList[j] = FigList[j + 1];
 			FigList[FigCount - 1] = NULL;
 			FigCount--;
 		}
@@ -149,7 +149,7 @@ void ApplicationManager::DeleteSelected(int i, CFigure* Fig)
 	}
 	else
 	{
-		for (int j = 0; i < SelCount; i++)
+		for (int j = 0; j < SelCount; j++)
 		{
 			if (SelectedFig[j] == Fig)
 			{
@@ -158,9 +158,9 @@ void ApplicationManager::DeleteSelected(int i, CFigure* Fig)
 			}
 		}
 	}
-	for (int j = i; i < SelCount - 1; i++)
-			SelectedFig[i] = SelectedFig[i + 1];
-	SelectedFig[SelCount] = NULL;
+	for (int j = i; j < SelCount - 1; j++)
+			SelectedFig[j] = SelectedFig[j + 1];
+	SelectedFig[SelCount - 1] = NULL;
 	SelCount--;
 }
 //==================================================================================//
@@ -170,6 +170,7 @@ void ApplicationManager::DeleteSelected(int i, CFigure* Fig)
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {	
+	pOut->ClearDrawArea();
 	for(int i=0; i<FigCount; i++)
 		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
 }
