@@ -16,10 +16,16 @@ void DeleteAction::Execute()
 
 	pOut = pManager->GetOutput();
 
-	for (int i = pManager->GetSelectedCount() - 1; i >= 0; i--)
+	if (pManager->GetSelectedCount() > 0)
 	{
-		pFig = pManager->GetSelected(i);
-		pManager->DeleteSelected(0, pFig);
-		pManager->Delete_Figure(pFig);
+		for (int i = pManager->GetSelectedCount() - 1; i >= 0; i--)
+		{
+			pFig = pManager->GetSelected(i);
+			pManager->DeleteSelected(0, pFig);
+			pManager->Delete_Figure(pFig);
+			pOut->ClearStatusBar();
+		}
 	}
+	else
+		pOut->PrintMessage("No Items Selected.");
 }
