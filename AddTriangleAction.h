@@ -22,7 +22,6 @@ public:
 
 	virtual void Execute();
 
-	virtual void Undo_Execute();
 
 };
 #endif

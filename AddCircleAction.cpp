@@ -38,7 +38,3 @@ void AddCircleAction::Execute()
 	Figure_Is_Saved = C;
 }
 
-void AddCircleAction::Undo_Execute()
-{
-	pManager->Delete_Figure(Figure_Is_Saved);
-}

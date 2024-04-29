@@ -40,8 +40,4 @@ void AddHexagonAction::Execute()
 	Figure_Is_Saved = H;
 }
 
-void AddHexagonAction::Undo_Execute()
-{
-	pManager->Delete_Figure(Figure_Is_Saved);
 
-}
