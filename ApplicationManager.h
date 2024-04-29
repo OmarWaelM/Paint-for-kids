@@ -24,6 +24,7 @@ private:
 
 	CFigure* Clipboard;  //Pointer to copied/cut figure
 
+	
 public:	
 	ApplicationManager(); 
 	~ApplicationManager();
@@ -34,7 +35,8 @@ public:
 	void ExecuteAction(ActionType) ; //Creates an action and executes it
 	
 	// -- Figures Management Functions
-	void AddFigure(CFigure* pFig);			//Adds a new figure to the FigList
+	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
+	void Delete_Figure(CFigure* pFig);      //Deletes a figure from the FigList
 	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
 	int GetFigCount() const { return FigCount; }	// Getter for Figcount
 
