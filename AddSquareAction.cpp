@@ -38,10 +38,6 @@ void AddSquareAction::Execute()
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(S);
 
-	Figure_Is_Saved = S;
+	
 }
 
-void AddSquareAction::Undo_Execute()
-{
-	pManager->Delete_Figure(Figure_Is_Saved);
-}

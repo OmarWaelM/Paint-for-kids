@@ -1,6 +1,10 @@
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
-
+#include"AddCircleAction.h"
+#include"AddHexagonAction.h"
+#include"AddSquareAction.h"
+#include"AddTriangleAction.h"
+#include"DeleteAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -39,6 +43,25 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
 			break;
+			
+		case DRAW_SQUARE:
+			pAct = new AddSquareAction(this);
+			break;
+
+		case DRAW_CIRCLE:
+			pAct = new AddCircleAction(this);
+			break;
+
+		case DRAW_TRIANGLE:
+			pAct = new AddTriangleAction(this);
+			break;
+
+		case DRAW_HEXAGON:
+			pAct = new AddHexagonAction(this);
+			break;
+
+		case DELETE:
+			pAct = new DeleteAction(this);
 
 		case EXIT:
 			///create ExitAction here
@@ -56,6 +79,15 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		delete pAct;	//You may need to change this line depending to your implementation
 		pAct = NULL;
 	}
+}
+void ApplicationManager::Set_Selected_Figure(CFigure* pFig)
+{
+	SelectedFig = pFig;
+
+}
+CFigure *ApplicationManager::Get_Selected_Figure()  //mardash yraga3 fn returning abstract class f garabt pointer w nf3t
+{
+	return SelectedFig ;
 }
 //==================================================================================//
 //						Figures Management Functions								//
@@ -77,8 +109,6 @@ void ApplicationManager::Delete_Figure(CFigure* pFig)
 			FigList[i]->SetSelected(false);
 			FigList[FigCount - 1] = NULL;
 			FigCount--;
-
-
 		}
 	}
 }
