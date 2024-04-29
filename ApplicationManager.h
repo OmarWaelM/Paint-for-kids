@@ -15,7 +15,8 @@ private:
 	int FigCount;		//Actual number of figures
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
 
-	CFigure* SelectedFig; //Pointer to the selected figure
+	int SelCount;
+	CFigure* SelectedFig[MaxFigCount]; //Pointer to the selected figure
 
 	//Pointers to Input and Output classes
 	Input *pIn;
@@ -37,7 +38,13 @@ public:
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
 	void Delete_Figure(CFigure* pFig);      //Deletes a figure from the FigList
 	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
-		
+	int GetFigCount() const { return FigCount; }	// Getter for Figcount
+
+	void AddSelected(CFigure* sFig);		//Adds a Figure to selected list
+	void DeleteSelected(int i, CFigure* Fig = NULL);			//Removes Figure at index i from selected list or the given figure pointer
+	int GetSelectedCount() const { return SelCount; }			//Getter for SelectedCount
+
+
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output
