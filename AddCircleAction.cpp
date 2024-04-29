@@ -15,6 +15,10 @@ void AddCircleAction::ReadActionParameters()
 	//Read Centre coordinates and store in point centre
 	pIn->GetPointClicked(Centre.x, Centre.y);
 
+	pOut->PrintMessage("Click on the radius");
+
+	//Read Radius coordinates and store in point radius
+	pIn->GetPointClicked(Radius.x, Radius.y);
 
 	CircleGfxInfo.isFilled = false;	//default is not filled
 	//get drawing, filling colors and pen width from the interface
@@ -34,7 +38,5 @@ void AddCircleAction::Execute()
 
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(C);
-
-
 }
 

@@ -37,7 +37,4 @@ void AddSquareAction::Execute()
 
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(S);
-
-	
 }
-
