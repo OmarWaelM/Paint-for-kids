@@ -46,10 +46,4 @@ void AddRectAction::Execute()
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
 
-	Figure_Is_Saved=R;
-}
-
-void AddRectAction::Undo_Execute()
-{
-	pManager->Delete_Figure(Figure_Is_Saved);
 }

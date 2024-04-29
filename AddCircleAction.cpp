@@ -35,10 +35,4 @@ void AddCircleAction::Execute()
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(C);
 
-	Figure_Is_Saved = C;
-}
-
-void AddCircleAction::Undo_Execute()
-{
-	pManager->Delete_Figure(Figure_Is_Saved);
 }

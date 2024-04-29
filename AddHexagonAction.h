@@ -10,7 +10,6 @@ class AddHexagonAction :public Action
 private:
 	Point Centre;
 	GfxInfo HexagonGfxInfo;
-	CFigure* Figure_Is_Saved;
 
 public:
 	AddHexagonAction(ApplicationManager* pApp);
@@ -18,9 +17,6 @@ public:
 	virtual void ReadActionParameters();
 
 	virtual void Execute();
-
-	virtual void Undo_Execute();
-
 
 };
 #endif

@@ -22,9 +22,6 @@ public:
 	//Execute action (code depends on action type)
 	virtual void Execute() =0;
 
-	virtual void Undo_Execute() = 0;
-
-
 };
 
 #endif

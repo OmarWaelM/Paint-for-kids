@@ -13,7 +13,6 @@ private:
 	Point P3;
 
 	GfxInfo TriangleGfxInfo;
-	CFigure* Figure_Is_Saved;
 
 public:
 	AddTriangleAction(ApplicationManager* pApp);
@@ -21,8 +20,6 @@ public:
 	virtual void ReadActionParameters();
 
 	virtual void Execute();
-
-	virtual void Undo_Execute();
 
 };
 #endif

@@ -67,18 +67,17 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 	if(FigCount < MaxFigCount )
 		FigList[FigCount++] = pFig;	
 }
+////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::Delete_Figure(CFigure* pFig)
 {
 	for (int i = 0; i < FigCount; i++)
 	{
 		if (FigList[i] == pFig)
 		{
+			delete FigList[i];
 			FigList[i] = FigList[FigCount - 1];
-			FigList[i]->SetSelected(false);
 			FigList[FigCount - 1] = NULL;
 			FigCount--;
-
-
 		}
 	}
 }
