@@ -32,10 +32,10 @@ void CTriangle::PrintInfo(Output* pOut)
 bool CTriangle::IsWithin(Point P)
 {
 	int AT, A1, A2, A3;
-	AT = (P1.x * (P2.y - P3.y) + P2.x * (P3.y = P1.y) + P3.x * (P1.y - P2.y)) / 2;
-	A1 = (P.x * (P2.y - P3.y) + P2.x * (P3.y = P.y) + P3.x * (P.y - P2.y)) / 2;
-	A2 = (P1.x * (P.y - P3.y) + P.x * (P3.y = P1.y) + P3.x * (P1.y - P.y)) / 2;
-	A3 = (P1.x * (P2.y - P.y) + P2.x * (P.y = P1.y) + P.x * (P1.y - P2.y)) / 2;
+	AT = abs(P1.x * (P2.y - P3.y) + P2.x * (P3.y - P1.y) + P3.x * (P1.y - P2.y));
+	A1 = abs(P.x * (P2.y - P3.y) + P2.x * (P3.y - P.y) + P3.x * (P.y - P2.y));
+	A2 = abs(P1.x * (P.y - P3.y) + P.x * (P3.y - P1.y) + P3.x * (P1.y - P.y));
+	A3 = abs(P1.x * (P2.y - P.y) + P2.x * (P.y - P1.y) + P.x * (P1.y - P2.y));
 	
 	if (AT == (A1 + A2 + A3))
 		return true;
