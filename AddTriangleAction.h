@@ -20,7 +20,6 @@ public:
 	virtual void ReadActionParameters();
 
 	virtual void Execute();
-
 };
 #endif
 

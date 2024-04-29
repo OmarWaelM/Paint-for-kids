@@ -33,6 +33,9 @@ public:
 	//Reads the input command from the user and returns the corresponding action type
 	ActionType GetUserAction() const;
 	void ExecuteAction(ActionType) ; //Creates an action and executes it
+
+	void Set_Selected_Figure(CFigure*pFig); // to set the selected figure//
+	CFigure* Get_Selected_Figure();  // to return the selected figure // mardash y return abstract class f 3amalt pointer f nf3t
 	
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
