@@ -4,7 +4,11 @@
 #include "AddHexagonAction.h"
 #include "AddSquareAction.h"
 #include "AddTriangleAction.h"
+<<<<<<< HEAD
+#include"DeleteAction.h"
+=======
 #include "SelectFigure.h"
+>>>>>>> c4b039fa587d81ae7072904216175cdcf40d8c2b
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -77,6 +81,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case DRAW_SQUARE:
 			pAct = new AddSquareAction(this);
+			break;
+
+		case TO_SELECT:
+			pAct = new SelectFigure(this);
 			break;
 
 		case EXIT:
