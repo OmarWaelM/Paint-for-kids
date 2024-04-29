@@ -14,7 +14,6 @@ private:
 	Point Centre;
 	Point Radius;
 	GfxInfo CircleGfxInfo;
-	
 
 public:
 	AddCircleAction(ApplicationManager* pApp);
