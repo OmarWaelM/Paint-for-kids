@@ -4,11 +4,11 @@
 #include "AddHexagonAction.h"
 #include "AddSquareAction.h"
 #include "AddTriangleAction.h"
-<<<<<<< HEAD
+
 #include"DeleteAction.h"
-=======
+
 #include "SelectFigure.h"
->>>>>>> c4b039fa587d81ae7072904216175cdcf40d8c2b
+
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -64,24 +64,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new AddHexagonAction(this);
 			break;
 
-		case DELETE:
+		case TO_DELETEFIGURE:
 			pAct = new DeleteAction(this);
-
-		case DRAW_HEXAGON:
-			pAct = new AddHexagonAction(this);
-			break;
-
-		case DRAW_CIRCLE:
-			pAct = new AddCircleAction(this);
-			break;
-
-		case DRAW_TRIANGLE:
-			pAct = new AddTriangleAction(this);
-			break;
-
-		case DRAW_SQUARE:
-			pAct = new AddSquareAction(this);
-			break;
 
 		case TO_SELECT:
 			pAct = new SelectFigure(this);
@@ -104,15 +88,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = NULL;
 	}
 }
-void ApplicationManager::Set_Selected_Figure(CFigure* pFig)
-{
-	SelectedFig = pFig;
 
-}
-CFigure *ApplicationManager::Get_Selected_Figure()  //mardash yraga3 fn returning abstract class f garabt pointer w nf3t
-{
-	return SelectedFig ;
-}
+
+
+
 //==================================================================================//
 //						Figures Management Functions								//
 //==================================================================================//

@@ -34,9 +34,6 @@ public:
 	ActionType GetUserAction() const;
 	void ExecuteAction(ActionType) ; //Creates an action and executes it
 
-	void Set_Selected_Figure(CFigure*pFig); // to set the selected figure//
-	CFigure* Get_Selected_Figure();  // to return the selected figure // mardash y return abstract class f 3amalt pointer f nf3t
-	
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
 	void Delete_Figure(CFigure* pFig);      //Deletes a figure from the FigList
@@ -44,7 +41,9 @@ public:
 	int GetFigCount() const { return FigCount; }	// Getter for Figcount
 
 	void AddSelected(CFigure* sFig);		//Adds a Figure to selected list
-	void DeleteSelected(int i, CFigure* Fig = NULL);			//Removes Figure at index i from selected list or the given figure pointer
+
+	void DeleteSelected(int i, CFigure* Fig = NULL); //Removes Figure at index i from selected list or the given figure pointer
+
 	int GetSelectedCount() const { return SelCount; }			//Getter for SelectedCount
 	CFigure* GetSelected(int i) const { return SelectedFig[i]; } // Getter for Selected figure in index i
 

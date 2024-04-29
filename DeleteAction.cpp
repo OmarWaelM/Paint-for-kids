@@ -14,7 +14,7 @@ void DeleteAction::Execute()
 {
 	ReadActionParameters();
 
-	pFig = pManager->Get_Selected_Figure();
+	//pFig = pManager->Get_Selected_Figure();
 	pOut = pManager->GetOutput();
 
 	if (pFig)
