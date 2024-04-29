@@ -44,7 +44,7 @@ public:
 	int GetFigCount() const { return FigCount; }	// Getter for Figcount
 
 	void AddSelected(CFigure* sFig);		//Adds a Figure to selected list
-	void DeleteSelected(int i, CFigure* Fig = NULL); //Removes Figure at index i from selected list or the given figure pointer
+	void DeleteSelected(int i, CFigure* Fig = NULL);			//Removes Figure at index i from selected list or the given figure pointer
 	int GetSelectedCount() const { return SelCount; }			//Getter for SelectedCount
 	CFigure* GetSelected(int i) const { return SelectedFig[i]; } // Getter for Selected figure in index i
 
@@ -53,5 +53,5 @@ public:
 	Output *GetOutput() const; //Return pointer to the output
 	void UpdateInterface() const;	//Redraws all the drawing window	
 };
-#endif
 
+#endif

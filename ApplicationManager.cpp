@@ -4,7 +4,7 @@
 #include "AddHexagonAction.h"
 #include "AddSquareAction.h"
 #include "AddTriangleAction.h"
-#include"DeleteAction.h"
+#include "SelectFigure.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -19,7 +19,7 @@ ApplicationManager::ApplicationManager()
 	for (int i = 0; i < MaxFigCount; i++)
 	{
 		FigList[i] = NULL;
-		//SelectedFig[i] = NULL;
+		SelectedFig[i] = NULL;
 	}
 }
 
@@ -63,6 +63,22 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DELETE:
 			pAct = new DeleteAction(this);
 
+		case DRAW_HEXAGON:
+			pAct = new AddHexagonAction(this);
+			break;
+
+		case DRAW_CIRCLE:
+			pAct = new AddCircleAction(this);
+			break;
+
+		case DRAW_TRIANGLE:
+			pAct = new AddTriangleAction(this);
+			break;
+
+		case DRAW_SQUARE:
+			pAct = new AddSquareAction(this);
+			break;
+
 		case EXIT:
 			///create ExitAction here
 			
@@ -82,13 +98,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 }
 void ApplicationManager::Set_Selected_Figure(CFigure* pFig)
 {
-	
 	SelectedFig = pFig;
 
 }
-CFigure* ApplicationManager::Get_Selected_Figure()  //mardash yraga3 fn returning abstract class f garabt pointer w nf3t
+CFigure *ApplicationManager::Get_Selected_Figure()  //mardash yraga3 fn returning abstract class f garabt pointer w nf3t
 {
-			return SelectedFig;
+	return SelectedFig ;
 }
 //==================================================================================//
 //						Figures Management Functions								//
@@ -133,8 +148,34 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 	return NULL;
 }
 ////////////////////////////////////////////////////////////////////////////////////
+void ApplicationManager::AddSelected(CFigure* sFig)
+{
+	SelectedFig[SelCount++] = sFig;
+	sFig->SetSelected(true);
+}
 ////////////////////////////////////////////////////////////////////////////////////
-
+void ApplicationManager::DeleteSelected(int i, CFigure* Fig)
+{
+	if (Fig == NULL)
+	{
+		SelectedFig[i]->SetSelected(false);
+	}
+	else
+	{
+		for (int j = 0; i < SelCount; i++)
+		{
+			if (SelectedFig[j] == Fig)
+			{
+				SelectedFig[j]->SetSelected(false);
+				i = j;
+			}
+		}
+	}
+	for (int j = i; i < SelCount - 1; i++)
+			SelectedFig[i] = SelectedFig[i + 1];
+	SelectedFig[SelCount] = NULL;
+	SelCount--;
+}
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
