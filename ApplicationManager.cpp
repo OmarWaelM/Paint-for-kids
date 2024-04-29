@@ -4,6 +4,7 @@
 #include "AddHexagonAction.h"
 #include "AddSquareAction.h"
 #include "AddTriangleAction.h"
+#include"DeleteAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -61,22 +62,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case DELETE:
 			pAct = new DeleteAction(this);
-
-		case DRAW_HEXAGON:
-			pAct = new AddHexagonAction(this);
-			break;
-
-		case DRAW_CIRCLE:
-			pAct = new AddCircleAction(this);
-			break;
-
-		case DRAW_TRIANGLE:
-			pAct = new AddTriangleAction(this);
-			break;
-
-		case DRAW_SQUARE:
-			pAct = new AddSquareAction(this);
-			break;
 
 		case EXIT:
 			///create ExitAction here
