@@ -1,6 +1,9 @@
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
-
+#include "AddCircleAction.h"
+#include "AddHexagonAction.h"
+#include "AddSquareAction.h"
+#include "AddTriangleAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -38,6 +41,22 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	{
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
+			break;
+
+		case DRAW_HEXAGON:
+			pAct = new AddHexagonAction(this);
+			break;
+
+		case DRAW_CIRCLE:
+			pAct = new AddCircleAction(this);
+			break;
+
+		case DRAW_TRIANGLE:
+			pAct = new AddTriangleAction(this);
+			break;
+
+		case DRAW_SQUARE:
+			pAct = new AddSquareAction(this);
 			break;
 
 		case EXIT:
