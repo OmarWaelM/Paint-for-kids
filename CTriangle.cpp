@@ -1,6 +1,6 @@
 #include "CTriangle.h"
 
-CTriangle::CTriangle(Point p1, Point p2, Point p3, GfxInfo FigureGfxInfo):CFigure(FigGfxInfo)
+CTriangle::CTriangle(Point p1, Point p2, Point p3, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
 	P1 = p1;
 	P2 = p2;
