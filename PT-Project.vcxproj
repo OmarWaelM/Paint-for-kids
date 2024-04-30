@@ -180,6 +180,7 @@
     <ClCompile Include="GUI\Output.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PickByTypeAction.cpp" />
     <ClCompile Include="SelectFigure.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -221,6 +222,7 @@
     <ClInclude Include="GUI\UI_Info.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="PickByTypeAction.h" />
     <ClInclude Include="SelectFigure.h" />
   </ItemGroup>
   <ItemGroup>

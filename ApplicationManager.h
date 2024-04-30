@@ -13,6 +13,12 @@ class ApplicationManager
 
 private:
 	int FigCount;		//Actual number of figures
+	int Rectangle_Count;
+	int Circle_Count;
+	int Triangle_Count;
+	int Hexagon_Count;
+	int Square_Count;
+
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
 
 	int SelCount;
@@ -33,7 +39,14 @@ public:
 	//Reads the input command from the user and returns the corresponding action type
 	ActionType GetUserAction() const;
 	void ExecuteAction(ActionType) ; //Creates an action and executes it
-
+	void Reset_Figure_Count();
+	void Count_Figure_Types();
+	int Get_Circle_Count();
+	int Get_Triangle_Count();
+	int Get_Square_Count();
+	int Get_Rectangle_Count();
+	int Get_Hexagon_Count();
+	char Get_Random_Type(int ix);
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
 	void Delete_Figure(CFigure* pFig);      //Deletes a figure from the FigList

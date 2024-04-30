@@ -4,7 +4,7 @@
 #include "AddHexagonAction.h"
 #include "AddSquareAction.h"
 #include "AddTriangleAction.h"
-
+#include"PickByTypeAction.h"
 #include"DeleteAction.h"
 
 #include "SelectFigure.h"
@@ -73,9 +73,13 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new DeleteAction(this);
 			break;
 
+		case TO_FIGURETYPE:
+			pAct = new PickByTypeAction(this);
+			break;
+
 		case EXIT:
 			///create ExitAction here
-			
+		
 			break;
 		
 		case STATUS:	//a click on the status bar ==> no action
@@ -89,6 +93,71 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		delete pAct;	//You may need to change this line depending to your implementation
 		pAct = NULL;
 	}
+}
+
+void ApplicationManager::Reset_Figure_Count()
+{
+	Rectangle_Count = 0;
+	Square_Count = 0;
+	Triangle_Count = 0;
+	Hexagon_Count = 0;
+	Circle_Count = 0;
+}
+
+void ApplicationManager::Count_Figure_Types()
+{
+	Reset_Figure_Count();
+
+	for (int i = 0; i < FigCount; i++)
+	{
+		char Type = FigList[i]->Get_My_Type();
+
+		if (Type == 'R')
+			Rectangle_Count++;
+
+		if (Type == 'C')
+			Circle_Count++;
+
+		if (Type == 'H')
+			Hexagon_Count++;
+
+		if (Type += 'T')
+			Triangle_Count++;
+
+		if (Type == 'S')
+			Square_Count++;
+
+	}
+}
+
+int ApplicationManager::Get_Circle_Count()
+{
+	return Circle_Count;
+}
+
+int ApplicationManager::Get_Triangle_Count()
+{
+	return Triangle_Count;
+}
+
+int ApplicationManager::Get_Square_Count()
+{
+	return Square_Count;
+}
+
+int ApplicationManager::Get_Rectangle_Count()
+{
+	return Rectangle_Count;
+}
+
+int ApplicationManager::Get_Hexagon_Count()
+{
+	return Hexagon_Count;
+}
+
+char ApplicationManager::Get_Random_Type(int ix) // returns type of figure according to its place in the array
+{
+	return FigList[ix]->Get_My_Type();
 }
 
 //==================================================================================//
