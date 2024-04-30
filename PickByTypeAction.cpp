@@ -70,26 +70,27 @@ void PickByTypeAction::Execute_Body(char Type, int Total_Count)
 		pIn->GetPointClicked(Clicked.x, Clicked.y);
 		pFig = pManager->GetFigure(Clicked.x, Clicked.y);
 
+		if (pFig == NULL)
+		{
+			pOut->PrintMessage("You clicked on an empty space");
+		}
 		if (pFig->Get_My_Type() == Type)
 		{
 			pManager->Delete_Figure(pFig);
 			Correct_Count++;
 			Total_Count--;
-		}
-
-		if (pFig == NULL)
-		{
-			pOut->PrintMessage("You clicked on an empty space");
+			pOut->PrintMessage("You are only " + to_string(Total_Count)+" correct clicks away from winning the game!");
 		}
 
 		else
 		{
 			pManager->Delete_Figure(pFig);
 			Wrong_Count++;
-
+			pOut->PrintMessage("Try again! Try clicking on a figure");
 		}
 		pManager->UpdateInterface();
 	}
+	pOut->PrintMessage("Won the game,score:Correct clicks: " + to_string(Correct_Count) + " Wrong clicks: " + to_string(Wrong_Count));
 }
 
 PickByTypeAction::~PickByTypeAction()
