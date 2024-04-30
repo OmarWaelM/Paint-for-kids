@@ -23,6 +23,11 @@ void CHexagon::PrintInfo(Output* pOut)
 	pOut->PrintMessage(msg);
 }
 
+char CHexagon::Get_My_Type()
+{
+	return 'H';
+}
+
 bool CHexagon::IsWithin(Point P)
 {
 	int vertDist = 100;

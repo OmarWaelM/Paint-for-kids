@@ -26,6 +26,11 @@ void CCircle::PrintInfo(Output* pOut)
 
 }
 
+char CCircle::Get_My_Type()
+{
+	return 'C';
+}
+
 bool CCircle::IsWithin(Point P)
 {
 	double r = sqrt(pow(Centre.x - P.x, 2) + pow(Centre.y - P.y, 2));
