@@ -15,6 +15,8 @@ public:
 
 	virtual void PrintInfo(Output* pOut);
 
+	virtual char Get_My_Type();
+
 	virtual bool IsWithin(Point P);
 
 	bool IsWithinHelper(int P1x, int P1y, int P2x, int P2y, int P3x, int P3y, int Px, int Py);

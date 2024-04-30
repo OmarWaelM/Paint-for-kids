@@ -28,6 +28,11 @@ void CRectangle::PrintInfo(Output* pOut)
 	pOut->PrintMessage(msg);
 }
 
+char CRectangle::Get_My_Type()
+{
+	return 'R';
+}
+
 
 bool CRectangle::IsWithin(Point P)
 {

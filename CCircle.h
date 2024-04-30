@@ -15,6 +15,8 @@ public:
 
 	virtual void PrintInfo(Output* pOut);
 
+	virtual char Get_My_Type();
+
 	virtual bool IsWithin(Point P);
 	
 
