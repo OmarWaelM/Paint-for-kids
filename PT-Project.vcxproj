@@ -132,6 +132,7 @@
     <ClCompile Include="AddHexagonAction.cpp" />
     <ClCompile Include="AddSquareAction.cpp" />
     <ClCompile Include="AddTriangleAction.cpp" />
+    <ClCompile Include="BringToFront.cpp" />
     <ClCompile Include="CCircle.cpp" />
     <ClCompile Include="CHexagon.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
@@ -182,12 +183,14 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PickByTypeAction.cpp" />
     <ClCompile Include="SelectFigure.cpp" />
+    <ClCompile Include="SondToBack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddCircleAction.h" />
     <ClInclude Include="AddHexagonAction.h" />
     <ClInclude Include="AddSquareAction.h" />
     <ClInclude Include="AddTriangleAction.h" />
+    <ClInclude Include="BringToFront.h" />
     <ClInclude Include="CCircle.h" />
     <ClInclude Include="CHexagon.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -224,6 +227,7 @@
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="PickByTypeAction.h" />
     <ClInclude Include="SelectFigure.h" />
+    <ClInclude Include="SendToBack.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

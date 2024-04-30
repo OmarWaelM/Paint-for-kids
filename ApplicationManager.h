@@ -49,16 +49,15 @@ public:
 	char Get_Random_Type(int ix);// return the type of fig according to its index
 
 	// -- Figures Management Functions
-	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
-	void Delete_Figure(CFigure* pFig);      //Deletes a figure from the FigList
+	void AddFigure(CFigure* pFig); //Adds a new figure to the FigList
+	void Delete_Figure(CFigure* pFig); //Deletes a figure from the FigList
+	int GetFigCount() const { return FigCount; } // Getter for Figcount
+	void MoveFig(CFigure* Fig, int in); //Moves Figure pointer to given index in array
 	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
-	int GetFigCount() const { return FigCount; }	// Getter for Figcount
 
-	void AddSelected(CFigure* sFig);		//Adds a Figure to selected list
-
+	void AddSelected(CFigure* sFig); //Adds a Figure to selected list
 	void DeleteSelected(int i, CFigure* Fig = NULL); //Removes Figure at index i from selected list or the given figure pointer
-
-	int GetSelectedCount() const { return SelCount; }			//Getter for SelectedCount
+	int GetSelectedCount() const { return SelCount; } //Getter for SelectedCount
 	CFigure* GetSelected(int i) const { return SelectedFig[i]; } // Getter for Selected figure in index i
 
 	// -- Interface Management Functions

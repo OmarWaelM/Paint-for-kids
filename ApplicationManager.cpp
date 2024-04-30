@@ -9,6 +9,8 @@
 
 #include "SelectFigure.h"
 #include "DeleteAction.h"
+#include "SendToBack.h"
+#include "BringToFront.h"
 
 
 //Constructor
@@ -73,9 +75,20 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new DeleteAction(this);
 			break;
 
-			case TO_FIGURETYPE:
-				pAct = new PickByTypeAction(this);
+
+
+		case TO_SENDBACK:
+			pAct = new SendToBack(this);
 			break;
+
+		case TO_BRINGFRONT:
+			pAct = new BringToFront(this);
+			break;
+
+	  //case TO_FIGURETYPE:
+		//Act = new PickByTypeAction()
+		//break;
+
 
 		case EXIT:
 			///create ExitAction here
@@ -183,6 +196,28 @@ void ApplicationManager::Delete_Figure(CFigure* pFig)
 				FigList[j] = FigList[j + 1];
 			FigList[FigCount - 1] = NULL;
 			FigCount--;
+		}
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////
+void ApplicationManager::MoveFig(CFigure* Fig, int in)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i] == Fig)
+		{
+			if (i > in)
+			{
+				for (int j = i-1; j >= in; j--)
+					FigList[j + 1] = FigList[j];
+				FigList[in] = Fig;
+			}
+			else
+			{
+				for (int j = i + 1; j <= in; j++)
+					FigList[j - 1] = FigList[j];
+				FigList[in] = Fig;
+			}
 		}
 	}
 }

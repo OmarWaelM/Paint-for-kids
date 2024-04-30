@@ -17,7 +17,7 @@ Output::Output()
 	UI.LineUnderTBWidth = 2;
 	UI.MenuItemWidth = 49;
 
-	UI.DrawColor = BLUE;	//Drawing color
+	UI.DrawColor = BLACK;	//Drawing color
 	UI.FillColor = GREEN;	//Filling color
 	UI.MsgColor = RED;		//Messages color
 	UI.BkGrndColor = LIGHTGOLDENRODYELLOW;	//Background color
