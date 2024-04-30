@@ -1,5 +1,7 @@
 #include "PickByColourAction.h"
 #include"time.h"
+#include"ApplicationManager.h"
+
 PickByColourAction::PickByColourAction(ApplicationManager* pApp):Action(pApp)
 {
 }
@@ -29,9 +31,9 @@ void PickByColourAction::Execute()
 
 	srand(time(0));
 	int r= rand() % pManager->GetFigCount();
-	FillColors clr = pManager->Get_Random_Fill_Colour(r);
+	color clr = pManager->Get_Random_Fill_Colour(r);
 
-	switch (clr)
+	switch (clr==0 ||clr==1 || clr==2 || clr==3|| clr==4|| clr==5)
 	{
 	case black:
 		pOut->PrintMessage("Pick by color: pick all Black Figures");

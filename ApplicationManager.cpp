@@ -278,9 +278,9 @@ void ApplicationManager::Count_Fill_Colour()
 		}
 	}
 }
-FillColors ApplicationManager::Get_Random_Fill_Colour(int ix)
+color ApplicationManager::Get_Random_Fill_Colour(int ix)
 {
-	return FigList[ix]->Get_Filled_Colour_ENUM();
+	return FigList[ix]->Get_Filled_Colour();
 }
 ////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddSelected(CFigure* sFig)

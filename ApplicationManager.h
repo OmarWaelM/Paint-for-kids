@@ -75,7 +75,7 @@ public:
 	int Get_No_Filled_Figure() { return No_Filled_Figure; };
 	void Reset_Fill_Colour();
 	void Count_Fill_Colour();
-	FillColors Get_Random_Fill_Colour(int ix);
+	color Get_Random_Fill_Colour(int ix);
 
 
 	void AddSelected(CFigure* sFig); //Adds a Figure to selected list
