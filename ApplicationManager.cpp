@@ -85,9 +85,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new BringToFront(this);
 			break;
 
-	  //case TO_FIGURETYPE:
-		//Act = new PickByTypeAction()
-		//break;
+	 case TO_FIGURETYPE:
+		 pAct = new PickByTypeAction(this);
+		break;
 
 
 		case EXIT:
