@@ -29,7 +29,7 @@ void PickByTypeAction::Execute()
 	}
 
 	srand(time(0));
-	int r = rand() % pManager->GetFigCount(); // 34an ytala3 rakam 3a4wa2y 
+	int r = rand() % pManager->GetFigCount(); // 34an ytala3 rakam 3a4wa2y // % :to check that random number netween 0 and figcount
 	char Type = pManager->Get_Random_Type(r);// returns type of figure according to its place in the array
 
 	switch (Type)
