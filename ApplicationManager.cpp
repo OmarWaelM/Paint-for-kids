@@ -73,9 +73,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new DeleteAction(this);
 			break;
 
-	//ase TO_FIGURETYPE:
-		//Act = new PickByTypeAction()
-			//eak;
+			case TO_FIGURETYPE:
+				pAct = new PickByTypeAction(this);
+			break;
 
 		case EXIT:
 			///create ExitAction here
