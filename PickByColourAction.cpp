@@ -29,7 +29,48 @@ void PickByColourAction::Execute()
 
 	srand(time(0));
 	int r= rand() % pManager->GetFigCount();
+	FillColors clr;
+
+	switch (clr)
+	{
+	case black:
+		pOut->PrintMessage("Pick by color: pick all Black Figures");
+		Total_Count = pManager->GetBlack_Figures();
+		Execute_Body(black, Total_Count);
+		break;
+
+	case red:
+		pOut->PrintMessage("Pick by color: pick all Red Figures");
+		Total_Count = pManager->Get_Red_Figures();
+		Execute_Body(red, Total_Count);
+		break;
+
+	case orange:
+		pOut->PrintMessage("Pick by color: pick all Orange Figures");
+		Total_Count = pManager->Get_Orange_Figures();
+		Execute_Body(orange, Total_Count);
+		break;
+
+	case yellow:
+		pOut->PrintMessage("Pick by color: pick all Yellow Figures");
+		Total_Count = pManager->Get_Yellow_Figures();
+		Execute_Body(yellow, Total_Count);
+		break;
+
+	case green:
+		pOut->PrintMessage("Pick by color: pick all Green Figures");
+		Total_Count = pManager->Get_Green_Figures();
+		Execute_Body(green, Total_Count);
+		break;
+
+	case blue:
+		pOut->PrintMessage("Pick by color: pick all Blue Figures");
+		Total_Count = pManager->Get_Blue_Figures();
+		Execute_Body(blue, Total_Count);
+		break;
+	}
 	
+	pManager->Reset_Fill_Colour();
 
 
 }
