@@ -47,6 +47,7 @@ public:
 	int Get_Rectangle_Count();
 	int Get_Hexagon_Count();
 	char Get_Random_Type(int ix);// return the type of fig according to its index
+
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
 	void Delete_Figure(CFigure* pFig);      //Deletes a figure from the FigList
