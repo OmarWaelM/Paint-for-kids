@@ -276,9 +276,11 @@ void ApplicationManager::Count_Fill_Colour()
 			if (c == BLUE)
 				Blue_Figures++;
 		}
-
-
 	}
+}
+FillColors ApplicationManager::Get_Random_Fill_Colour(int ix)
+{
+	return FigList[ix]->Get_Filled_Colour_ENUM();
 }
 ////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddSelected(CFigure* sFig)

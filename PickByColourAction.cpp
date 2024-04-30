@@ -29,7 +29,7 @@ void PickByColourAction::Execute()
 
 	srand(time(0));
 	int r= rand() % pManager->GetFigCount();
-	FillColors clr;
+	FillColors clr = pManager->Get_Random_Fill_Colour(r);
 
 	switch (clr)
 	{
