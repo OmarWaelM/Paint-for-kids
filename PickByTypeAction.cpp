@@ -6,6 +6,8 @@
 #include "CSquare.h"
 PickByTypeAction::PickByTypeAction(ApplicationManager* pApp):Action(pApp)
 {
+	Correct_Count = 0;
+	Wrong_Count = 0;
 }
 
 void PickByTypeAction::ReadParameters()
@@ -85,4 +87,8 @@ void PickByTypeAction::Execute_Body(char Type, int Total_Count)
 		}
 		pManager->UpdateInterface();
 	}
+}
+
+PickByTypeAction::~PickByTypeAction()
+{
 }
