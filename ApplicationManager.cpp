@@ -76,6 +76,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 
 
+
 		case TO_SENDBACK:
 			pAct = new SendToBack(this);
 			break;
@@ -87,6 +88,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	  //case TO_FIGURETYPE:
 		//Act = new PickByTypeAction()
 		//break;
+
 
 		case EXIT:
 			///create ExitAction here
@@ -189,7 +191,7 @@ void ApplicationManager::Delete_Figure(CFigure* pFig)
 		if (FigList[i] == pFig)
 		{
 			delete FigList[i];
-			// why shift array ? can't we just swap ?
+			// shifting array
 			for (int j = i; j < FigCount - 1; j++)
 				FigList[j] = FigList[j + 1];
 			FigList[FigCount - 1] = NULL;

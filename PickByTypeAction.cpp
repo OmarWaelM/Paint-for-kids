@@ -4,15 +4,18 @@
 #include "CHexagon.h"
 #include "CTriangle.h"
 #include "CSquare.h"
+#include <time.h>
 PickByTypeAction::PickByTypeAction(ApplicationManager* pApp):Action(pApp)
 {
 	Correct_Count = 0;
 	Wrong_Count = 0;
 }
 
-void PickByTypeAction::ReadParameters()
+void PickByTypeAction::ReadActionParameters()
 {
 }
+
+
 
 void PickByTypeAction::Execute()
 {
@@ -25,8 +28,8 @@ void PickByTypeAction::Execute()
 		pOut->PrintMessage("No More Figures ");
 	}
 
-	//srand(time(0));
-	int r = rand() % pManager->GetFigCount();
+	srand(time(0));
+	int r = rand() % pManager->GetFigCount(); // 34an ytala3 rakam 3a4wa2y // % :to check that random number netween 0 and figcount
 	char Type = pManager->Get_Random_Type(r);// returns type of figure according to its place in the array
 
 	switch (Type)
