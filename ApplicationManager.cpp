@@ -239,6 +239,49 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 
 	return NULL;
 }
+void ApplicationManager::Reset_Fill_Colour()
+{
+	Yellow_Figures = 0;
+	Blue_Figures = 0;
+	Black_Figures = 0;
+	Green_Figures = 0;
+	Orange_Figures = 0;
+	Red_Figures = 0;
+	No_Filled_Figure = 0;
+}
+void ApplicationManager::Count_Fill_Colour()
+{
+	Reset_Fill_Colour();
+
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (!FigList[i]->isFilled())
+		{
+			No_Filled_Figure++;
+		}
+		else
+		{
+			color c = FigList[i]->Get_Filled_Colour();
+
+			if (c == RED)
+				Red_Figures++;
+			if (c == ORANGE)
+				Orange_Figures++;
+			if (c == BLACK)
+				Black_Figures++;
+			if (c == GREEN)
+				Green_Figures++;
+			if (c == YELLOW)
+				Yellow_Figures++;
+			if (c == BLUE)
+				Blue_Figures++;
+		}
+	}
+}
+color ApplicationManager::Get_Random_Fill_Colour(int ix)
+{
+	return FigList[ix]->Get_Filled_Colour();
+}
 ////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddSelected(CFigure* sFig)
 {

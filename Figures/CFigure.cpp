@@ -26,4 +26,25 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.FillClr = Fclr; 
 }
 
+FillColors CFigure::Get_Filled_Colour_ENUM()
+{
+
+	color c = FigGfxInfo.FillClr;
+
+	if (c == BLACK)
+		return black;
+	if (c == RED)
+		return red;
+	if (c == ORANGE)
+		return orange;
+	if (c == YELLOW)
+		return yellow;
+	if (c == BLUE)
+		return blue;
+	if (c == GREEN)
+		return green;
+
+}
+
+
 
