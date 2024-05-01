@@ -4,6 +4,7 @@
 int main()
 {
 	//test
+	//test 2
 	ActionType ActType;
 	//Create an object of ApplicationManager
 	ApplicationManager AppManager;
