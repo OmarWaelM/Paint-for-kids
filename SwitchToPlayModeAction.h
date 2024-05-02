@@ -7,6 +7,9 @@
 
 class SwitchToPlayModeAction : public Action
 {
-private:
-
+public:
+	SwitchToPlayModeAction(ApplicationManager* pApp);
+	virtual void ReadActionParameters();
+	virtual void Execute();
 };
+#endif

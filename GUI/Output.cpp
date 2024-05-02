@@ -152,6 +152,12 @@ void Output::ClearDrawArea() const
 	pWind->SetBrush(UI.BkGrndColor);
 	pWind->DrawRectangle(0, UI.ToolBarHeight + UI.LineUnderTBWidth, UI.width, UI.height - UI.StatusBarHeight);
 }
+void Output::ClearDrawAreaForSwitch() const
+{
+	pWind->SetPen(UI.BkGrndColor, 1);
+	pWind->SetBrush(UI.BkGrndColor);
+	pWind->DrawRectangle(0, 0, UI.width, UI.height - UI.StatusBarHeight);
+}
 //////////////////////////////////////////////////////////////////////////////////////////
 
 void Output::PrintMessage(string msg) const	//Prints a message on status bar
