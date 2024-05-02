@@ -289,6 +289,16 @@ void ApplicationManager::DeleteSelected(int i, CFigure* Fig)
 //							Interface Management Functions							//
 //==================================================================================//
 
+//Save all figures
+void ApplicationManager::SaveAllFigures(ofstream& F)
+{
+	F << FigCount << endl;
+	for (int j = 0; j < FigCount; j++)
+	{
+		FigList[j]->Save(F, j);
+	}
+}
+
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {	
