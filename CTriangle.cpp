@@ -15,11 +15,6 @@ void CTriangle::Draw(Output* pOut) const
 	pOut->DrawTri(P1, P2, P3, FigGfxInfo, Selected);
 }
 
-char CTriangle::Get_My_Type()
-{
-	return 'T';
-}
-
 void CTriangle::PrintInfo(Output* pOut)
 {
 	string msg = "Triangle's Info : ID =" + to_string(ID);

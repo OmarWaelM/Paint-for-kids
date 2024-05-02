@@ -22,6 +22,4 @@ public:
 
 	virtual void Execute();
 
-	void Execute_Body(FillColors fillclr, int TotalCount);
-
 };
