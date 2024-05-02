@@ -15,95 +15,78 @@ void PickByColourAction::Execute()
 	pOut = pManager->GetOutput();
 	pIn = pManager->GetInput();
 
+	int param[2] = { -1, 7 };
+
 	// if number of figures in list is zero 
 	if (pManager->GetFigCount() == 0)
 	{
 		pOut->PrintMessage("No More Figures ");
 	}
-
-	pManager->Count_Fill_Colour();
-
-	int No_Filled_Figures = pManager->Get_No_Filled_Figure();
-	if (No_Filled_Figures==pManager->GetFigCount())
+	else if (pManager->Get_Play_Mode_Count(param) == pManager->GetFigCount())
 	{
 		pOut->PrintMessage("There are no colored figures!");
 	}
-
-	srand(time(0));
-	int r= rand() % pManager->GetFigCount();
-	color clr = pManager->Get_Random_Fill_Colour(r);
-
-	switch (clr==0 ||clr==1 || clr==2 || clr==3|| clr==4|| clr==5)
+	else
 	{
-	case black:
-		pOut->PrintMessage("Pick by color: pick all Black Figures");
-		Total_Count = pManager->GetBlack_Figures();
-		Execute_Body(black, Total_Count);
-		break;
+		srand(time(0));
+		int r= rand() % pManager->GetFigCount();
 
-	case red:
-		pOut->PrintMessage("Pick by color: pick all Red Figures");
-		Total_Count = pManager->Get_Red_Figures();
-		Execute_Body(red, Total_Count);
-		break;
+		while (!pManager->GetFigListItem(r)->isFilled())
+		{
+			r = rand() % pManager->GetFigCount();
+		}
+		color clr = pManager->GetFigListItem(r)->Get_Filled_Colour();
 
-	case orange:
-		pOut->PrintMessage("Pick by color: pick all Orange Figures");
-		Total_Count = pManager->Get_Orange_Figures();
-		Execute_Body(orange, Total_Count);
-		break;
+		if (clr == BLACK)
+		{
+			pOut->PrintMessage("Pick by color: pick all Black Figures");
+			param[1] = 1;
+		}
+		else if (clr == RED)
+		{
+			pOut->PrintMessage("Pick by color: pick all Red Figures");
+			param[1] = 2;
+		}
+		else if (clr == ORANGE)
+		{
+			pOut->PrintMessage("Pick by color: pick all Orange Figures");
+			param[1] = 3;
+		}
+		else if (clr == YELLOW)
+		{
+			pOut->PrintMessage("Pick by color: pick all Yellow Figures");
+			param[1] = 4;
 
-	case yellow:
-		pOut->PrintMessage("Pick by color: pick all Yellow Figures");
-		Total_Count = pManager->Get_Yellow_Figures();
-		Execute_Body(yellow, Total_Count);
-		break;
+		}
+		else if (clr == GREEN)
+		{
+			pOut->PrintMessage("Pick by color: pick all Green Figures");
+			param[1] = 5;
+		}
+		else if (clr == BLUE)
+		{
+			pOut->PrintMessage("Pick by color: pick all Blue Figures");
+			param[1] = 6;
+		}
 
-	case green:
-		pOut->PrintMessage("Pick by color: pick all Green Figures");
-		Total_Count = pManager->Get_Green_Figures();
-		Execute_Body(green, Total_Count);
-		break;
+		while (Total_Count > 0)
+		{
+			pIn->GetPointClicked(Clicked.x, Clicked.y);
+			pFig = pManager->GetFigure(Clicked.x, Clicked.y);
 
-	case blue:
-		pOut->PrintMessage("Pick by color: pick all Blue Figures");
-		Total_Count = pManager->Get_Blue_Figures();
-		Execute_Body(blue, Total_Count);
-		break;
+			if (pFig != NULL)
+			{
+				if (clr == pFig->Get_Filled_Colour())
+				{
+					Correct_Count++;
+					Total_Count--;
+					pManager->Delete_Figure(pFig);
+				}
+				else
+					Wrong_Count++;
+			}
+		}
+		pOut->PrintMessage("Game done! you scored " + to_string(Correct_Count) + " correct choices from "
+			+ to_string(Correct_Count + Wrong_Count) + " total choices");
 	}
-	
-	pManager->Reset_Fill_Colour();
-
-
 }
-
-void PickByColourAction::Execute_Body(FillColors fillclr, int TotalCount)
-{
-	while (Total_Count > 0)
-	{
-		pIn->GetPointClicked(Clicked.x, Clicked.y);
-		pFig = pManager->GetFigure(Clicked.x, Clicked.y);
-
-		if (pFig == NULL)
-		{
-			pOut->PrintMessage("You clicked on an empty space");
-		}
-		if (pFig->Get_Filled_Colour() == fillclr)
-		{
-			pManager->Delete_Figure(pFig);
-			Correct_Count++;
-			Total_Count--;
-			pOut->PrintMessage("You are only " + to_string(Total_Count) + " correct clicks away from winning the game!");
-		}
-
-		else
-		{
-			pManager->Delete_Figure(pFig);
-			Wrong_Count++;
-			pOut->PrintMessage("Try again! Try clicking on a figure");
-		}
-		pManager->UpdateInterface();
-	}
-	pOut->PrintMessage("Won the game,score:Correct clicks: " + to_string(Correct_Count) + " Wrong clicks: " + to_string(Wrong_Count));
-}
-

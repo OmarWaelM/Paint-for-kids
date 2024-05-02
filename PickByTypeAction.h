@@ -22,12 +22,7 @@ public:
 
 	virtual void Execute();
 
-	virtual void Execute_Body(char Type, int Total_Count);
-
-
-
-
-
+	int getType(CFigure* Fig);
 
 	~PickByTypeAction();
 };

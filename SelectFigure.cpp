@@ -1,12 +1,10 @@
 #include "SelectFigure.h"
 #include "ApplicationManager.h"
-
 #include "Figures/CRectangle.h"
 #include "CCircle.h"
 #include "CTriangle.h"
 #include "CHexagon.h"
 #include "CSquare.h"
-
 #include "GUI/Input.h"
 #include "GUI/Output.h"
 

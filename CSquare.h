@@ -12,8 +12,6 @@ public:
 
 	virtual void Draw(Output* pOut) const;
 
-	virtual char Get_My_Type();
-
 	virtual void PrintInfo(Output* pOut);
 
 	virtual bool IsWithin(Point P);
