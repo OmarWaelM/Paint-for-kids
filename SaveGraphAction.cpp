@@ -5,7 +5,6 @@ SaveGraphAction::SaveGraphAction(ApplicationManager* pApp): Action(pApp) {}
 
 void SaveGraphAction::ReadActionParameters()
 {
-	int x, y;
 	Input* pIn = pManager->GetInput();
 	Output* pOut = pManager->GetOutput();
 	pOut->PrintMessage("Please enter the file name that's to be saved");
