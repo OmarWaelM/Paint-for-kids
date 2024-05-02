@@ -18,52 +18,32 @@ void SaveGraphAction::Execute()
 	int DrawColour;
 	int FillColour;
 
-	switch (pOut->getCrntDrawColor())
-	{
-	case BLACK:
+	if (pOut->getCrntDrawColor() == BLACK)
 		DrawColour = BLACK_COLOUR;
-		break;
-	case YELLOW:
+	else if (pOut->getCrntDrawColor() == YELLOW)
 		DrawColour = YELLOW_COLOUR;
-		break;
-	case ORANGE:
+	else if (pOut->getCrntDrawColor() == ORANGE)
 		DrawColour = ORANGE_COLOUR;
-		break;
-	case RED:
+	else if (pOut->getCrntDrawColor() == RED)
 		DrawColour = RED_COLOUR;
-		break;
-	case GREEN:
+	else if (pOut->getCrntDrawColor() == GREEN)
 		DrawColour = GREEN_COLOUR;
-		break;
-	case BLUE:
+	else if (pOut->getCrntDrawColor() == BLUE)
 		DrawColour = BLUE_COLOUR;
-		break;
-	}
 
-	switch (pOut->getCrntFillColor())
-	{
-	case BLACK:
+	if (pOut->getCrntFillColor() == BLACK)
 		FillColour = BLACK_COLOUR;
-		break;
-	case YELLOW:
+	else if (pOut->getCrntFillColor() == YELLOW)
 		FillColour = YELLOW_COLOUR;
-		break;
-	case ORANGE:
+	else if (pOut->getCrntFillColor() == ORANGE)
 		FillColour = ORANGE_COLOUR;
-		break;
-	case RED:
+	else if (pOut->getCrntFillColor() == RED)
 		FillColour = RED_COLOUR;
-		break;
-	case GREEN:
+	else if (pOut->getCrntFillColor() == GREEN)
 		FillColour = GREEN_COLOUR;
-		break;
-	case BLUE:
+	else if (pOut->getCrntFillColor() == BLUE)
 		FillColour = BLUE_COLOUR;
-		break;
-	default:
-		FillColour = NO_FILL_COLOUR;
-		break;
-	}
+	else FillColour = NO_FILL_COLOUR;
 
 	ifstream FileExistsCheck(FileName + ".txt");
 	if (FileExistsCheck.good())
