@@ -1,6 +1,7 @@
 #ifndef CFIGURE_H
 #define CFIGURE_H
 
+#include <fstream>
 #include "..\defs.h"
 #include "..\GUI\Output.h"
 
@@ -33,6 +34,10 @@ public:
 
 	//virtual void Save(ofstream &OutFile) = 0;	//Save the figure parameters to the file
 	//virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
+	virtual void Save(ofstream& F, int n) = 0;
+	virtual void Load(ifstream& F, CFigure*& s) = 0;
+
+
 
 	//virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
 };
