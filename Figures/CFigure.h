@@ -23,6 +23,9 @@ public:
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
 
+	bool isFilled() { return FigGfxInfo.isFilled; };
+	color Get_Filled_Colour() { return FigGfxInfo.FillClr; };
+	FillColors Get_Filled_Colour_ENUM();
 
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure:

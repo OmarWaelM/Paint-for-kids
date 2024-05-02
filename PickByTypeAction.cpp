@@ -28,7 +28,7 @@ void PickByTypeAction::Execute()
 	}
 
 	srand(time(0));
-	int r = rand() % pManager->GetFigCount();
+	int r = rand() % pManager->GetFigCount(); // 34an ytala3 rakam 3a4wa2y // % :to check that random number netween 0 and figcount
 	char Type = pManager->Get_Random_Type(r);// returns type of figure according to its place in the array
 
 	switch (Type)
@@ -92,6 +92,7 @@ void PickByTypeAction::Execute_Body(char Type, int Total_Count)
 		
 		pManager->UpdateInterface();
 	}
+	pOut->PrintMessage("Won the game,score:Correct clicks: " + to_string(Correct_Count) + " Wrong clicks: " + to_string(Wrong_Count));
 }
 
 PickByTypeAction::~PickByTypeAction()
