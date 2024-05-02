@@ -10,7 +10,7 @@ void SaveGraphAction::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	pOut->PrintMessage("Please enter the file name that's to be saved");
 	FileName = pIn->GetSrting(pOut);
-	pOut->PrintMessage("Your file was saved successfully")
+	pOut->PrintMessage("Your file was saved successfully");
 }
 
 void SaveGraphAction::Execute()
