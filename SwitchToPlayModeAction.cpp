@@ -8,7 +8,7 @@ void SwitchToPlayModeAction::ReadActionParameters() {}
 void SwitchToPlayModeAction::Execute()
 {
 	Output* pOut = pManager->GetOutput();
-	pOut->ClearDrawAreaForSwitch();
+	pOut->ClearDrawArea();
 	pOut->CreatePlayToolBar();
 	pOut->PrintMessage("You have just switched to Play mode, Enjoy!");
 	SaveGraphAction s(pManager);
