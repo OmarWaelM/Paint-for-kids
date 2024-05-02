@@ -4,15 +4,18 @@
 #include "CHexagon.h"
 #include "CTriangle.h"
 #include "CSquare.h"
+#include <time.h>
 PickByTypeAction::PickByTypeAction(ApplicationManager* pApp):Action(pApp)
 {
 	Correct_Count = 0;
 	Wrong_Count = 0;
 }
 
-void PickByTypeAction::ReadParameters()
+void PickByTypeAction::ReadActionParameters()
 {
 }
+
+
 
 void PickByTypeAction::Execute()
 {
@@ -25,8 +28,8 @@ void PickByTypeAction::Execute()
 		pOut->PrintMessage("No More Figures ");
 	}
 
-	//srand(time(0));
-	int r = rand() % pManager->GetFigCount();
+	srand(time(0));
+	int r = rand() % pManager->GetFigCount(); // 34an ytala3 rakam 3a4wa2y // % :to check that random number netween 0 and figcount
 	char Type = pManager->Get_Random_Type(r);// returns type of figure according to its place in the array
 
 	switch (Type)
@@ -67,26 +70,27 @@ void PickByTypeAction::Execute_Body(char Type, int Total_Count)
 		pIn->GetPointClicked(Clicked.x, Clicked.y);
 		pFig = pManager->GetFigure(Clicked.x, Clicked.y);
 
+		if (pFig == NULL)
+		{
+			pOut->PrintMessage("You clicked on an empty space");
+		}
 		if (pFig->Get_My_Type() == Type)
 		{
 			pManager->Delete_Figure(pFig);
 			Correct_Count++;
 			Total_Count--;
-		}
-
-		if (pFig == NULL)
-		{
-			pOut->PrintMessage("You clicked on an empty space");
+			pOut->PrintMessage("You are only " + to_string(Total_Count)+" correct clicks away from winning the game!");
 		}
 
 		else
 		{
 			pManager->Delete_Figure(pFig);
 			Wrong_Count++;
-
+			pOut->PrintMessage("Try again! Try clicking on a figure");
 		}
 		pManager->UpdateInterface();
 	}
+	pOut->PrintMessage("Won the game,score:Correct clicks: " + to_string(Correct_Count) + " Wrong clicks: " + to_string(Wrong_Count));
 }
 
 PickByTypeAction::~PickByTypeAction()

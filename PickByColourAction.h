@@ -3,7 +3,7 @@
 #include"ApplicationManager.h"
 #include"Figures/CFigure.h"
 
-class PickByTypeAction :public Action
+class PickByColourAction : public Action
 {
 private:
 	int Correct_Count;
@@ -16,19 +16,12 @@ private:
 	Point Clicked;
 
 public:
-	PickByTypeAction(ApplicationManager* pApp);
+	PickByColourAction(ApplicationManager* pApp);
 
 	virtual void ReadActionParameters();
 
-
 	virtual void Execute();
 
-	virtual void Execute_Body(char Type, int Total_Count);
+	void Execute_Body(FillColors fillclr, int TotalCount);
 
-
-
-
-
-
-	~PickByTypeAction();
 };
