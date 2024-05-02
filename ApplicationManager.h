@@ -1,6 +1,7 @@
 #ifndef APPLICATION_MANAGER_H
 #define APPLICATION_MANAGER_H
 
+#include <fstream>
 #include "DEFS.h"
 #include "Figures\CFigure.h"
 #include "GUI\input.h"
@@ -86,7 +87,9 @@ public:
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output
-	void UpdateInterface() const;	//Redraws all the drawing window	
+	void UpdateInterface() const;	//Redraws all the drawing window
+
+	void SaveAllFigures(ofstream& F);
 };
 
 #endif

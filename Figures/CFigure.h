@@ -1,6 +1,7 @@
 #ifndef CFIGURE_H
 #define CFIGURE_H
 
+#include <fstream>
 #include "..\defs.h"
 #include "..\GUI\Output.h"
 
@@ -35,10 +36,9 @@ public:
 	virtual char Get_My_Type() = 0;
 	///Decide the parameters that you should pass to each function	
 
+	virtual void Save(ofstream& F, int n) = 0;
+	virtual void Load(ifstream& F, CFigure*& s) = 0;
 
-	//virtual void Save(ofstream &OutFile) = 0;	//Save the figure parameters to the file
-	//virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
-	//
 };
 
 #endif
