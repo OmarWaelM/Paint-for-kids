@@ -4,7 +4,7 @@
 #include "AddHexagonAction.h"
 #include "AddSquareAction.h"
 #include "AddTriangleAction.h"
-#include"PickByTypeAction.h"
+#include "PickByTypeAction.h"
 #include"DeleteAction.h"
 
 #include "SelectFigure.h"
@@ -84,13 +84,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new BringToFront(this);
 			break;
 
-	  //case TO_FIGURETYPE:
-		//Act = new PickByTypeAction()
-		//break;
+		case TO_FIGURETYPE:
+			pAct = new PickByTypeAction(this);
+			break;
 
 		case EXIT:
 			///create ExitAction here
-		
 			break;
 		
 		case STATUS:	//a click on the status bar ==> no action

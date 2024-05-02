@@ -18,7 +18,7 @@ private:
 public:
 	PickByTypeAction(ApplicationManager* pApp);
 
-	virtual void ReadParameters();
+	virtual void ReadActionParameters();
 
 	virtual void Execute();
 

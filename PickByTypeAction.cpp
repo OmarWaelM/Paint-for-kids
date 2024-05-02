@@ -4,13 +4,15 @@
 #include "CHexagon.h"
 #include "CTriangle.h"
 #include "CSquare.h"
+#include <time.h>
+
 PickByTypeAction::PickByTypeAction(ApplicationManager* pApp):Action(pApp)
 {
 	Correct_Count = 0;
 	Wrong_Count = 0;
 }
 
-void PickByTypeAction::ReadParameters()
+void PickByTypeAction::ReadActionParameters()
 {
 }
 
@@ -25,7 +27,7 @@ void PickByTypeAction::Execute()
 		pOut->PrintMessage("No More Figures ");
 	}
 
-	//srand(time(0));
+	srand(time(0));
 	int r = rand() % pManager->GetFigCount();
 	char Type = pManager->Get_Random_Type(r);// returns type of figure according to its place in the array
 
@@ -66,25 +68,28 @@ void PickByTypeAction::Execute_Body(char Type, int Total_Count)
 	{
 		pIn->GetPointClicked(Clicked.x, Clicked.y);
 		pFig = pManager->GetFigure(Clicked.x, Clicked.y);
-
-		if (pFig->Get_My_Type() == Type)
+		if (pFig != NULL)
 		{
-			pManager->Delete_Figure(pFig);
-			Correct_Count++;
-			Total_Count--;
-		}
+			if (pFig->Get_My_Type() == Type)
+			{
+				
+				pManager->Delete_Figure(pFig);
+				Correct_Count++;
+				Total_Count--;
+			}
+			else
+			{
+				pManager->Delete_Figure(pFig);
+				Wrong_Count++;
 
-		if (pFig == NULL)
+			}
+		}
+		else
 		{
 			pOut->PrintMessage("You clicked on an empty space");
 		}
 
-		else
-		{
-			pManager->Delete_Figure(pFig);
-			Wrong_Count++;
-
-		}
+		
 		pManager->UpdateInterface();
 	}
 }
