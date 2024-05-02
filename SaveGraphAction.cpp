@@ -47,7 +47,7 @@ void SaveGraphAction::Execute()
 	else FillColour = NO_FILL_COLOUR;
 
 	ifstream FileExistsCheck(FileName + ".txt");
-	if (FileExistsCheck)
+	if (FileExistsCheck.good())
 	{
 		FileExistsCheck.close();
 		ofstream OutputFile;
