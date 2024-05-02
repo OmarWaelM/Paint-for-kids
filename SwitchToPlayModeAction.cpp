@@ -12,4 +12,5 @@ void SwitchToPlayModeAction::Execute()
 	pOut->CreatePlayToolBar();
 	pOut->PrintMessage("You have just switched to Play mode, Enjoy!");
 	SaveGraphAction s(pManager);
+	s.Execute();
 }

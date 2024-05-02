@@ -55,10 +55,12 @@ void SaveGraphAction::Execute()
 		pManager->SaveAllFigures(OutputFile);
 		OutputFile.close();
 	}
-
-	ofstream OutputFile;
-	OutputFile.open(FileName + ".txt", ios::out);
-	OutputFile << DrawColour << "  " << FillColour << endl;
-	pManager->SaveAllFigures(OutputFile);
-	OutputFile.close();
+	else 
+	{
+		ofstream OutputFile;
+		OutputFile.open(FileName + ".txt", ios::out);
+		OutputFile << DrawColour << "  " << FillColour << endl;
+		pManager->SaveAllFigures(OutputFile);
+		OutputFile.close();
+	}
 }
