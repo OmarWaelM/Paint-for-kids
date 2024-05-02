@@ -31,6 +31,7 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_RED,
 	ITM_GREEN,
 	ITM_BLUE,
+	ITM_SELECT,
 	ITM_DELETEFIGURE,
 	ITM_CLEARALL,
 	ITM_COPYFIGURE,

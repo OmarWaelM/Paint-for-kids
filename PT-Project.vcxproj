@@ -128,6 +128,13 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AddCircleAction.cpp" />
+    <ClCompile Include="AddHexagonAction.cpp" />
+    <ClCompile Include="AddSquareAction.cpp" />
+    <ClCompile Include="AddTriangleAction.cpp" />
+    <ClCompile Include="BringToFront.cpp" />
+    <ClCompile Include="CCircle.cpp" />
+    <ClCompile Include="CHexagon.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\colors.cpp" />
@@ -164,6 +171,9 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant1.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant2.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
+    <ClCompile Include="CSquare.cpp" />
+    <ClCompile Include="CTriangle.cpp" />
+    <ClCompile Include="DeleteAction.cpp" />
     <ClCompile Include="Figures\CFigure.cpp" />
     <ClCompile Include="Figures\CRectangle.cpp" />
     <ClCompile Include="Actions\AddRectAction.cpp" />
@@ -171,8 +181,19 @@
     <ClCompile Include="GUI\Output.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PickByColourAction.cpp" />
+    <ClCompile Include="PickByTypeAction.cpp" />
+    <ClCompile Include="SelectFigure.cpp" />
+    <ClCompile Include="SondToBack.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddCircleAction.h" />
+    <ClInclude Include="AddHexagonAction.h" />
+    <ClInclude Include="AddSquareAction.h" />
+    <ClInclude Include="AddTriangleAction.h" />
+    <ClInclude Include="BringToFront.h" />
+    <ClInclude Include="CCircle.h" />
+    <ClInclude Include="CHexagon.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />
@@ -193,6 +214,9 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jpegint.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jpeglib.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
+    <ClInclude Include="CSquare.h" />
+    <ClInclude Include="CTriangle.h" />
+    <ClInclude Include="DeleteAction.h" />
     <ClInclude Include="Figures\CFigure.h" />
     <ClInclude Include="Figures\CRectangle.h" />
     <ClInclude Include="Actions\Action.h" />
@@ -202,6 +226,10 @@
     <ClInclude Include="GUI\UI_Info.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="PickByColourAction.h" />
+    <ClInclude Include="PickByTypeAction.h" />
+    <ClInclude Include="SelectFigure.h" />
+    <ClInclude Include="SendToBack.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
