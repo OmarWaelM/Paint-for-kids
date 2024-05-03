@@ -12,7 +12,6 @@ class ChangeFillColor : public Action
 	ActionType ActType;
 public:
 	ChangeFillColor(ApplicationManager* pApp);
-	void SetSelectedColor(color c);
 	virtual void ReadActionParameters();
 	virtual void Execute();
 };
