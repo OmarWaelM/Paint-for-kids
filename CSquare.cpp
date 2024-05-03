@@ -70,3 +70,7 @@ void CSquare::Save(ofstream& OutputFile, int n)
 	OutputFile << FigureType << "   " << n << "   " << Centre.x << "   " << Centre.y << "   " << DrawColor << "   " << FillColor << '\n';
 
 }
+
+void CSquare::Load(ifstream& InputFile, CFigure*& s)
+{
+}

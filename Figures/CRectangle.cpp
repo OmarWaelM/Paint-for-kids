@@ -76,3 +76,7 @@ void CRectangle::Save(ofstream& OutputFile, int n)
 
 	OutputFile << FigureType << n << "   " << Corner1.x << "   " << Corner1.y << "   " << Corner2.x << "   " << Corner2.y << "   " << DrawColor << "   " << FillColor << '\n';
 }
+
+void CRectangle::Load(ifstream& InputFile, CFigure*& s)
+{
+}

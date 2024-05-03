@@ -80,3 +80,7 @@ void CTriangle::Save(ofstream& OutputFile, int n)
 
 	OutputFile << FigureType << "   " << n << "   " << P1.x << "   " << P1.y << "   " << P2.x << "   " << P2.y << "   " << P3.x << "   " << P3.y << "   " << DrawColor << "   " << FillColor << '\n';
 }
+
+void CTriangle::Load(ifstream& InputFile, CFigure*& s)
+{
+}

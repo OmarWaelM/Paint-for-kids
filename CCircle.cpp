@@ -75,3 +75,7 @@ void CCircle::Save(ofstream& OutputFile, int n)
 	OutputFile << FigureType << "   " << n << "   " << Centre.x << "   " << Centre.y << "   " << Radius.x << "   " << Radius.y << "   " << DrawColor << "   " << FillColor << '\n';
 }
 
+void CCircle::Load(ifstream& InputFile, CFigure*& s)
+{
+}
+

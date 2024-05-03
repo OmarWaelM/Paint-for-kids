@@ -93,3 +93,7 @@ void CHexagon::Save(ofstream& OutputFile, int n)
 
 	OutputFile << FigureType << "   " << n << "   " << Centre.x << "   " << Centre.y << "   " << DrawColor << "   " << FillColor << '\n';
 }
+
+void CHexagon::Load(ifstream& InputFile, CFigure*& s)
+{
+}

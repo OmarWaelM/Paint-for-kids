@@ -16,5 +16,4 @@ void LoadGraphAction::ReadActionParameters()
 void LoadGraphAction::Execute()
 {
 	Output* pOut = pManager->GetOutput();
-
 }
