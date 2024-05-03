@@ -2,7 +2,7 @@
 #include <fstream>
 #include "ApplicationManager.h"
 
-SaveGraphAction::SaveGraphAction(ApplicationManager* pApp, bool check = false): Action(pApp) {}
+SaveGraphAction::SaveGraphAction(ApplicationManager* pApp, bool check): Action(pApp) {}
 
 void SaveGraphAction::ReadActionParameters()
 {

@@ -77,5 +77,7 @@ void CCircle::Save(ofstream& OutputFile)
 
 void CCircle::Load(ifstream& InputFile, CFigure*& s)
 {
+	string DrawCol, FillCol;
+
 }
 
