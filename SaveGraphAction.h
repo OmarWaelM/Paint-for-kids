@@ -10,7 +10,7 @@ class SaveGraphAction : public Action
 private:
 	string FileName;
 public:
-	SaveGraphAction(ApplicationManager* pApp, bool switch = false);
+	SaveGraphAction(ApplicationManager* pApp, bool check = false);
 	virtual void ReadActionParameters();
 	virtual void Execute();
 };

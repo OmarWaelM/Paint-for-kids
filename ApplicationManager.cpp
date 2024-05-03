@@ -16,7 +16,10 @@
 #include "ChangeBoarderColor.h"
 #include "ClearAllAction.h"
 #include "SaveGraphAction.h"
+#include "LoadGraphAction.h"
 #include "SwitchToPlayModeAction.h"
+#include "SwitchToDrawModeAction.h"
+#include "ExitAction.h"
 
 #include "Figures/CRectangle.h"
 #include "CCircle.h"
@@ -94,14 +97,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new BringToFront(this);
 			break;
 
-		case TO_SAVEGRAPH:
-			pAct = new SaveGraphAction(this);
-			break;
-
-		case TO_PLAY:
-			pAct = new SwitchToPlayModeAction(this);
-			break;
-
 		case TO_FIGURETYPE:
 			pAct = new PickByTypeAction(this);
 			break;
@@ -121,10 +116,16 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new SaveGraphAction(this);
 			break;
 
+		case TO_LOADGRAPH:
+			pAct = new LoadGraphAction(this);
+			break;
+
 		case TO_PLAY:
 			pAct = new SwitchToPlayModeAction(this);
-
 			break;
+
+		case TO_DRAW:
+			pAct = new SwitchToDrawModeAction(this);
 
 		case TO_CLEARALL:
 			pAct = new ClearAllAction(this);
