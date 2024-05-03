@@ -2,11 +2,11 @@
 #include "Figures\CFigure.h"
 #include "ClearAllAction.h"
 #include <fstream>
-#include "Figures\CRectangle.h"
+#include "CRectangle.h"
 #include "CCircle.h"
-#include "Figures\CSquare.h"
-#include "Figures\CTriangle.h"
-#include "Figures\CHexagon.h"
+#include "CSquare.h"
+#include "CTriangle.h"
+#include "CHexagon.h"
 
 LoadGraphAction::LoadGraphAction(ApplicationManager* pApp, bool check): Action(pApp) {}
 
