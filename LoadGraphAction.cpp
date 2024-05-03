@@ -1,6 +1,7 @@
 #include "LoadGraphAction.h"
+#include "CFigure.h"
+// #include "ClearAllAction.h"
 #include <fstream>
-#include "colors.h"
 
 LoadGraphAction::LoadGraphAction(ApplicationManager* pApp): Action(pApp) {}
 
@@ -14,5 +15,6 @@ void LoadGraphAction::ReadActionParameters()
 
 void LoadGraphAction::Execute()
 {
+	Output* pOut = pManager->GetOutput();
 
 }

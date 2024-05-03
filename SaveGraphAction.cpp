@@ -1,6 +1,5 @@
 #include "SaveGraphAction.h"
 #include <fstream>
-#include "colors.h"
 
 SaveGraphAction::SaveGraphAction(ApplicationManager* pApp): Action(pApp) {}
 
@@ -18,6 +17,7 @@ void SaveGraphAction::Execute()
 	Output* pOut = pManager->GetOutput();
 	int CrntDrawColour;
 	int CrntFillColour;
+	string draw, fill;
 
 	if (pOut->getCrntDrawColor() == BLACK)
 		CrntDrawColour = BLACK_COLOUR;
@@ -52,22 +52,22 @@ void SaveGraphAction::Execute()
 	switch (CrntDrawColour)
 	{
 	case BLACK_COLOUR:
-		OutputFile << "BLACK" << "     ";
+		draw = 'BLACK';
 		break;
 	case YELLOW_COLOUR:
-		OutputFile << "YELLOW" << "     ";
+		draw = 'YELLOW';
 		break;
 	case ORANGE_COLOUR:
-		OutputFile << "ORANGE" << "     ";
+		draw = 'ORANGE';
 		break;
 	case RED_COLOUR:
-		OutputFile << "RED" << "     ";
+		draw = 'RED';
 		break;
 	case GREEN_COLOUR:
-		OutputFile << "GREEN" << "     ";
+		draw = 'GREEN';
 		break;
 	case BLUE_COLOUR:
-		OutputFile << "BLUE" << "     ";
+		draw = 'BLUE';
 		break;
 	}
 
