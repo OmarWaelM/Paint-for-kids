@@ -299,12 +299,12 @@ void ApplicationManager::DeleteSelected(int i, CFigure* Fig)
 //==================================================================================//
 
 //Save all figures
-void ApplicationManager::SaveAllFigures(ofstream& F)
+void ApplicationManager::SaveAllFigures(ofstream& OutputFile)
 {
-	F << FigCount << endl;
+	OutputFile << FigCount << endl;
 	for (int j = 0; j < FigCount; j++)
 	{
-		FigList[j]->Save(F, j);
+		FigList[j]->Save(OutputFile, j);
 	}
 }
 
