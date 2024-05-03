@@ -18,6 +18,8 @@
 #include "SaveGraphAction.h"
 #include "LoadGraphAction.h"
 #include "SwitchToPlayModeAction.h"
+#include "SwitchToDrawModeAction.h"
+#include "ExitAction.h"
 
 #include "Figures/CRectangle.h"
 #include "CCircle.h"
@@ -129,6 +131,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case TO_PLAY:
 			pAct = new SwitchToPlayModeAction(this);
 			break;
+
+		case TO_DRAW:
+			pAct = new SwitchToDrawModeAction(this);
 
 		case TO_CLEARALL:
 			pAct = new ClearAllAction(this);
