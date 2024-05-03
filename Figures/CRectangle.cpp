@@ -1,5 +1,4 @@
 #include "CRectangle.h"
-#include "colors.h"
 
 CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
@@ -41,41 +40,86 @@ bool CRectangle::IsWithin(Point P)
 
 void CRectangle::Save(ofstream& OutputFile, int n)
 {
-	color DrawColor;
-	color FillColor;
+	int DrawColor;
+	int FillColor;
+	int FigureType = RECTANGLE_FIGURE;
 
 	if (FigGfxInfo.DrawClr == BLACK)
-		DrawColor = BLACK;
+		DrawColor = BLACK_COLOUR;
 	else if (FigGfxInfo.DrawClr == YELLOW)
-		DrawColor = YELLOW;
+		DrawColor = YELLOW_COLOUR;
 	else if (FigGfxInfo.DrawClr == ORANGE)
-		DrawColor = ORANGE;
+		DrawColor = ORANGE_COLOUR;
 	else if (FigGfxInfo.DrawClr == RED)
-		DrawColor = RED;
+		DrawColor = RED_COLOUR;
 	else if (FigGfxInfo.DrawClr == GREEN)
-		DrawColor = GREEN;
+		DrawColor = GREEN_COLOUR;
 	else if (FigGfxInfo.DrawClr == BLUE)
-		DrawColor = BLUE;
+		DrawColor = BLUE_COLOUR;
 
 	if (FigGfxInfo.isFilled)
 	{
 		if (FigGfxInfo.FillClr == BLACK)
-			FillColor = BLACK;
+			FillColor = BLACK_COLOUR;
 		else if (FigGfxInfo.FillClr == YELLOW)
-			FillColor = YELLOW;
+			FillColor = YELLOW_COLOUR;
 		else if (FigGfxInfo.FillClr == ORANGE)
-			FillColor = ORANGE;
+			FillColor = ORANGE_COLOUR;
 		else if (FigGfxInfo.FillClr == RED)
-			FillColor = RED;
+			FillColor = RED_COLOUR;
 		else if (FigGfxInfo.FillClr == GREEN)
-			FillColor = GREEN;
+			FillColor = GREEN_COLOUR;
 		else if (FigGfxInfo.FillClr == BLUE)
-			FillColor = BLUE;
+			FillColor = BLUE_COLOUR;
 	}
-	else FillColor = LIGHTGOLDENRODYELLOW;
+	else FillColor = NO_FILL-COLOUR;
 
-	if(FillColor == LIGHTGOLDENRODYELLOW)
-		OutputFile << "RECT" << n << "     " << Corner1.x << "     " << Corner1.y << "     " << Corner2.x << "     " << Corner2.y << "     " << DrawColor << "     " << "NO_FILL" << endl;
-	else 
-		OutputFile << "RECT" << n << "     " << Corner1.x << "     " << Corner1.y << "     " << Corner2.x << "     " << Corner2.y << "     " << DrawColor << "     " << FillColor << endl;
+	OutputFile << "RECT" << n << "     " << Corner1.x << "     " << Corner1.y << "     " << Corner2.x << "     " << Corner2.y << "     ";
+
+	switch (DrawColor)
+	{
+	case BLACK_COLOUR:
+		OutputFile << "BLACK" << "     ";
+		break;
+	case YELLOW_COLOUR:
+		OutputFile << "YELLOW" << "     ";
+		break;
+	case ORANGE_COLOUR:
+		OutputFile << "ORANGE" << "     ";
+		break;
+	case RED_COLOUR:
+		OutputFile << "RED" << "     ";
+		break;
+	case GREEN_COLOUR:
+		OutputFile << "GREEN" << "     ";
+		break;
+	case BLUE_COLOUR:
+		OutputFile << "BLUE" << "     ";
+		break;
+	}
+
+	switch (FillColor)
+	{
+	case BLACK_COLOUR:
+		OutputFile << "BLACK" << '\n';
+		break;
+	case YELLOW_COLOUR:
+		OutputFile << "YELLOW" << '\n';
+		break;
+	case ORANGE_COLOUR:
+		OutputFile << "ORANGE" << '\n';
+		break;
+	case RED_COLOUR:
+		OutputFile << "RED" << '\n';
+		break;
+	case GREEN_COLOUR:
+		OutputFile << "GREEN" << '\n';
+		break;
+	case BLUE_COLOUR:
+		OutputFile << "BLUE" << '\n';
+		break;
+	case NO_FILL_COLOUR:
+		OutputFile << "NO_FILL" << '\n';
+		break;
+	}
 }
