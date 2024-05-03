@@ -54,8 +54,7 @@ void SaveGraphAction::Execute()
 		CrntFillColour = "BLUE";
 	else CrntFillColour = "NO_FILL";
 
-	OutputFile.open(FileName + ".txt", ios::out);
-	OutputFile << CrntDrawColour << "   " << CrntFillColour << endl;
+	OutputFile << CrntDrawColour << "  " << CrntFillColour << "\n";
 	pManager->SaveAllFigures(OutputFile);
 	OutputFile.close();
 	pOut->PrintMessage("Your file was saved successfully");

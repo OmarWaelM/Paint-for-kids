@@ -77,6 +77,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new AddSquareAction(this);
 			break;
       
+		case TO_CHANGEFILL:
+			pAct = new ChangeFillColor(this);
+			break;
+
+		case TO_CHANGEBORDER:
+			pAct = new ChangeBoarderColor(this);
+			break;
+
 		case TO_SELECT:
 			pAct = new SelectFigure(this);
 			break;
@@ -109,12 +117,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new PickByColourAction(this);
 			break;
 
-		case TO_CHANGEFILL:
-			pAct = new ChangeFillColor(this);
-			break;
-
-		case TO_CHANGEBORDER:
-			pAct = new ChangeBoarderColor(this);
+		case TO_FIGUREANDFILL:
+			pAct = new PickByBothAction(this);
 			break;
 
 		case EXIT:

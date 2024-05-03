@@ -72,7 +72,7 @@ void CCircle::Save(ofstream& OutputFile)
 	}
 	else FillColor = "NO_FILL";
 
-	OutputFile << FigureType << "   " << ID << "   " << Centre.x << "   " << Centre.y << "   " << Radius.x << "   " << Radius.y << "   " << DrawColor << "   " << FillColor << '\n';
+	OutputFile << FigureType << "\t\t" << ID << "\t" << Centre.x << "\t" << Centre.y << "\t" << Radius.x << "\t" << Radius.y << "\t" << DrawColor << "\t" << FillColor << '\n';
 }
 
 void CCircle::Load(ifstream& InputFile, CFigure*& s)

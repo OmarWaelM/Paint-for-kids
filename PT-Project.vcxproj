@@ -190,7 +190,7 @@
     <ClCompile Include="PickByTypeAction.cpp" />
     <ClCompile Include="SaveGraphAction.cpp" />
     <ClCompile Include="SelectFigure.cpp" />
-    <ClCompile Include="SondToBack.cpp" />
+    <ClCompile Include="SendToBack.cpp" />
     <ClCompile Include="SwitchToPlayModeAction.cpp" />
   </ItemGroup>
   <ItemGroup>
