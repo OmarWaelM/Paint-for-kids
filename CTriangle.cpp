@@ -1,5 +1,4 @@
 #include "CTriangle.h"
-#include "colors.h"
 
 CTriangle::CTriangle(Point p1, Point p2, Point p3, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
