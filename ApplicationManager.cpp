@@ -37,9 +37,15 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new AddRectAction(this);
 			break;
 
+		case TO_SAVEGRAPH:
+			pAct = new SaveGraphAction(this);
+			break;
+
+		case TO_PLAY:
+			pAct = new SwitchToPlayModeAction(this);
+
 		case EXIT:
-			///create ExitAction here
-			
+			pAct = new ExitAction(this);
 			break;
 		
 		case STATUS:	//a click on the status bar ==> no action

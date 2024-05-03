@@ -33,9 +33,6 @@ enum ActionType //The actions supported (you can add more if needed)
 	TO_FIGURETYPE,
 	TO_FILLCOLOUR,
 	TO_FIGUREANDFILL,
-
-
-	//Exit
 	TO_DRAW,		//Switch interface to Draw mode
 	EMPTY,			//A click on empty place in the toolbar
 	DRAWING_AREA,
