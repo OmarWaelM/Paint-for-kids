@@ -10,7 +10,7 @@ class LoadGraphAction : public Action
 private:
 	string FileName;  //the file name to be entered
 public:
-	LoadGraphAction(ApplicationManager* pApp);
+	LoadGraphAction(ApplicationManager* pApp, bool check = false);
 	virtual void ReadActionParameters();
 	virtual void Execute();
 };
