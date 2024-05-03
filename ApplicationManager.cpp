@@ -56,14 +56,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new AddRectAction(this);
 			break;
 
-		case TO_SAVEGRAPH:
-			pAct = new SaveGraphAction(this);
-			break;
-
-		case TO_PLAY:
-			pAct = new SwitchToPlayModeAction(this);
-
-		
 		case DRAW_HEXAGON:
 			pAct = new AddHexagonAction(this);
 			break;
@@ -94,6 +86,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case TO_BRINGFRONT:
 			pAct = new BringToFront(this);
+			break;
+
+		case TO_SAVEGRAPH:
+			pAct = new SaveGraphAction(this);
+			break;
+
+		case TO_PLAY:
+			pAct = new SwitchToPlayModeAction(this);
 			break;
 
 		case TO_FIGURETYPE:
