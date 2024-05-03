@@ -4,14 +4,19 @@
 #include "AddHexagonAction.h"
 #include "AddSquareAction.h"
 #include "AddTriangleAction.h"
-#include"PickByTypeAction.h"
-#include"DeleteAction.h"
-
+#include "PickByTypeAction.h"
+#include "PickByColourAction.h"
+#include "DeleteAction.h"
 #include "SelectFigure.h"
 #include "DeleteAction.h"
 #include "SendToBack.h"
 #include "BringToFront.h"
 
+#include "Figures/CRectangle.h"
+#include "CCircle.h"
+#include "CHexagon.h"
+#include "CSquare.h"
+#include "CTriangle.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -63,7 +68,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new AddTriangleAction(this);
 			break;
 
-    case DRAW_SQUARE:
+		case DRAW_SQUARE:
 			pAct = new AddSquareAction(this);
 			break;
       
@@ -75,8 +80,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new DeleteAction(this);
 			break;
 
-
-
 		case TO_SENDBACK:
 			pAct = new SendToBack(this);
 			break;
@@ -85,14 +88,16 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new BringToFront(this);
 			break;
 
-	 case TO_FIGURETYPE:
-		 pAct = new PickByTypeAction(this);
-		break;
+		case TO_FIGURETYPE:
+			pAct = new PickByTypeAction(this);
+			break;
 
+		case TO_FILLCOLOUR:
+			pAct = new PickByColourAction(this);
+			break;
 
 		case EXIT:
 			///create ExitAction here
-		
 			break;
 		
 		case STATUS:	//a click on the status bar ==> no action
@@ -106,71 +111,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		delete pAct;	//You may need to change this line depending to your implementation
 		pAct = NULL;
 	}
-}
-
-void ApplicationManager::Reset_Figure_Count()
-{
-	Rectangle_Count = 0;
-	Square_Count = 0;
-	Triangle_Count = 0;
-	Hexagon_Count = 0;
-	Circle_Count = 0;
-}
-
-void ApplicationManager::Count_Figure_Types()
-{
-	Reset_Figure_Count();
-
-	for (int i = 0; i < FigCount; i++)
-	{
-		char Type = FigList[i]->Get_My_Type();
-
-		if (Type == 'R')
-			Rectangle_Count++;
-
-		if (Type == 'C')
-			Circle_Count++;
-
-		if (Type == 'H')
-			Hexagon_Count++;
-
-		if (Type += 'T')
-			Triangle_Count++;
-
-		if (Type == 'S')
-			Square_Count++;
-
-	}
-}
-
-int ApplicationManager::Get_Circle_Count()
-{
-	return Circle_Count;
-}
-
-int ApplicationManager::Get_Triangle_Count()
-{
-	return Triangle_Count;
-}
-
-int ApplicationManager::Get_Square_Count()
-{
-	return Square_Count;
-}
-
-int ApplicationManager::Get_Rectangle_Count()
-{
-	return Rectangle_Count;
-}
-
-int ApplicationManager::Get_Hexagon_Count()
-{
-	return Hexagon_Count;
-}
-
-char ApplicationManager::Get_Random_Type(int ix) // returns type of figure according to its place in the array
-{
-	return FigList[ix]->Get_My_Type();
 }
 
 //==================================================================================//
@@ -239,48 +179,81 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 
 	return NULL;
 }
-void ApplicationManager::Reset_Fill_Colour()
+////////////////////////////////////////////////////////////////////////////////////
+int ApplicationManager::Get_Play_Mode_Count(int param[2]) // param [ Figure type, Figure Color ]
 {
-	Yellow_Figures = 0;
-	Blue_Figures = 0;
-	Black_Figures = 0;
-	Green_Figures = 0;
-	Orange_Figures = 0;
-	Red_Figures = 0;
-	No_Filled_Figure = 0;
-}
-void ApplicationManager::Count_Fill_Colour()
-{
-	Reset_Fill_Colour();
-
+	//Figures : Rect, Hex, Triangle, Square, Circle
+	//Colors : Black, Red Orange, Yellow, Green, Blue, Unfilled
+	int count = 0;
+	
 	for (int i = 0; i < FigCount; i++)
 	{
-		if (!FigList[i]->isFilled())
+		bool condFig = (param[0] == -1);
+		bool condCol = (param[1] == -1);
+		switch (param[0])
 		{
-			No_Filled_Figure++;
-		}
-		else
-		{
-			color c = FigList[i]->Get_Filled_Colour();
+		case 1:
+			condFig = (dynamic_cast<CRectangle*>(FigList[i]) != NULL);
+			break;
 
-			if (c == RED)
-				Red_Figures++;
-			if (c == ORANGE)
-				Orange_Figures++;
-			if (c == BLACK)
-				Black_Figures++;
-			if (c == GREEN)
-				Green_Figures++;
-			if (c == YELLOW)
-				Yellow_Figures++;
-			if (c == BLUE)
-				Blue_Figures++;
+		case 2:
+			condFig = (dynamic_cast<CHexagon*>(FigList[i]) != NULL);
+			break;
+
+		case 3:
+			condFig = (dynamic_cast<CTriangle*>(FigList[i]) != NULL);
+			break;
+
+		case 4:
+			condFig = (dynamic_cast<CSquare*>(FigList[i]) != NULL);
+			break;
+
+		case 5:
+			condFig = (dynamic_cast<CCircle*>(FigList[i]) != NULL);
+			break;
+
+		default:
+			break;
 		}
+		
+		switch (param[1])
+		{
+		case 1:
+			condCol = (FigList[i]->Get_Filled_Colour() == BLACK);
+			break;
+
+		case 2:
+			condCol = (FigList[i]->Get_Filled_Colour() == RED);
+			break;
+
+		case 3:
+			condCol = (FigList[i]->Get_Filled_Colour() == ORANGE);
+			break;
+
+		case 4:
+			condCol = (FigList[i]->Get_Filled_Colour() == YELLOW);
+			break;
+
+		case 5:
+			condCol = (FigList[i]->Get_Filled_Colour() == GREEN);
+			break;
+
+		case 6:
+			condCol = (FigList[i]->Get_Filled_Colour() == BLUE);
+			break;
+
+		case 7:
+			condCol = (FigList[i]->isFilled() == false);
+			break;
+
+		default:
+			break;
+		}
+		
+		if (condFig && condCol)
+			count++;
 	}
-}
-color ApplicationManager::Get_Random_Fill_Colour(int ix)
-{
-	return FigList[ix]->Get_Filled_Colour();
+	return count;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddSelected(CFigure* sFig)
@@ -311,6 +284,7 @@ void ApplicationManager::DeleteSelected(int i, CFigure* Fig)
 	SelectedFig[SelCount - 1] = NULL;
 	SelCount--;
 }
+
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//

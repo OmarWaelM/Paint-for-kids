@@ -163,15 +163,31 @@
     <ClCompile Include="CTriangle.cpp">
       <Filter>Figures Classes</Filter>
     </ClCompile>
-    <ClCompile Include="AddCircleAction.cpp" />
-    <ClCompile Include="AddHexagonAction.cpp" />
-    <ClCompile Include="AddSquareAction.cpp" />
-    <ClCompile Include="AddTriangleAction.cpp" />
-    <ClCompile Include="DeleteAction.cpp" />
     <ClCompile Include="SondToBack.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
     <ClCompile Include="BringToFront.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="AddCircleAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="AddHexagonAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="AddSquareAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="AddTriangleAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="DeleteAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="PickByColourAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="PickByTypeAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -276,15 +292,31 @@
     <ClInclude Include="CCircle.h">
       <Filter>Figures Classes</Filter>
     </ClInclude>
-    <ClInclude Include="AddCircleAction.h" />
-    <ClInclude Include="AddHexagonAction.h" />
-    <ClInclude Include="AddSquareAction.h" />
-    <ClInclude Include="AddTriangleAction.h" />
-    <ClInclude Include="DeleteAction.h" />
     <ClInclude Include="SendToBack.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="BringToFront.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="AddCircleAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="AddHexagonAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="AddSquareAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="AddTriangleAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="DeleteAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="PickByColourAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="PickByTypeAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

@@ -28,12 +28,6 @@ void CRectangle::PrintInfo(Output* pOut)
 	pOut->PrintMessage(msg);
 }
 
-char CRectangle::Get_My_Type()
-{
-	return 'R';
-}
-
-
 bool CRectangle::IsWithin(Point P)
 {
 	if ((P.x < Corner1.x && P.x > Corner2.x) || (P.x > Corner1.x && P.x < Corner2.x))

@@ -12,11 +12,6 @@ void CSquare::Draw(Output* pOut) const
 	pOut->DrawSqr(Centre, FigGfxInfo, Selected);
 }
 
-char CSquare::Get_My_Type()
-{
-	return 'S';
-}
-
 void CSquare::PrintInfo(Output* pOut)
 {
 	string msg = "Square's Info : ID = " + to_string(ID);
