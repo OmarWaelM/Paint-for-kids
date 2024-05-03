@@ -28,7 +28,6 @@ void SaveGraphAction::Execute()
 	ofstream OutputFile;
 	OutputFile.open(FileName + ".txt", ios::out);
 	
-	str_to_int
 	if (pOut->getCrntDrawColor() == BLACK)
 		CrntDrawColour = "BLACK";
 	else if (pOut->getCrntDrawColor() == YELLOW)
