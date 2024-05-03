@@ -1,4 +1,5 @@
 #include "CHexagon.h"
+#include "colors.h"
 
 CHexagon::CHexagon(Point P, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
@@ -53,4 +54,45 @@ bool CHexagon::IsWithinHelper(int P1x, int P1y, int P2x, int P2y, int P3x, int P
 	if (AT == (A1 + A2 + A3))
 		return true;
 	return false;
+}
+
+void CHexagon::Save(ofstream& OutputFile, int n)
+{
+	color DrawColor;
+	color FillColor;
+
+	if (FigGfxInfo.DrawClr == BLACK)
+		DrawColor = BLACK;
+	else if (FigGfxInfo.DrawClr == YELLOW)
+		DrawColor = YELLOW;
+	else if (FigGfxInfo.DrawClr == ORANGE)
+		DrawColor = ORANGE;
+	else if (FigGfxInfo.DrawClr == RED)
+		DrawColor = RED;
+	else if (FigGfxInfo.DrawClr == GREEN)
+		DrawColor = GREEN;
+	else if (FigGfxInfo.DrawClr == BLUE)
+		DrawColor = BLUE;
+
+	if (FigGfxInfo.isFilled)
+	{
+		if (FigGfxInfo.FillClr == BLACK)
+			FillColor = BLACK;
+		else if (FigGfxInfo.FillClr == YELLOW)
+			FillColor = YELLOW;
+		else if (FigGfxInfo.FillClr == ORANGE)
+			FillColor = ORANGE;
+		else if (FigGfxInfo.FillClr == RED)
+			FillColor = RED;
+		else if (FigGfxInfo.FillClr == GREEN)
+			FillColor = GREEN;
+		else if (FigGfxInfo.FillClr == BLUE)
+			FillColor = BLUE;
+	}
+	else FillColor = LIGHTGOLDENRODYELLOW;
+
+	if (FillColor == LIGHTGOLDENRODYELLOW)
+		OutputFile << "HEXAGON" << "     " << n << "     " << Centre.x << "     " << Centre.y << "     " << DrawColor << "     " << "NO_FILL" << endl;
+	else
+		OutputFile << "HEXAGON" << "     " << n << "     " << Centre.x << "     " << Centre.y << "     " << DrawColor << "     " << FillColor << endl;
 }

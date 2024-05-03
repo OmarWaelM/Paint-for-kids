@@ -39,7 +39,7 @@ bool CRectangle::IsWithin(Point P)
 	return false;
 }
 
-void CRectangle::Save(ofstream& F, int n)
+void CRectangle::Save(ofstream& OutputFile, int n)
 {
 	color DrawColor;
 	color FillColor;
@@ -75,7 +75,7 @@ void CRectangle::Save(ofstream& F, int n)
 	else FillColor = LIGHTGOLDENRODYELLOW;
 
 	if(FillColor == LIGHTGOLDENRODYELLOW)
-		F << "RECT" << n << "   " << Corner1.x << "   " << Corner1.y << "   " << Corner2.x << "   " << Corner2.y << "   " << DrawColor << "   " << "NO_FILL" << endl;
+		OutputFile << "RECT" << n << "     " << Corner1.x << "     " << Corner1.y << "     " << Corner2.x << "     " << Corner2.y << "     " << DrawColor << "     " << "NO_FILL" << endl;
 	else 
-		F << "RECT" << n << "   " << Corner1.x << "   " << Corner1.y << "   " << Corner2.x << "   " << Corner2.y << "   " << DrawColor << "   " << FillColor << endl;
+		OutputFile << "RECT" << n << "     " << Corner1.x << "     " << Corner1.y << "     " << Corner2.x << "     " << Corner2.y << "     " << DrawColor << "     " << FillColor << endl;
 }

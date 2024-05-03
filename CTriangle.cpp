@@ -1,4 +1,5 @@
 #include "CTriangle.h"
+#include "colors.h"
 
 CTriangle::CTriangle(Point p1, Point p2, Point p3, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
@@ -40,4 +41,45 @@ bool CTriangle::IsWithin(Point P)
 	if (AT == (A1 + A2 + A3))
 		return true;
 	return false;
+}
+
+void CTriangle::Save(ofstream& OutputFile, int n)
+{
+	color DrawColor;
+	color FillColor;
+
+	if (FigGfxInfo.DrawClr == BLACK)
+		DrawColor = BLACK;
+	else if (FigGfxInfo.DrawClr == YELLOW)
+		DrawColor = YELLOW;
+	else if (FigGfxInfo.DrawClr == ORANGE)
+		DrawColor = ORANGE;
+	else if (FigGfxInfo.DrawClr == RED)
+		DrawColor = RED;
+	else if (FigGfxInfo.DrawClr == GREEN)
+		DrawColor = GREEN;
+	else if (FigGfxInfo.DrawClr == BLUE)
+		DrawColor = BLUE;
+
+	if (FigGfxInfo.isFilled)
+	{
+		if (FigGfxInfo.FillClr == BLACK)
+			FillColor = BLACK;
+		else if (FigGfxInfo.FillClr == YELLOW)
+			FillColor = YELLOW;
+		else if (FigGfxInfo.FillClr == ORANGE)
+			FillColor = ORANGE;
+		else if (FigGfxInfo.FillClr == RED)
+			FillColor = RED;
+		else if (FigGfxInfo.FillClr == GREEN)
+			FillColor = GREEN;
+		else if (FigGfxInfo.FillClr == BLUE)
+			FillColor = BLUE;
+	}
+	else FillColor = LIGHTGOLDENRODYELLOW;
+
+	if (FillColor == LIGHTGOLDENRODYELLOW)
+		OutputFile << "TRIANGLE" << "     " << n << "     " << P1.x << "     " << P1.y << "     " << P2.x << "     " << P2.y << "     " << P3.x << "     " << P3.y << "     " << DrawColor << "     " << "NO_FILL" << endl;
+	else
+		OutputFile << "TRIANGLE" << "     " << n << "     " << P1.x << "     " << P1.y << "     " << P2.x << "     " << P2.y << "     " << P3.x << "     " << P3.y << "     " << DrawColor << "     " << FillColor << endl;
 }

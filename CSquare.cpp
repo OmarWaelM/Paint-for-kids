@@ -1,4 +1,5 @@
 #include "CSquare.h"
+#include "colors.h"
 
 CSquare::CSquare(Point P, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
@@ -29,4 +30,45 @@ bool CSquare::IsWithin(Point P)
 	if (abs(P.x - Centre.x) <= 100 && abs(P.y - Centre.y) <= 100)
 		return true;
 	return false;
+}
+
+void CSquare::Save(ofstream& OutputFile, int n)
+{
+	color DrawColor;
+	color FillColor;
+
+	if (FigGfxInfo.DrawClr == BLACK)
+		DrawColor = BLACK;
+	else if (FigGfxInfo.DrawClr == YELLOW)
+		DrawColor = YELLOW;
+	else if (FigGfxInfo.DrawClr == ORANGE)
+		DrawColor = ORANGE;
+	else if (FigGfxInfo.DrawClr == RED)
+		DrawColor = RED;
+	else if (FigGfxInfo.DrawClr == GREEN)
+		DrawColor = GREEN;
+	else if (FigGfxInfo.DrawClr == BLUE)
+		DrawColor = BLUE;
+
+	if (FigGfxInfo.isFilled)
+	{
+		if (FigGfxInfo.FillClr == BLACK)
+			FillColor = BLACK;
+		else if (FigGfxInfo.FillClr == YELLOW)
+			FillColor = YELLOW;
+		else if (FigGfxInfo.FillClr == ORANGE)
+			FillColor = ORANGE;
+		else if (FigGfxInfo.FillClr == RED)
+			FillColor = RED;
+		else if (FigGfxInfo.FillClr == GREEN)
+			FillColor = GREEN;
+		else if (FigGfxInfo.FillClr == BLUE)
+			FillColor = BLUE;
+	}
+	else FillColor = LIGHTGOLDENRODYELLOW;
+
+	if (FillColor == LIGHTGOLDENRODYELLOW)
+		OutputFile << "SQUARE" << "     " << n << "     " << Centre.x << "     " << Centre.y << "     " << DrawColor << "     " << "NO_FILL" << endl;
+	else
+		OutputFile << "SQUARE" << "     " << n << "     " << Centre.x << "     " << Centre.y << "     " << DrawColor << "     " << FillColor << endl;
 }
