@@ -46,9 +46,6 @@ void SaveGraphAction::Execute()
 		CrntFillColour = BLUE;
 	else CrntFillColour = LIGHTGOLDENRODYELLOW;
 
-	ifstream FileExistsCheck(FileName + ".txt");
-	if (FileExistsCheck.good()) { FileExistsCheck.close(); }
-
 	if (CrntFillColour == LIGHTGOLDENRODYELLOW)
 	{
 		ofstream OutputFile;
