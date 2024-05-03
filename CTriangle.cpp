@@ -44,86 +44,39 @@ bool CTriangle::IsWithin(Point P)
 
 void CTriangle::Save(ofstream& OutputFile, int n)
 {
-	int DrawColor;
-	int FillColor;
-	int FigureType = TRIANGLE_FIGURE;
+	string DrawColor;
+	string FillColor;
+	string FigureType = "TRIANGLE";
 
 	if (FigGfxInfo.DrawClr == BLACK)
-		DrawColor = BLACK_COLOUR;
+		DrawColor = "BLACK";
 	else if (FigGfxInfo.DrawClr == YELLOW)
-		DrawColor = YELLOW_COLOUR;
+		DrawColor = "YELLOW";
 	else if (FigGfxInfo.DrawClr == ORANGE)
-		DrawColor = ORANGE_COLOUR;
+		DrawColor = "ORANGE";
 	else if (FigGfxInfo.DrawClr == RED)
-		DrawColor = RED_COLOUR;
+		DrawColor = "RED";
 	else if (FigGfxInfo.DrawClr == GREEN)
-		DrawColor = GREEN_COLOUR;
+		DrawColor = "GREEN";
 	else if (FigGfxInfo.DrawClr == BLUE)
-		DrawColor = BLUE_COLOUR;
+		DrawColor = "BLUE";
 
 	if (FigGfxInfo.isFilled)
 	{
 		if (FigGfxInfo.FillClr == BLACK)
-			FillColor = BLACK_COLOUR;
+			FillColor = "BLACK";
 		else if (FigGfxInfo.FillClr == YELLOW)
-			FillColor = YELLOW_COLOUR;
+			FillColor = "YELLOW";
 		else if (FigGfxInfo.FillClr == ORANGE)
-			FillColor = ORANGE_COLOUR;
+			FillColor = "ORANGE";
 		else if (FigGfxInfo.FillClr == RED)
-			FillColor = RED_COLOUR;
+			FillColor = "RED";
 		else if (FigGfxInfo.FillClr == GREEN)
-			FillColor = GREEN_COLOUR;
+			FillColor = "GREEN";
 		else if (FigGfxInfo.FillClr == BLUE)
-			FillColor = BLUE_COLOUR;
+			FillColor = "BLUE";
 	}
-	else FillColor = NO_FILL_COLOUR;
+	else FillColor = "NO_FILL";
 
-	OutputFile << "TRIANGLE" << "     " << n << "     " << P1.x << "     " << P1.y << "     " << P2.x << "     " << P2.y << "     " << P3.x << "     " << P3.y << "     ";
-
-	switch (DrawColor)
-	{
-	case BLACK_COLOUR:
-		OutputFile << "BLACK" << "     ";
-		break;
-	case YELLOW_COLOUR:
-		OutputFile << "YELLOW" << "     ";
-		break;
-	case ORANGE_COLOUR:
-		OutputFile << "ORANGE" << "     ";
-		break;
-	case RED_COLOUR:
-		OutputFile << "RED" << "     ";
-		break;
-	case GREEN_COLOUR:
-		OutputFile << "GREEN" << "     ";
-		break;
-	case BLUE_COLOUR:
-		OutputFile << "BLUE" << "     ";
-		break;
-	}
-
-	switch (FillColor)
-	{
-	case BLACK_COLOUR:
-		OutputFile << "BLACK" << '\n';
-		break;
-	case YELLOW_COLOUR:
-		OutputFile << "YELLOW" << '\n';
-		break;
-	case ORANGE_COLOUR:
-		OutputFile << "ORANGE" << '\n';
-		break;
-	case RED_COLOUR:
-		OutputFile << "RED" << '\n';
-		break;
-	case GREEN_COLOUR:
-		OutputFile << "GREEN" << '\n';
-		break;
-	case BLUE_COLOUR:
-		OutputFile << "BLUE" << '\n';
-		break;
-	case NO_FILL_COLOUR:
-		OutputFile << "NO_FILL" << '\n';
-		break;
-	}
+	OutputFile << FigureType << "   " << n << "   " << P1.x << "   " << P1.y << "   " << P2.x << "   " << P2.y << "   " << P3.x << "   " << P3.y << "   " << DrawColor << "   " << FillColor << '\n';
 }
