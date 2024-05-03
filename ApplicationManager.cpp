@@ -115,14 +115,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case TO_CHANGEBORDER:
 			pAct = new ChangeBoarderColor(this);
-
-		case TO_SAVEGRAPH:
-			pAct = new SaveGraphAction(this);
-			break;
-
-		case TO_PLAY:
-			pAct = new SwitchToPlayModeAction(this);
-
 			break;
 
 		case EXIT:
@@ -334,7 +326,7 @@ void ApplicationManager::UpdateInterface() const
 {	
 	pOut->ClearDrawArea();
 	for(int i=0; i<FigCount; i++)
-		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+	FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input

@@ -1,5 +1,5 @@
 #include "LoadGraphAction.h"
-#include "CFigure.h"
+#include "Figures\CFigure.h"
 // #include "ClearAllAction.h"
 #include <fstream>
 
