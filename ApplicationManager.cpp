@@ -15,6 +15,7 @@
 #include "ChangeFillColor.h"
 #include "ChangeBoarderColor.h"
 #include "SaveGraphAction.h"
+#include "LoadGraphAction.h"
 #include "SwitchToPlayModeAction.h"
 
 #include "Figures/CRectangle.h"
@@ -120,9 +121,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new SaveGraphAction(this);
 			break;
 
+		case TO_LOADGRAPH:
+			pAct = new LoadGraphAction(this);
+			break;
+
 		case TO_PLAY:
 			pAct = new SwitchToPlayModeAction(this);
-
 			break;
 
 		case EXIT:
