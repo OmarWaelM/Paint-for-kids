@@ -11,7 +11,7 @@
 #include "DeleteAction.h"
 #include "SendToBack.h"
 #include "BringToFront.h"
-
+#include "ChangeFillColor.h"
 #include "Figures/CRectangle.h"
 #include "CCircle.h"
 #include "CHexagon.h"
@@ -94,6 +94,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case TO_FILLCOLOUR:
 			pAct = new PickByColourAction(this);
+			break;
+
+		case TO_CHANGEFILL:
+			pAct = new ChangeFillColor(this);
 			break;
 
 		case EXIT:
