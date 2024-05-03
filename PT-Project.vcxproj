@@ -134,6 +134,8 @@
     <ClCompile Include="AddTriangleAction.cpp" />
     <ClCompile Include="BringToFront.cpp" />
     <ClCompile Include="CCircle.cpp" />
+    <ClCompile Include="ChangeBoarderColor.cpp" />
+    <ClCompile Include="ChangeFillColor.cpp" />
     <ClCompile Include="CHexagon.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
@@ -196,6 +198,8 @@
     <ClInclude Include="AddTriangleAction.h" />
     <ClInclude Include="BringToFront.h" />
     <ClInclude Include="CCircle.h" />
+    <ClInclude Include="ChangeBoarderColor.h" />
+    <ClInclude Include="ChangeFillColor.h" />
     <ClInclude Include="CHexagon.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
