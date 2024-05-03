@@ -23,8 +23,6 @@ void SaveGraphAction::Execute()
 	string CrntDrawColour;
 	string CrntFillColour;
 
-	ReadActionParameters();
-
 	if (pOut->getCrntDrawColor() == BLACK)
 		CrntDrawColour = "BLACK";
 	else if (pOut->getCrntDrawColor() == YELLOW)
