@@ -14,6 +14,7 @@
 #include "BringToFront.h"
 #include "ChangeFillColor.h"
 #include "ChangeBoarderColor.h"
+#include "ClearAllAction.h"
 #include "SaveGraphAction.h"
 #include "SwitchToPlayModeAction.h"
 
@@ -123,6 +124,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case TO_PLAY:
 			pAct = new SwitchToPlayModeAction(this);
 
+			break;
+
+		case TO_CLEARALL:
+			pAct = new ClearAllAction(this);
 			break;
 
 		case EXIT:
@@ -314,7 +319,11 @@ void ApplicationManager::DeleteSelected(int i, CFigure* Fig)
 	SelectedFig[SelCount - 1] = NULL;
 	SelCount--;
 }
-
+/////////////////////////////////////////////////////////////////
+void ApplicationManager::SetClipboard(CFigure* Fig)
+{
+	Clipboard = Fig;
+}
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
