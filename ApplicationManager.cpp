@@ -6,11 +6,14 @@
 #include "AddTriangleAction.h"
 #include "PickByTypeAction.h"
 #include "PickByColourAction.h"
+#include "PickByBothAction.h"
 #include "DeleteAction.h"
 #include "SelectFigure.h"
 #include "DeleteAction.h"
 #include "SendToBack.h"
 #include "BringToFront.h"
+#include "SaveGraphAction.h"
+#include "SwitchToPlayModeAction.h"
 
 #include "Figures/CRectangle.h"
 #include "CCircle.h"
@@ -94,6 +97,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case TO_FILLCOLOUR:
 			pAct = new PickByColourAction(this);
+			break;
+
+		case TO_SAVEGRAPH:
+			pAct = new SaveGraphAction(this);
+			break;
+
+		case TO_PLAY:
+			pAct = new SwitchToPlayModeAction(this);
 			break;
 
 		case EXIT:

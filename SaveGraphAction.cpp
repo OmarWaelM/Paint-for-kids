@@ -1,5 +1,6 @@
 #include "SaveGraphAction.h"
 #include <fstream>
+#include "ApplicationManager.h"
 
 SaveGraphAction::SaveGraphAction(ApplicationManager* pApp): Action(pApp) {}
 
@@ -9,7 +10,7 @@ void SaveGraphAction::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	pOut->PrintMessage("Please enter the file name that's to be saved");
 	FileName = pIn->GetSrting(pOut);
-	pOut->PrintMessage("Your file was saved successfully")
+	
 }
 
 void SaveGraphAction::Execute()
@@ -18,49 +19,39 @@ void SaveGraphAction::Execute()
 	int DrawColour;
 	int FillColour;
 
+	ReadActionParameters();
+
+	ofstream OutputFile;
+	OutputFile.open(FileName + ".txt", ios::out);
+	
+	str_to_int
 	if (pOut->getCrntDrawColor() == BLACK)
-		DrawColour = BLACK_COLOUR;
+		OutputFile << "BLACK";
 	else if (pOut->getCrntDrawColor() == YELLOW)
-		DrawColour = YELLOW_COLOUR;
+		OutputFile << "YELLOW";
 	else if (pOut->getCrntDrawColor() == ORANGE)
-		DrawColour = ORANGE_COLOUR;
+		OutputFile << "ORANGE";
 	else if (pOut->getCrntDrawColor() == RED)
-		DrawColour = RED_COLOUR;
+		OutputFile << "RED";
 	else if (pOut->getCrntDrawColor() == GREEN)
-		DrawColour = GREEN_COLOUR;
+		OutputFile << "GREEN";
 	else if (pOut->getCrntDrawColor() == BLUE)
-		DrawColour = BLUE_COLOUR;
-
+		OutputFile << "BLUE";
+	OutputFile << "   ";
 	if (pOut->getCrntFillColor() == BLACK)
-		FillColour = BLACK_COLOUR;
+		OutputFile << "BLACK";
 	else if (pOut->getCrntFillColor() == YELLOW)
-		FillColour = YELLOW_COLOUR;
+		OutputFile << "YELLOW";
 	else if (pOut->getCrntFillColor() == ORANGE)
-		FillColour = ORANGE_COLOUR;
+		OutputFile << "ORANGE";
 	else if (pOut->getCrntFillColor() == RED)
-		FillColour = RED_COLOUR;
+		OutputFile << "RED";
 	else if (pOut->getCrntFillColor() == GREEN)
-		FillColour = GREEN_COLOUR;
+		OutputFile << "GREEN";
 	else if (pOut->getCrntFillColor() == BLUE)
-		FillColour = BLUE_COLOUR;
-	else FillColour = NO_FILL_COLOUR;
-
-	ifstream FileExistsCheck(FileName + ".txt");
-	if (FileExistsCheck.good())
-	{
-		FileExistsCheck.close();
-		ofstream OutputFile;
-		OutputFile.open(FileName + ".txt", ios::out);
-		OutputFile << DrawColour << "  " << FillColour << endl;
-		pManager->SaveAllFigures(OutputFile);
-		OutputFile.close();
-	}
-	else 
-	{
-		ofstream OutputFile;
-		OutputFile.open(FileName + ".txt", ios::out);
-		OutputFile << DrawColour << "  " << FillColour << endl;
-		pManager->SaveAllFigures(OutputFile);
-		OutputFile.close();
-	}
+		OutputFile << "BLUE";
+	OutputFile << "\n";
+	//pManager->SaveAllFigures(OutputFile);
+	OutputFile.close();
+	pOut->PrintMessage("Your file was saved successfully");
 }
