@@ -1,7 +1,12 @@
 #include "LoadGraphAction.h"
-#include "CFigure.h"
+#include "Figures\CFigure.h"
 #include "ClearAllAction.h"
 #include <fstream>
+#include "Figures\CRectangle.h"
+#include "CCircle.h"
+#include "Figures\CSquare.h"
+#include "Figures\CTriangle.h"
+#include "Figures\CHexagon.h"
 
 LoadGraphAction::LoadGraphAction(ApplicationManager* pApp, bool check): Action(pApp) {}
 
@@ -32,41 +37,75 @@ void LoadGraphAction::Execute()
 	InputFile >> CrntDrawCol >> CrntFillCol;
 
 	if (CrntDrawCol == "BLACK")
-		pOut->setCrntDrawColor(BLACK);
+		UI.DrawColor = BLACK;
 	else if (CrntDrawCol == "YELLOW")
-		pOut->setCrntDrawColor(YELLOW);
+		UI.DrawColor = YELLOW;
 	else if (CrntDrawCol == "ORANGE")
-		pOut->setCrntDrawColor(ORANGE);
+		UI.DrawColor = ORANGE;
 	else if (CrntDrawCol == "RED")
-		pOut->setCrntDrawColor(RED);
+		UI.DrawColor = RED;
 	else if (CrntDrawCol == "GREEN")
-		pOut->setCrntDrawColor(GREEN);
+		UI.DrawColor = GREEN;
 	else if (CrntDrawCol == "BLUE")
-		pOut->setCrntDrawColor(BLUE);
+		UI.DrawColor = BLUE;
 
 	if (CrntFillCol == "BLACK")
-		pOut->setCrntFillColor(BLACK);
+		UI.FillColor = BLACK;
 	else if (FillCol == "YELLOW")
-		pOut->setCrntFillColor(YELLOW);
+		UI.FillColor = YELLOW;
 	else if (FillCol == "ORANGE")
-		pOut->setCrntFillColor(ORANGE);
+		UI.FillColor = ORANGE;
 	else if (FillCol == "RED")
-		pOut->setCrntFillColor(RED);
+		UI.FillColor = RED;
 	else if (FillCol == "GREEN")
-		pOut->setCrntFillColor(GREEN);
+		UI.FillColor = GREEN;
 	else if (FillCol == "BLUE")
-		pOut->setCrntFillColor(BLUE);
+		UI.FillColor = BLUE;
 
 	InputFile >> CountFig;
+
+	// Declaring dummy parameters: A Point and FigureGfxInfo's members to utilize and call the Load function of each figure type //
+	Point P1;
+	P1.x = 0; P1.y = 0;
+	FigureGfxInfo.DrawClr = BLACK;
+	FigureGfxInfo.isFilled = true;
+	FigureGfxInfo.FillClr = BLACK;
 	
 	for (int i = 0; i < n; i++)
 	{
 		InputFile >> Figuretype >> id;
-		CFigure* s = NULL;
+		CFigure* pFig = NULL;
 
 		if (Figuretype == "RECTANGLE")
 		{
-
+			CRectangle Rect(P1, P1, FigureGfxInfo);
+			Rect.Load(InputFile, pFig);
+			pManager->AddFigure(pFig);
+		}
+		else if (Figuretype == "HEXAGON")
+		{
+			CHexagon Hex(P1, FigureGfxInfo);
+			Hex.Load(InputFile, pFig);
+			pManager->AddFigure(pFig);
+		}
+		else if (Figuretype == "TRIANGLE")
+		{
+			CTriangle Tri(P1, P1, P1, FigureGfxInfo);
+			Tri.Load(InputFile, pFig);
+			pManager->AddFigure(pFig);
+		}
+		else if (Figuretype == "SQUARE")
+		{
+			CSquare SQ(P1, FigureGfxInfo);
+			SQ.Load(InputFile, pFig);
+			pManager->AddFigure(pFig);
+		}
+		else if (Figuretype == "CIRCLE")
+		{
+			CCircle Circ(P1, P1, FigureGfxInfo);
+			Circ.Load(InputFile, pFig);
+			pManager->AddFigure(pFig);
 		}
 	}
+	InputFile.close();
 }

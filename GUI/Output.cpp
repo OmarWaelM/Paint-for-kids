@@ -182,15 +182,6 @@ int Output::getCrntPenWidth() const		//get current pen width
 	return UI.PenWidth;
 }
 
-void Output::setCrntDrawColor(color Clr) const
-{
-	UI.DrawColor = Clr;
-}
-
-void Output::setCrntFillColor(color Clr) const
-{
-	UI.FillColor = Clr;
-}
 
 //======================================================================================//
 //								Figures Drawing Functions								//
