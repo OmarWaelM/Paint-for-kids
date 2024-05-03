@@ -16,51 +16,87 @@ void SaveGraphAction::ReadActionParameters()
 void SaveGraphAction::Execute()
 {
 	Output* pOut = pManager->GetOutput();
-	color CrntDrawColour;
-	color CrntFillColour;
+	int CrntDrawColour;
+	int CrntFillColour;
 
 	if (pOut->getCrntDrawColor() == BLACK)
-		CrntDrawColour = BLACK;
+		CrntDrawColour = BLACK_COLOUR;
 	else if (pOut->getCrntDrawColor() == YELLOW)
-		CrntDrawColour = YELLOW;
+		CrntDrawColour = YELLOW_COLOUR;
 	else if (pOut->getCrntDrawColor() == ORANGE)
-		CrntDrawColour = ORANGE;
+		CrntDrawColour = ORANGE_COLOUR;
 	else if (pOut->getCrntDrawColor() == RED)
-		CrntDrawColour = RED;
+		CrntDrawColour = RED_COLOUR;
 	else if (pOut->getCrntDrawColor() == GREEN)
-		CrntDrawColour = GREEN;
+		CrntDrawColour = GREEN_COLOUR;
 	else if (pOut->getCrntDrawColor() == BLUE)
-		CrntDrawColour = BLUE;
+		CrntDrawColour = BLUE_COLOUR;
 
 	if (pOut->getCrntFillColor() == BLACK)
-		CrntFillColour = BLACK;
+		CrntFillColour = BLACK_COLOUR;
 	else if (pOut->getCrntFillColor() == YELLOW)
-		CrntFillColour = YELLOW;
+		CrntFillColour = YELLOW_COLOUR;
 	else if (pOut->getCrntFillColor() == ORANGE)
-		CrntFillColour = ORANGE;
+		CrntFillColour = ORANGE_COLOUR;
 	else if (pOut->getCrntFillColor() == RED)
-		CrntFillColour = RED;
+		CrntFillColour = RED_COLOUR;
 	else if (pOut->getCrntFillColor() == GREEN)
-		CrntFillColour = GREEN;
+		CrntFillColour = GREEN_COLOUR;
 	else if (pOut->getCrntFillColor() == BLUE)
-		CrntFillColour = BLUE;
-	else CrntFillColour = LIGHTGOLDENRODYELLOW;
+		CrntFillColour = BLUE_COLOUR;
+	else CrntFillColour = NO_FILL_COLOUR;
 
-	if (CrntFillColour == LIGHTGOLDENRODYELLOW)
+	ofstream OutputFile;
+	OutputFile.open(FileName + ".txt", ios::out);
+	
+	switch (CrntDrawColour)
 	{
-		ofstream OutputFile;
-		OutputFile.open(FileName + ".txt", ios::out);
-		OutputFile << CrntDrawColour << "	" << "NO_FILL" << endl;
-		pManager->SaveAllFigures(OutputFile);
-		OutputFile.close();
+	case BLACK_COLOUR:
+		OutputFile << "BLACK" << "     ";
+		break;
+	case YELLOW_COLOUR:
+		OutputFile << "YELLOW" << "     ";
+		break;
+	case ORANGE_COLOUR:
+		OutputFile << "ORANGE" << "     ";
+		break;
+	case RED_COLOUR:
+		OutputFile << "RED" << "     ";
+		break;
+	case GREEN_COLOUR:
+		OutputFile << "GREEN" << "     ";
+		break;
+	case BLUE_COLOUR:
+		OutputFile << "BLUE" << "     ";
+		break;
 	}
-	else
+
+	switch (CrntFillColour)
 	{
-		ofstream OutputFile;
-		OutputFile.open(FileName + ".txt", ios::out);
-		OutputFile << CrntDrawColour << "	" << CrntFillColour << endl;
-		pManager->SaveAllFigures(OutputFile);
-		OutputFile.close();
+	case BLACK_COLOUR:
+		OutputFile << "BLACK" << '\n';
+		break;
+	case YELLOW_COLOUR:
+		OutputFile << "YELLOW" << '\n';
+		break;
+	case ORANGE_COLOUR:
+		OutputFile << "ORANGE" << '\n';
+		break;
+	case RED_COLOUR:
+		OutputFile << "RED" << '\n';
+		break;
+	case GREEN_COLOUR:
+		OutputFile << "GREEN" << '\n';
+		break;
+	case BLUE_COLOUR:
+		OutputFile << "BLUE" << '\n';
+		break;
+	case NO_FILL_COLOUR:
+		OutputFile << "NO_FILL" << '\n';
+		break;
 	}
+
+	pManager->SaveAllFigures(OutputFile);
+	OutputFile.close();
 	
 }

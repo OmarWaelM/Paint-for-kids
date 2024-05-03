@@ -43,6 +43,15 @@ enum ActionType //The actions supported (you can add more if needed)
 	///TODO: Add the other action types of the two modes
 };
 
+enum Save_Load_Colours
+{
+	NO_FILL_COLOUR = 100,
+	BLACK_COLOUR = 101,
+	YELLOW_COLOUR = 102,
+	ORANGE_COLOUR = 103,
+	RED_COLOUR = 104,
+	GREEN_COLOUR = 105,
+	BLUE_COLOUR = 106,
 };
 
 enum Save_Load_FigureType
