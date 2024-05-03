@@ -11,7 +11,8 @@
 #include "DeleteAction.h"
 #include "SendToBack.h"
 #include "BringToFront.h"
-
+#include "ChangeFillColor.h"
+#include "ChangeBoarderColor.h"
 #include "Figures/CRectangle.h"
 #include "CCircle.h"
 #include "CHexagon.h"
@@ -94,6 +95,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case TO_FILLCOLOUR:
 			pAct = new PickByColourAction(this);
+			break;
+
+		case TO_CHANGEFILL:
+			pAct = new ChangeFillColor(this);
+			break;
+
+		case TO_CHANGEBORDER:
+			pAct = new ChangeBoarderColor(this);
 			break;
 
 		case EXIT:
@@ -290,14 +299,14 @@ void ApplicationManager::DeleteSelected(int i, CFigure* Fig)
 //==================================================================================//
 
 //Save all figures
-void ApplicationManager::SaveAllFigures(ofstream& F)
-{
-	F << FigCount << endl;
-	for (int j = 0; j < FigCount; j++)
-	{
-		FigList[j]->Save(F, j);
-	}
-}
+//void ApplicationManager::SaveAllFigures(ofstream& F)
+//{
+//	F << FigCount << endl;
+//	for (int j = 0; j < FigCount; j++)
+//	{
+//		FigList[j]->Save(F, j);
+//	}
+//}
 
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
