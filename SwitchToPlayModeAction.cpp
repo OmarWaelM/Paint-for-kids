@@ -1,7 +1,7 @@
 #include "SwitchToPlayModeAction.h"
 #include "SaveGraphAction.h"
 
-SwitchToPlayModeAction::SwitchToPlayModeAction(ApplicationManager* pApp) {}
+SwitchToPlayModeAction::SwitchToPlayModeAction(ApplicationManager* pApp) : Action(pApp) {}
 
 void SwitchToPlayModeAction::ReadActionParameters() {}
 

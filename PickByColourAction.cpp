@@ -4,6 +4,8 @@
 
 PickByColourAction::PickByColourAction(ApplicationManager* pApp):Action(pApp)
 {
+	Correct_Count = 0;
+	Wrong_Count = 0;
 }
 
 void PickByColourAction::ReadActionParameters()
