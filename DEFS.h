@@ -54,17 +54,6 @@ enum Save_Load_FigureType
 	CIRCLE_FIGURE = 204,
 };
 
-};
-
-enum Save_Load_FigureType
-{
-	RECTANGLE_FIGURE = 200,
-	HEXAGON_FIGURE = 201,
-	TRIANGLE_FIGURE = 202,
-	SQUARE_FIGURE = 203,
-	CIRCLE_FIGURE = 204,
-};
-
 struct Point	//To be used for figures points
 {
 	int x, y;
