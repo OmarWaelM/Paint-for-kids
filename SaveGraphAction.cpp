@@ -1,5 +1,6 @@
 #include "SaveGraphAction.h"
 #include <fstream>
+#include "ApplicationManager.h"
 
 SaveGraphAction::SaveGraphAction(ApplicationManager* pApp, bool check = false): Action(pApp) {}
 
@@ -9,7 +10,6 @@ void SaveGraphAction::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	pOut->PrintMessage("Please enter the file name that's to be saved");
 	FileName = pIn->GetSrting(pOut);
-	pOut->PrintMessage("Your file was saved successfully");
 }
 
 void SaveGraphAction::Execute()
@@ -23,6 +23,12 @@ void SaveGraphAction::Execute()
 	string CrntDrawColour;
 	string CrntFillColour;
 
+	ReadActionParameters();
+
+	ofstream OutputFile;
+	OutputFile.open(FileName + ".txt", ios::out);
+	
+	str_to_int
 	if (pOut->getCrntDrawColor() == BLACK)
 		CrntDrawColour = "BLACK";
 	else if (pOut->getCrntDrawColor() == YELLOW)
@@ -55,5 +61,5 @@ void SaveGraphAction::Execute()
 	OutputFile << CrntDrawColour << "   " << CrntFillColour << endl;
 	pManager->SaveAllFigures(OutputFile);
 	OutputFile.close();
-	
+  pOut->PrintMessage("Your file was saved successfully");
 }
