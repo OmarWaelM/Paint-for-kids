@@ -38,7 +38,7 @@ bool CRectangle::IsWithin(Point P)
 	return false;
 }
 
-void CRectangle::Save(ofstream& OutputFile, int n)
+void CRectangle::Save(ofstream& OutputFile)
 {
 	string DrawColor;
 	string FillColor;
@@ -74,7 +74,7 @@ void CRectangle::Save(ofstream& OutputFile, int n)
 	}
 	else FillColor = "NO_FILL";
 
-	OutputFile << FigureType << n << "   " << Corner1.x << "   " << Corner1.y << "   " << Corner2.x << "   " << Corner2.y << "   " << DrawColor << "   " << FillColor << '\n';
+	OutputFile << FigureType << ID << "   " << Corner1.x << "   " << Corner1.y << "   " << Corner2.x << "   " << Corner2.y << "   " << DrawColor << "   " << FillColor << '\n';
 }
 
 void CRectangle::Load(ifstream& InputFile, CFigure*& s)

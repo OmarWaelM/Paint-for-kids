@@ -36,7 +36,7 @@ bool CCircle::IsWithin(Point P)
 	return false;
 }
 
-void CCircle::Save(ofstream& OutputFile, int n)
+void CCircle::Save(ofstream& OutputFile)
 {
 	string DrawColor;
 	string FillColor;
@@ -72,7 +72,7 @@ void CCircle::Save(ofstream& OutputFile, int n)
 	}
 	else FillColor = "NO_FILL";
 
-	OutputFile << FigureType << "   " << n << "   " << Centre.x << "   " << Centre.y << "   " << Radius.x << "   " << Radius.y << "   " << DrawColor << "   " << FillColor << '\n';
+	OutputFile << FigureType << "   " << ID << "   " << Centre.x << "   " << Centre.y << "   " << Radius.x << "   " << Radius.y << "   " << DrawColor << "   " << FillColor << '\n';
 }
 
 void CCircle::Load(ifstream& InputFile, CFigure*& s)

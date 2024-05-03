@@ -31,7 +31,7 @@ bool CSquare::IsWithin(Point P)
 	return false;
 }
 
-void CSquare::Save(ofstream& OutputFile, int n)
+void CSquare::Save(ofstream& OutputFile)
 {
 	string DrawColor;
 	string FillColor;
@@ -67,7 +67,7 @@ void CSquare::Save(ofstream& OutputFile, int n)
 	}
 	else FillColor = "NO_FILL";
 
-	OutputFile << FigureType << "   " << n << "   " << Centre.x << "   " << Centre.y << "   " << DrawColor << "   " << FillColor << '\n';
+	OutputFile << FigureType << "   " << ID << "   " << Centre.x << "   " << Centre.y << "   " << DrawColor << "   " << FillColor << '\n';
 
 }
 

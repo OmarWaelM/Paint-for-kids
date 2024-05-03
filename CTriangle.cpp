@@ -42,7 +42,7 @@ bool CTriangle::IsWithin(Point P)
 	return false;
 }
 
-void CTriangle::Save(ofstream& OutputFile, int n)
+void CTriangle::Save(ofstream& OutputFile)
 {
 	string DrawColor;
 	string FillColor;
@@ -78,7 +78,7 @@ void CTriangle::Save(ofstream& OutputFile, int n)
 	}
 	else FillColor = "NO_FILL";
 
-	OutputFile << FigureType << "   " << n << "   " << P1.x << "   " << P1.y << "   " << P2.x << "   " << P2.y << "   " << P3.x << "   " << P3.y << "   " << DrawColor << "   " << FillColor << '\n';
+	OutputFile << FigureType << "   " << ID << "   " << P1.x << "   " << P1.y << "   " << P2.x << "   " << P2.y << "   " << P3.x << "   " << P3.y << "   " << DrawColor << "   " << FillColor << '\n';
 }
 
 void CTriangle::Load(ifstream& InputFile, CFigure*& s)

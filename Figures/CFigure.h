@@ -35,7 +35,7 @@ public:
 
 	///Decide the parameters that you should pass to each function	
 
-	virtual void Save(ofstream& OutputFile, int n) = 0;
+	virtual void Save(ofstream& OutputFile) = 0;
 	virtual void Load(ifstream& InputFile, CFigure*& s) = 0;
 
 };

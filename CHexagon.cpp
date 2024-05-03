@@ -55,7 +55,7 @@ bool CHexagon::IsWithinHelper(int P1x, int P1y, int P2x, int P2y, int P3x, int P
 	return false;
 }
 
-void CHexagon::Save(ofstream& OutputFile, int n)
+void CHexagon::Save(ofstream& OutputFile)
 {
 	string DrawColor;
 	string FillColor;
@@ -91,7 +91,7 @@ void CHexagon::Save(ofstream& OutputFile, int n)
 	}
 	else FillColor = "NO_FILL";
 
-	OutputFile << FigureType << "   " << n << "   " << Centre.x << "   " << Centre.y << "   " << DrawColor << "   " << FillColor << '\n';
+	OutputFile << FigureType << "   " << ID << "   " << Centre.x << "   " << Centre.y << "   " << DrawColor << "   " << FillColor << '\n';
 }
 
 void CHexagon::Load(ifstream& InputFile, CFigure*& s)

@@ -304,7 +304,7 @@ void ApplicationManager::SaveAllFigures(ofstream& OutputFile)
 	OutputFile << FigCount << endl;
 	for (int j = 0; j < FigCount; j++)
 	{
-		FigList[j]->Save(OutputFile, j);
+		FigList[j]->Save(OutputFile);
 	}
 }
 
