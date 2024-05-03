@@ -21,11 +21,12 @@ void DeleteAction::Execute()
 		for (int i = pManager->GetSelectedCount() - 1; i >= 0; i--)
 		{
 			pFig = pManager->GetSelected(i);
-			pManager->DeleteSelected(0, pFig);
+			pManager->DeleteSelected(0, pFig); // just removed from selected list
 			pManager->Delete_Figure(pFig);
 			pOut->ClearStatusBar();
 		}
 	}
 	else
 		pOut->PrintMessage("No Items Selected.");
+  
 }

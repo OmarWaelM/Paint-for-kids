@@ -28,7 +28,6 @@ void CRectangle::PrintInfo(Output* pOut)
 	pOut->PrintMessage(msg);
 }
 
-
 bool CRectangle::IsWithin(Point P)
 {
 	if ((P.x < Corner1.x && P.x > Corner2.x) || (P.x > Corner1.x && P.x < Corner2.x))

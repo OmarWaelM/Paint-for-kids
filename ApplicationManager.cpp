@@ -4,8 +4,19 @@
 #include "AddHexagonAction.h"
 #include "AddSquareAction.h"
 #include "AddTriangleAction.h"
+#include "PickByTypeAction.h"
+#include "PickByColourAction.h"
+#include "DeleteAction.h"
 #include "SelectFigure.h"
 #include "DeleteAction.h"
+#include "SendToBack.h"
+#include "BringToFront.h"
+
+#include "Figures/CRectangle.h"
+#include "CCircle.h"
+#include "CHexagon.h"
+#include "CSquare.h"
+#include "CTriangle.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -44,7 +55,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
 			break;
-			
+		
 		case DRAW_HEXAGON:
 			pAct = new AddHexagonAction(this);
 			break;
@@ -60,7 +71,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_SQUARE:
 			pAct = new AddSquareAction(this);
 			break;
-
+      
 		case TO_SELECT:
 			pAct = new SelectFigure(this);
 			break;
@@ -69,9 +80,24 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new DeleteAction(this);
 			break;
 
+		case TO_SENDBACK:
+			pAct = new SendToBack(this);
+			break;
+
+		case TO_BRINGFRONT:
+			pAct = new BringToFront(this);
+			break;
+
+		case TO_FIGURETYPE:
+			pAct = new PickByTypeAction(this);
+			break;
+
+		case TO_FILLCOLOUR:
+			pAct = new PickByColourAction(this);
+			break;
+
 		case EXIT:
 			///create ExitAction here
-			
 			break;
 		
 		case STATUS:	//a click on the status bar ==> no action
@@ -105,10 +131,33 @@ void ApplicationManager::Delete_Figure(CFigure* pFig)
 		if (FigList[i] == pFig)
 		{
 			delete FigList[i];
+			// shifting array
 			for (int j = i; j < FigCount - 1; j++)
 				FigList[j] = FigList[j + 1];
 			FigList[FigCount - 1] = NULL;
 			FigCount--;
+		}
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////
+void ApplicationManager::MoveFig(CFigure* Fig, int in)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i] == Fig)
+		{
+			if (i > in)
+			{
+				for (int j = i-1; j >= in; j--)
+					FigList[j + 1] = FigList[j];
+				FigList[in] = Fig;
+			}
+			else
+			{
+				for (int j = i + 1; j <= in; j++)
+					FigList[j - 1] = FigList[j];
+				FigList[in] = Fig;
+			}
 		}
 	}
 }
@@ -129,6 +178,82 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 	//Remember that ApplicationManager only calls functions do NOT implement it.
 
 	return NULL;
+}
+////////////////////////////////////////////////////////////////////////////////////
+int ApplicationManager::Get_Play_Mode_Count(int param[2]) // param [ Figure type, Figure Color ]
+{
+	//Figures : Rect, Hex, Triangle, Square, Circle
+	//Colors : Black, Red Orange, Yellow, Green, Blue, Unfilled
+	int count = 0;
+	
+	for (int i = 0; i < FigCount; i++)
+	{
+		bool condFig = (param[0] == -1);
+		bool condCol = (param[1] == -1);
+		switch (param[0])
+		{
+		case 1:
+			condFig = (dynamic_cast<CRectangle*>(FigList[i]) != NULL);
+			break;
+
+		case 2:
+			condFig = (dynamic_cast<CHexagon*>(FigList[i]) != NULL);
+			break;
+
+		case 3:
+			condFig = (dynamic_cast<CTriangle*>(FigList[i]) != NULL);
+			break;
+
+		case 4:
+			condFig = (dynamic_cast<CSquare*>(FigList[i]) != NULL);
+			break;
+
+		case 5:
+			condFig = (dynamic_cast<CCircle*>(FigList[i]) != NULL);
+			break;
+
+		default:
+			break;
+		}
+		
+		switch (param[1])
+		{
+		case 1:
+			condCol = (FigList[i]->Get_Filled_Colour() == BLACK);
+			break;
+
+		case 2:
+			condCol = (FigList[i]->Get_Filled_Colour() == RED);
+			break;
+
+		case 3:
+			condCol = (FigList[i]->Get_Filled_Colour() == ORANGE);
+			break;
+
+		case 4:
+			condCol = (FigList[i]->Get_Filled_Colour() == YELLOW);
+			break;
+
+		case 5:
+			condCol = (FigList[i]->Get_Filled_Colour() == GREEN);
+			break;
+
+		case 6:
+			condCol = (FigList[i]->Get_Filled_Colour() == BLUE);
+			break;
+
+		case 7:
+			condCol = (FigList[i]->isFilled() == false);
+			break;
+
+		default:
+			break;
+		}
+		
+		if (condFig && condCol)
+			count++;
+	}
+	return count;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddSelected(CFigure* sFig)
@@ -159,9 +284,20 @@ void ApplicationManager::DeleteSelected(int i, CFigure* Fig)
 	SelectedFig[SelCount - 1] = NULL;
 	SelCount--;
 }
+
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
+
+//Save all figures
+void ApplicationManager::SaveAllFigures(ofstream& F)
+{
+	F << FigCount << endl;
+	for (int j = 0; j < FigCount; j++)
+	{
+		FigList[j]->Save(F, j);
+	}
+}
 
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const

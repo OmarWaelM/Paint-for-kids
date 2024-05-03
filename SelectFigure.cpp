@@ -1,12 +1,10 @@
 #include "SelectFigure.h"
 #include "ApplicationManager.h"
-
 #include "Figures/CRectangle.h"
 #include "CCircle.h"
 #include "CTriangle.h"
 #include "CHexagon.h"
 #include "CSquare.h"
-
 #include "GUI/Input.h"
 #include "GUI/Output.h"
 
@@ -94,9 +92,11 @@ void SelectFigure::PrintInfo() const
 			else if (C != NULL) { counts[4]++; }
 		}
 		string msg; 
-		msg = to_string(counts[0]) + " Rectangle(s), "
-			+ to_string(counts[1]) + " Hexagon(s), " + to_string(counts[2]) + " Triangle(s), "
-			+ to_string(counts[3]) + " Square(s), " + to_string(counts[4]) + " Circle(s)";
+		msg = (counts[0] > 0) ? msg + to_string(counts[0]) + " Rectangle(s), " : msg ;
+		msg = (counts[1] > 0) ? msg + to_string(counts[1]) + " Hexagon(s), " : msg ;
+		msg = (counts[2] > 0) ? msg + to_string(counts[2]) + " Triangle(s), " : msg ;
+		msg = (counts[3] > 0) ? msg + to_string(counts[3]) + " Square(s), " : msg ;
+		msg = (counts[4] > 0) ? msg + to_string(counts[4]) + " Circle(s), " : msg ;
 
 		pOut->PrintMessage(msg);
 		break;
