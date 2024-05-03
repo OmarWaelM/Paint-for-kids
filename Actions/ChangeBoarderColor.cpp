@@ -1,7 +1,6 @@
 #include "ChangeBoarderColor.h"
 #include "ApplicationManager.h"
 
-
 ChangeBoarderColor::ChangeBoarderColor(ApplicationManager* pApp) : Action (pApp)
 {
 }
@@ -11,7 +10,7 @@ void ChangeBoarderColor::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
-	pOut->PrintMessage("Change boarder color tool picked, Click on a color.");
+	pOut->PrintMessage("Change Boarder Color tool picked, Click on a color.");
 	ActType = pIn->GetUserAction();
 
 
@@ -49,8 +48,6 @@ void ChangeBoarderColor::ReadActionParameters()
 
 void ChangeBoarderColor::Execute()
 {
-	Output* pOut = pManager->GetOutput();
-
 	if (pManager->GetSelectedCount() == 1)
 	{
 		ReadActionParameters();
@@ -59,6 +56,7 @@ void ChangeBoarderColor::Execute()
 	}
 	else
 	{
-		pOut->PrintMessage("Select Only ONE figure");
+		cout << "Select only ONE figure";
 	}
+
 }

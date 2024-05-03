@@ -1,6 +1,5 @@
 #include "ChangeFillColor.h"
 
-
 ChangeFillColor::ChangeFillColor(ApplicationManager* pApp) : Action (pApp)
 {
 }
@@ -50,17 +49,15 @@ void ChangeFillColor::ReadActionParameters()
 
 void ChangeFillColor::Execute()
 { 
-	Output* pOut = pManager->GetOutput();
-
 	if (pManager->GetSelectedCount() == 1)
 	{
 		ReadActionParameters();
-		SelectedFig = pManager->GetSelected(0);
+		Selected Fig = pManager->GetSelected(0);
 		SelectedFig->ChngFillClr(SelectedColor);
 	}
 	else
 	{
-		pOut->PrintMessage("Select Only ONE figure");
+		cout << "Select only ONE figure";
 	}
 
 }

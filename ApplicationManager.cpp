@@ -12,6 +12,7 @@
 #include "SendToBack.h"
 #include "BringToFront.h"
 #include "ChangeFillColor.h"
+#include "ChangeBoarderColor.h"
 #include "Figures/CRectangle.h"
 #include "CCircle.h"
 #include "CHexagon.h"
@@ -98,6 +99,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case TO_CHANGEFILL:
 			pAct = new ChangeFillColor(this);
+			break;
+
+		case TO_CHANGEBORDER:
+			pAct = new ChangeBoarderColor(this);
 			break;
 
 		case EXIT:
