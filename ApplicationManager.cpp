@@ -6,6 +6,7 @@
 #include "AddTriangleAction.h"
 #include "PickByTypeAction.h"
 #include "PickByColourAction.h"
+#include "PickByBothAction.h"
 #include "DeleteAction.h"
 #include "SelectFigure.h"
 #include "DeleteAction.h"
@@ -14,6 +15,9 @@
 #include "ChangeFillColor.h"
 #include "ChangeBoarderColor.h"
 #include "ClearAllAction.h"
+#include "SaveGraphAction.h"
+#include "SwitchToPlayModeAction.h"
+
 #include "Figures/CRectangle.h"
 #include "CCircle.h"
 #include "CHexagon.h"
@@ -57,7 +61,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
 			break;
-		
+
 		case DRAW_HEXAGON:
 			pAct = new AddHexagonAction(this);
 			break;
@@ -90,6 +94,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new BringToFront(this);
 			break;
 
+		case TO_SAVEGRAPH:
+			pAct = new SaveGraphAction(this);
+			break;
+
+		case TO_PLAY:
+			pAct = new SwitchToPlayModeAction(this);
+			break;
+
 		case TO_FIGURETYPE:
 			pAct = new PickByTypeAction(this);
 			break;
@@ -104,6 +116,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case TO_CHANGEBORDER:
 			pAct = new ChangeBoarderColor(this);
+
+		case TO_SAVEGRAPH:
+			pAct = new SaveGraphAction(this);
+			break;
+
+		case TO_PLAY:
+			pAct = new SwitchToPlayModeAction(this);
+
 			break;
 
 		case TO_CLEARALL:
@@ -111,6 +131,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 
 		case EXIT:
+			pAct = new ExitAction(this);
 			///create ExitAction here
 			break;
 		
@@ -303,22 +324,19 @@ void ApplicationManager::SetClipboard(CFigure* Fig)
 {
 	Clipboard = Fig;
 }
-
-
-
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
 
 //Save all figures
-//void ApplicationManager::SaveAllFigures(ofstream& F)
-//{
-//	F << FigCount << endl;
-//	for (int j = 0; j < FigCount; j++)
-//	{
-//		FigList[j]->Save(F, j);
-//	}
-//}
+void ApplicationManager::SaveAllFigures(ofstream& OutputFile)
+{
+	OutputFile << FigCount << endl;
+	for (int j = 0; j < FigCount; j++)
+	{
+		FigList[j]->Save(OutputFile);
+	}
+}
 
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const

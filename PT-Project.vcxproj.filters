@@ -169,8 +169,6 @@
     <ClCompile Include="BringToFront.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="PickByColourAction.cpp" />
-    <ClCompile Include="PickByTypeAction.cpp" />
     <ClCompile Include="AddCircleAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
@@ -184,6 +182,17 @@
       <Filter>Action Classes</Filter>
     </ClCompile>
     <ClCompile Include="DeleteAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="PickByColourAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="PickByTypeAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveGraphAction.cpp" />
+    <ClCompile Include="SwitchToPlayModeAction.cpp" />
+    <ClCompile Include="PickByBothAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -294,8 +303,6 @@
     <ClInclude Include="BringToFront.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="PickByColourAction.h" />
-    <ClInclude Include="PickByTypeAction.h" />
     <ClInclude Include="AddCircleAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
@@ -309,6 +316,17 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="DeleteAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="PickByColourAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="PickByTypeAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveGraphAction.h" />
+    <ClInclude Include="SwitchToPlayModeAction.h" />
+    <ClInclude Include="PickByBothAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

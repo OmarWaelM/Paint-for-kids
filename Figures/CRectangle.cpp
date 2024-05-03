@@ -37,3 +37,46 @@ bool CRectangle::IsWithin(Point P)
 	}
 	return false;
 }
+
+void CRectangle::Save(ofstream& OutputFile)
+{
+	string DrawColor;
+	string FillColor;
+	string FigureType = "RECTANGLE";
+
+	if (FigGfxInfo.DrawClr == BLACK)
+		DrawColor = "BLACK";
+	else if (FigGfxInfo.DrawClr == YELLOW)
+		DrawColor = "YELLOW";
+	else if (FigGfxInfo.DrawClr == ORANGE)
+		DrawColor = "ORANGE";
+	else if (FigGfxInfo.DrawClr == RED)
+		DrawColor = "RED";
+	else if (FigGfxInfo.DrawClr == GREEN)
+		DrawColor = "GREEN";
+	else if (FigGfxInfo.DrawClr == BLUE)
+		DrawColor = "BLUE";
+
+	if (FigGfxInfo.isFilled)
+	{
+		if (FigGfxInfo.FillClr == BLACK)
+			FillColor = "BLACK";
+		else if (FigGfxInfo.FillClr == YELLOW)
+			FillColor = "YELLOW";
+		else if (FigGfxInfo.FillClr == ORANGE)
+			FillColor = "ORANGE";
+		else if (FigGfxInfo.FillClr == RED)
+			FillColor = "RED";
+		else if (FigGfxInfo.FillClr == GREEN)
+			FillColor = "GREEN";
+		else if (FigGfxInfo.FillClr == BLUE)
+			FillColor = "BLUE";
+	}
+	else FillColor = "NO_FILL";
+
+	OutputFile << FigureType << ID << "   " << Corner1.x << "   " << Corner1.y << "   " << Corner2.x << "   " << Corner2.y << "   " << DrawColor << "   " << FillColor << '\n';
+}
+
+void CRectangle::Load(ifstream& InputFile, CFigure*& s)
+{
+}

@@ -184,10 +184,13 @@
     <ClCompile Include="GUI\Output.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PickByBothAction.cpp" />
     <ClCompile Include="PickByColourAction.cpp" />
     <ClCompile Include="PickByTypeAction.cpp" />
+    <ClCompile Include="SaveGraphAction.cpp" />
     <ClCompile Include="SelectFigure.cpp" />
     <ClCompile Include="SondToBack.cpp" />
+    <ClCompile Include="SwitchToPlayModeAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddCircleAction.h" />
@@ -232,10 +235,13 @@
     <ClInclude Include="GUI\UI_Info.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="PickByBothAction.h" />
     <ClInclude Include="PickByColourAction.h" />
     <ClInclude Include="PickByTypeAction.h" />
+    <ClInclude Include="SaveGraphAction.h" />
     <ClInclude Include="SelectFigure.h" />
     <ClInclude Include="SendToBack.h" />
+    <ClInclude Include="SwitchToPlayModeAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
