@@ -37,7 +37,6 @@ public:
 
 	virtual void Save(ofstream& OutputFile) = 0;
 	virtual void Load(ifstream& InputFile, CFigure*& s) = 0;
-
 };
 
 #endif

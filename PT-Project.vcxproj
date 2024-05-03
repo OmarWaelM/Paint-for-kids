@@ -134,6 +134,8 @@
     <ClCompile Include="AddTriangleAction.cpp" />
     <ClCompile Include="BringToFront.cpp" />
     <ClCompile Include="CCircle.cpp" />
+    <ClCompile Include="ChangeBoarderColor.cpp" />
+    <ClCompile Include="ChangeFillColor.cpp" />
     <ClCompile Include="CHexagon.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
@@ -181,10 +183,13 @@
     <ClCompile Include="GUI\Output.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PickByBothAction.cpp" />
     <ClCompile Include="PickByColourAction.cpp" />
     <ClCompile Include="PickByTypeAction.cpp" />
+    <ClCompile Include="SaveGraphAction.cpp" />
     <ClCompile Include="SelectFigure.cpp" />
     <ClCompile Include="SondToBack.cpp" />
+    <ClCompile Include="SwitchToPlayModeAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddCircleAction.h" />
@@ -193,6 +198,8 @@
     <ClInclude Include="AddTriangleAction.h" />
     <ClInclude Include="BringToFront.h" />
     <ClInclude Include="CCircle.h" />
+    <ClInclude Include="ChangeBoarderColor.h" />
+    <ClInclude Include="ChangeFillColor.h" />
     <ClInclude Include="CHexagon.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
@@ -226,10 +233,13 @@
     <ClInclude Include="GUI\UI_Info.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="PickByBothAction.h" />
     <ClInclude Include="PickByColourAction.h" />
     <ClInclude Include="PickByTypeAction.h" />
+    <ClInclude Include="SaveGraphAction.h" />
     <ClInclude Include="SelectFigure.h" />
     <ClInclude Include="SendToBack.h" />
+    <ClInclude Include="SwitchToPlayModeAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
