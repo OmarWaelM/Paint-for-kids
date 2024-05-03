@@ -81,6 +81,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new AddSquareAction(this);
 			break;
       
+		case TO_CHANGEFILL:
+			pAct = new ChangeFillColor(this);
+			break;
+
+		case TO_CHANGEBORDER:
+			pAct = new ChangeBoarderColor(this);
+			break;
+
 		case TO_SELECT:
 			pAct = new SelectFigure(this);
 			break;
@@ -105,12 +113,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new PickByColourAction(this);
 			break;
 
-		case TO_CHANGEFILL:
-			pAct = new ChangeFillColor(this);
-			break;
-
-		case TO_CHANGEBORDER:
-			pAct = new ChangeBoarderColor(this);
 
 		case TO_SAVEGRAPH:
 			pAct = new SaveGraphAction(this);
@@ -129,6 +131,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case TO_CLEARALL:
 			pAct = new ClearAllAction(this);
+
+		case TO_FIGUREANDFILL:
+			pAct = new PickByBothAction(this);
 			break;
 
 		case EXIT:
@@ -344,7 +349,7 @@ void ApplicationManager::UpdateInterface() const
 {	
 	pOut->ClearDrawArea();
 	for(int i=0; i<FigCount; i++)
-		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+	FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input

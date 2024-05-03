@@ -177,19 +177,21 @@
     <ClCompile Include="CSquare.cpp" />
     <ClCompile Include="CTriangle.cpp" />
     <ClCompile Include="DeleteAction.cpp" />
+    <ClCompile Include="ExitAction.cpp" />
     <ClCompile Include="Figures\CFigure.cpp" />
     <ClCompile Include="Figures\CRectangle.cpp" />
     <ClCompile Include="Actions\AddRectAction.cpp" />
     <ClCompile Include="GUI\Input.cpp" />
     <ClCompile Include="GUI\Output.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
+    <ClCompile Include="LoadGraphAction.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PickByBothAction.cpp" />
     <ClCompile Include="PickByColourAction.cpp" />
     <ClCompile Include="PickByTypeAction.cpp" />
     <ClCompile Include="SaveGraphAction.cpp" />
     <ClCompile Include="SelectFigure.cpp" />
-    <ClCompile Include="SondToBack.cpp" />
+    <ClCompile Include="SendToBack.cpp" />
     <ClCompile Include="SwitchToPlayModeAction.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -226,6 +228,7 @@
     <ClInclude Include="CSquare.h" />
     <ClInclude Include="CTriangle.h" />
     <ClInclude Include="DeleteAction.h" />
+    <ClInclude Include="ExitAction.h" />
     <ClInclude Include="Figures\CFigure.h" />
     <ClInclude Include="Figures\CRectangle.h" />
     <ClInclude Include="Actions\Action.h" />
@@ -235,6 +238,7 @@
     <ClInclude Include="GUI\UI_Info.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="LoadGraphAction.h" />
     <ClInclude Include="PickByBothAction.h" />
     <ClInclude Include="PickByColourAction.h" />
     <ClInclude Include="PickByTypeAction.h" />

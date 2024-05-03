@@ -78,7 +78,7 @@ void CTriangle::Save(ofstream& OutputFile)
 	}
 	else FillColor = "NO_FILL";
 
-	OutputFile << FigureType << "   " << ID << "   " << P1.x << "   " << P1.y << "   " << P2.x << "   " << P2.y << "   " << P3.x << "   " << P3.y << "   " << DrawColor << "   " << FillColor << '\n';
+	OutputFile << FigureType << "\t" << ID << "\t" << P1.x << "\t" << P1.y << "\t" << P2.x << "\t" << P2.y << "\t" << P3.x << "\t" << P3.y << "\t" << DrawColor << "\t" << FillColor << '\n';
 }
 
 void CTriangle::Load(ifstream& InputFile, CFigure*& s)

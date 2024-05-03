@@ -91,7 +91,7 @@ void CHexagon::Save(ofstream& OutputFile)
 	}
 	else FillColor = "NO_FILL";
 
-	OutputFile << FigureType << "   " << ID << "   " << Centre.x << "   " << Centre.y << "   " << DrawColor << "   " << FillColor << '\n';
+	OutputFile << FigureType << "\t\t" << ID << "\t" << Centre.x << "\t" << Centre.y << "\t" << DrawColor << "\t" << FillColor << '\n';
 }
 
 void CHexagon::Load(ifstream& InputFile, CFigure*& s)

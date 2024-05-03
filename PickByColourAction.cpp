@@ -71,6 +71,8 @@ void PickByColourAction::Execute()
 			param[1] = 6;
 		}
 
+		Total_Count = pManager->Get_Play_Mode_Count(param);
+
 		while (Total_Count > 0)
 		{
 			pIn->GetPointClicked(Clicked.x, Clicked.y);

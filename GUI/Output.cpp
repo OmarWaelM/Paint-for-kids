@@ -195,7 +195,7 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	else
 		DrawingClr = RectGfxInfo.DrawClr;
 
-	pWind->SetPen(DrawingClr, 1);
+	pWind->SetPen(DrawingClr, UI.PenWidth);
 	drawstyle style;
 	if (RectGfxInfo.isFilled)
 	{
@@ -206,7 +206,11 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 		style = FRAME;
 
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
-	this->CreateDrawToolBar();
+	
+	if (UI.InterfaceMode == MODE_DRAW)
+		this->CreateDrawToolBar();
+	else
+		this->CreatePlayToolBar();
 }
 
 void Output::DrawSqr(Point P, GfxInfo SqrGfxInfo, bool selected) const
@@ -219,7 +223,7 @@ void Output::DrawSqr(Point P, GfxInfo SqrGfxInfo, bool selected) const
 	else
 		DrawingClr = SqrGfxInfo.DrawClr;
 
-	pWind->SetPen(DrawingClr, 1);
+	pWind->SetPen(DrawingClr, UI.PenWidth);
 	drawstyle style;
 	if (SqrGfxInfo.isFilled)
 	{
@@ -238,7 +242,11 @@ void Output::DrawSqr(Point P, GfxInfo SqrGfxInfo, bool selected) const
 	P2.y = P.y + sideLen / 2;
 
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
-	this->CreateDrawToolBar();
+
+	if (UI.InterfaceMode == MODE_DRAW)
+		this->CreateDrawToolBar();
+	else
+		this->CreatePlayToolBar();
 }
 
 void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool selected) const
@@ -249,7 +257,7 @@ void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool sele
 	else
 		DrawingClr = TriGfxInfo.DrawClr;
 
-	pWind->SetPen(DrawingClr, 1);
+	pWind->SetPen(DrawingClr, UI.PenWidth);
 	drawstyle style;
 	if (TriGfxInfo.isFilled)
 	{
@@ -260,7 +268,11 @@ void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool sele
 		style = FRAME;
 
 	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
-	this->CreateDrawToolBar();
+
+	if (UI.InterfaceMode == MODE_DRAW)
+		this->CreateDrawToolBar();
+	else
+		this->CreatePlayToolBar();
 
 }
 
@@ -272,7 +284,7 @@ void Output::DrawHex(Point P, GfxInfo HexGfxInfo, bool selected) const
 	else
 		DrawingClr = HexGfxInfo.DrawClr;
 
-	pWind->SetPen(DrawingClr, 1);
+	pWind->SetPen(DrawingClr, UI.PenWidth);
 	drawstyle style;
 	if (HexGfxInfo.isFilled)
 	{
@@ -306,7 +318,11 @@ void Output::DrawHex(Point P, GfxInfo HexGfxInfo, bool selected) const
 	Y[5] = P.y;
 
 	pWind->DrawPolygon(X, Y, 6, style);
-	this->CreateDrawToolBar();
+
+	if (UI.InterfaceMode == MODE_DRAW)
+		this->CreateDrawToolBar();
+	else
+		this->CreatePlayToolBar();
 }
 
 void Output::DrawCirc(Point P1, Point P2, GfxInfo CircGfxInfo, bool selected) const
@@ -317,7 +333,7 @@ void Output::DrawCirc(Point P1, Point P2, GfxInfo CircGfxInfo, bool selected) co
 	else
 		DrawingClr = CircGfxInfo.DrawClr;
 
-	pWind->SetPen(DrawingClr, 1);
+	pWind->SetPen(DrawingClr, UI.PenWidth);
 	drawstyle style;
 	if (CircGfxInfo.isFilled)
 	{
@@ -330,7 +346,11 @@ void Output::DrawCirc(Point P1, Point P2, GfxInfo CircGfxInfo, bool selected) co
 	int radius = sqrt(pow(P1.x - P2.x, 2) + pow(P1.y - P2.y, 2));
 
 	pWind->DrawCircle(P1.x, P1.y, radius, style);
-	this->CreateDrawToolBar();
+
+	if (UI.InterfaceMode == MODE_DRAW)
+		this->CreateDrawToolBar();
+	else
+		this->CreatePlayToolBar();
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
