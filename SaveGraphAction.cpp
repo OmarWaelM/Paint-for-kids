@@ -50,7 +50,7 @@ void SaveGraphAction::Execute()
 	{
 		ofstream OutputFile;
 		OutputFile.open(FileName + ".txt", ios::out);
-		OutputFile << CrntDrawColour << "	" << "NO FILL COLOUR" << endl;
+		OutputFile << CrntDrawColour << "	" << "NO_FILL" << endl;
 		pManager->SaveAllFigures(OutputFile);
 		OutputFile.close();
 	}

@@ -1,4 +1,5 @@
 #include "CRectangle.h"
+#include "colors.h"
 
 CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
@@ -36,4 +37,45 @@ bool CRectangle::IsWithin(Point P)
 			return true;
 	}
 	return false;
+}
+
+void CRectangle::Save(ofstream& F, int n)
+{
+	color DrawColor;
+	color FillColor;
+
+	if (FigGfxInfo.DrawClr == BLACK)
+		DrawColor = BLACK;
+	else if (FigGfxInfo.DrawClr == YELLOW)
+		DrawColor = YELLOW;
+	else if (FigGfxInfo.DrawClr == ORANGE)
+		DrawColor = ORANGE;
+	else if (FigGfxInfo.DrawClr == RED)
+		DrawColor = RED;
+	else if (FigGfxInfo.DrawClr == GREEN)
+		DrawColor = GREEN;
+	else if (FigGfxInfo.DrawClr == BLUE)
+		DrawColor = BLUE;
+
+	if (FigGfxInfo.isFilled)
+	{
+		if (FigGfxInfo.FillClr == BLACK)
+			FillColor = BLACK;
+		else if (FigGfxInfo.FillClr == YELLOW)
+			FillColor = YELLOW;
+		else if (FigGfxInfo.FillClr == ORANGE)
+			FillColor = ORANGE;
+		else if (FigGfxInfo.FillClr == RED)
+			FillColor = RED;
+		else if (FigGfxInfo.FillClr == GREEN)
+			FillColor = GREEN;
+		else if (FigGfxInfo.FillClr == BLUE)
+			FillColor = BLUE;
+	}
+	else FillColor = LIGHTGOLDENRODYELLOW;
+
+	if(FillColor == LIGHTGOLDENRODYELLOW)
+		F << "RECT" << n << "   " << Corner1.x << "   " << Corner1.y << "   " << Corner2.x << "   " << Corner2.y << "   " << DrawColor << "   " << "NO_FILL" << endl;
+	else 
+		F << "RECT" << n << "   " << Corner1.x << "   " << Corner1.y << "   " << Corner2.x << "   " << Corner2.y << "   " << DrawColor << "   " << FillColor << endl;
 }
