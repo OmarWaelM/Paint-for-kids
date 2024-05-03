@@ -13,5 +13,6 @@ void SwitchToPlayModeAction::Execute()
 	pOut->ClearDrawArea();
 	pOut->CreatePlayToolBar();
 	pOut->PrintMessage("You have just switched to Play mode, Enjoy!");
-	
+	SaveGraphAction s(pManager, true);
+	s.Execute();
 }

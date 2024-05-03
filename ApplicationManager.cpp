@@ -14,8 +14,12 @@
 #include "BringToFront.h"
 #include "ChangeFillColor.h"
 #include "ChangeBoarderColor.h"
+#include "ClearAllAction.h"
 #include "SaveGraphAction.h"
+#include "LoadGraphAction.h"
 #include "SwitchToPlayModeAction.h"
+#include "SwitchToDrawModeAction.h"
+#include "ExitAction.h"
 
 #include "Figures/CRectangle.h"
 #include "CCircle.h"
@@ -101,14 +105,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new BringToFront(this);
 			break;
 
-		case TO_SAVEGRAPH:
-			pAct = new SaveGraphAction(this);
-			break;
-
-		case TO_PLAY:
-			pAct = new SwitchToPlayModeAction(this);
-			break;
-
 		case TO_FIGURETYPE:
 			pAct = new PickByTypeAction(this);
 			break;
@@ -116,6 +112,25 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case TO_FILLCOLOUR:
 			pAct = new PickByColourAction(this);
 			break;
+
+
+		case TO_SAVEGRAPH:
+			pAct = new SaveGraphAction(this);
+			break;
+
+		case TO_LOADGRAPH:
+			pAct = new LoadGraphAction(this);
+			break;
+
+		case TO_PLAY:
+			pAct = new SwitchToPlayModeAction(this);
+			break;
+
+		case TO_DRAW:
+			pAct = new SwitchToDrawModeAction(this);
+
+		case TO_CLEARALL:
+			pAct = new ClearAllAction(this);
 
 		case TO_FIGUREANDFILL:
 			pAct = new PickByBothAction(this);
@@ -310,7 +325,11 @@ void ApplicationManager::DeleteSelected(int i, CFigure* Fig)
 	SelectedFig[SelCount - 1] = NULL;
 	SelCount--;
 }
-
+/////////////////////////////////////////////////////////////////
+void ApplicationManager::SetClipboard(CFigure* Fig)
+{
+	Clipboard = Fig;
+}
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
