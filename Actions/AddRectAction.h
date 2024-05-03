@@ -9,6 +9,7 @@ class AddRectAction: public Action
 private:
 	Point P1, P2; //Rectangle Corners
 	GfxInfo RectGfxInfo;
+
 public:
 	AddRectAction(ApplicationManager *pApp);
 
@@ -16,8 +17,6 @@ public:
 	virtual void ReadActionParameters();
 	
 	//Add rectangle to the ApplicationManager
-	virtual void Execute() ;
-	
+	virtual void Execute();
 };
-
 #endif

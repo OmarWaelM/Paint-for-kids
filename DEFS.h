@@ -20,13 +20,14 @@ enum ActionType //The actions supported (you can add more if needed)
 	SEL_RED,
 	SEL_GREEN,
 	SEL_BLUE,
+	TO_SELECT,
 	TO_DELETEFIGURE,
 	TO_CLEARALL,
 	TO_COPYFIGURE,
 	TO_CUTFIGURE,
 	TO_PASTEFIGURE,
-	TO_BRINGBACK,
-	TO_SENDFRONT,
+	TO_SENDBACK,
+	TO_BRINGFRONT,
 	TO_SAVEGRAPH,
 	TO_LOADGRAPH,
 	EXIT,
@@ -40,6 +41,19 @@ enum ActionType //The actions supported (you can add more if needed)
 	STATUS			//A click on the status bar
 
 	///TODO: Add the other action types of the two modes
+};
+
+};
+
+enum Save_Load_FigureType
+{
+	RECTANGLE_FIGURE = 200,
+	HEXAGON_FIGURE = 201,
+	TRIANGLE_FIGURE = 202,
+	SQUARE_FIGURE = 203,
+	CIRCLE_FIGURE = 204,
+};
+
 };
 
 enum Save_Load_FigureType
