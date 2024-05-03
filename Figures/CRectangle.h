@@ -20,9 +20,9 @@ public:
 
 	virtual bool IsWithin(Point P);
 
-	virtual void Save(ofstream& OutputFile, int n) = 0;
+	virtual void Save(ofstream& OutputFile, int n);
 	
-	virtual void Load(ifstream& InputFile, CFigure*& s) = 0;
+	virtual void Load(ifstream& InputFile, CFigure*& s);
 };
 
 #endif
