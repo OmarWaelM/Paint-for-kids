@@ -19,6 +19,10 @@ public:
 	virtual void PrintInfo(Output* pOut);
 
 	virtual bool IsWithin(Point P);
+
+	virtual void Save(ofstream& OutputFile);
+	
+	virtual void Load(ifstream& InputFile, CFigure*& s);
 };
 
 #endif

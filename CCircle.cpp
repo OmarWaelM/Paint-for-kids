@@ -36,3 +36,46 @@ bool CCircle::IsWithin(Point P)
 	return false;
 }
 
+void CCircle::Save(ofstream& OutputFile)
+{
+	string DrawColor;
+	string FillColor;
+	string FigureType = "CIRCLE";
+
+	if (FigGfxInfo.DrawClr == BLACK)
+		DrawColor = "BLACK";
+	else if (FigGfxInfo.DrawClr == YELLOW)
+		DrawColor = "YELLOW";
+	else if (FigGfxInfo.DrawClr == ORANGE)
+		DrawColor = "ORANGE";
+	else if (FigGfxInfo.DrawClr == RED)
+		DrawColor = "RED";
+	else if (FigGfxInfo.DrawClr == GREEN)
+		DrawColor = "GREEN";
+	else if (FigGfxInfo.DrawClr == BLUE)
+		DrawColor = "BLUE";
+
+	if (FigGfxInfo.isFilled)
+	{
+		if (FigGfxInfo.FillClr == BLACK)
+			FillColor = "BLACK";
+		else if (FigGfxInfo.FillClr == YELLOW)
+			FillColor = "YELLOW";
+		else if (FigGfxInfo.FillClr == ORANGE)
+			FillColor = "ORANGE";
+		else if (FigGfxInfo.FillClr == RED)
+			FillColor = "RED";
+		else if (FigGfxInfo.FillClr == GREEN)
+			FillColor = "GREEN";
+		else if (FigGfxInfo.FillClr == BLUE)
+			FillColor = "BLUE";
+	}
+	else FillColor = "NO_FILL";
+
+	OutputFile << FigureType << "   " << ID << "   " << Centre.x << "   " << Centre.y << "   " << Radius.x << "   " << Radius.y << "   " << DrawColor << "   " << FillColor << '\n';
+}
+
+void CCircle::Load(ifstream& InputFile, CFigure*& s)
+{
+}
+

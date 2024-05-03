@@ -2,7 +2,7 @@
 #include <fstream>
 #include "ApplicationManager.h"
 
-SaveGraphAction::SaveGraphAction(ApplicationManager* pApp): Action(pApp) {}
+SaveGraphAction::SaveGraphAction(ApplicationManager* pApp, bool switch = false): Action(pApp) {}
 
 void SaveGraphAction::ReadActionParameters()
 {
@@ -10,14 +10,18 @@ void SaveGraphAction::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	pOut->PrintMessage("Please enter the file name that's to be saved");
 	FileName = pIn->GetSrting(pOut);
-	
 }
 
 void SaveGraphAction::Execute()
 {
 	Output* pOut = pManager->GetOutput();
-	int DrawColour;
-	int FillColour;
+
+	if (switch == false)
+		ReadActionParameters();
+	else FileName = "Pre-switch File";
+
+	string CrntDrawColour;
+	string CrntFillColour;
 
 	ReadActionParameters();
 
@@ -26,32 +30,36 @@ void SaveGraphAction::Execute()
 	
 	str_to_int
 	if (pOut->getCrntDrawColor() == BLACK)
-		OutputFile << "BLACK";
+		CrntDrawColour = "BLACK";
 	else if (pOut->getCrntDrawColor() == YELLOW)
-		OutputFile << "YELLOW";
+		CrntDrawColour = "YELLOW";
 	else if (pOut->getCrntDrawColor() == ORANGE)
-		OutputFile << "ORANGE";
+		CrntDrawColour = "ORANGE";
 	else if (pOut->getCrntDrawColor() == RED)
-		OutputFile << "RED";
+		CrntDrawColour = "RED";
 	else if (pOut->getCrntDrawColor() == GREEN)
-		OutputFile << "GREEN";
+		CrntDrawColour = "GREEN";
 	else if (pOut->getCrntDrawColor() == BLUE)
-		OutputFile << "BLUE";
-	OutputFile << "   ";
+		CrntDrawColour = "BLUE";
+
 	if (pOut->getCrntFillColor() == BLACK)
-		OutputFile << "BLACK";
+		CrntFillColour = "BLACK";
 	else if (pOut->getCrntFillColor() == YELLOW)
-		OutputFile << "YELLOW";
+		CrntFillColour = "YELLOW";
 	else if (pOut->getCrntFillColor() == ORANGE)
-		OutputFile << "ORANGE";
+		CrntFillColour = "ORANGE";
 	else if (pOut->getCrntFillColor() == RED)
-		OutputFile << "RED";
+		CrntFillColour = "RED";
 	else if (pOut->getCrntFillColor() == GREEN)
-		OutputFile << "GREEN";
+		CrntFillColour = "GREEN";
 	else if (pOut->getCrntFillColor() == BLUE)
-		OutputFile << "BLUE";
-	OutputFile << "\n";
-	//pManager->SaveAllFigures(OutputFile);
+		CrntFillColour = "BLUE";
+	else CrntFillColour = "NO_FILL";
+
+	ofstream OutputFile;
+	OutputFile.open(FileName + ".txt", ios::out);
+	OutputFile << CrntDrawColour << "   " << CrntFillColour << endl;
+	pManager->SaveAllFigures(OutputFile);
 	OutputFile.close();
-	pOut->PrintMessage("Your file was saved successfully");
+  pOut->PrintMessage("Your file was saved successfully");
 }

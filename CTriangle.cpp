@@ -41,3 +41,46 @@ bool CTriangle::IsWithin(Point P)
 		return true;
 	return false;
 }
+
+void CTriangle::Save(ofstream& OutputFile)
+{
+	string DrawColor;
+	string FillColor;
+	string FigureType = "TRIANGLE";
+
+	if (FigGfxInfo.DrawClr == BLACK)
+		DrawColor = "BLACK";
+	else if (FigGfxInfo.DrawClr == YELLOW)
+		DrawColor = "YELLOW";
+	else if (FigGfxInfo.DrawClr == ORANGE)
+		DrawColor = "ORANGE";
+	else if (FigGfxInfo.DrawClr == RED)
+		DrawColor = "RED";
+	else if (FigGfxInfo.DrawClr == GREEN)
+		DrawColor = "GREEN";
+	else if (FigGfxInfo.DrawClr == BLUE)
+		DrawColor = "BLUE";
+
+	if (FigGfxInfo.isFilled)
+	{
+		if (FigGfxInfo.FillClr == BLACK)
+			FillColor = "BLACK";
+		else if (FigGfxInfo.FillClr == YELLOW)
+			FillColor = "YELLOW";
+		else if (FigGfxInfo.FillClr == ORANGE)
+			FillColor = "ORANGE";
+		else if (FigGfxInfo.FillClr == RED)
+			FillColor = "RED";
+		else if (FigGfxInfo.FillClr == GREEN)
+			FillColor = "GREEN";
+		else if (FigGfxInfo.FillClr == BLUE)
+			FillColor = "BLUE";
+	}
+	else FillColor = "NO_FILL";
+
+	OutputFile << FigureType << "   " << ID << "   " << P1.x << "   " << P1.y << "   " << P2.x << "   " << P2.y << "   " << P3.x << "   " << P3.y << "   " << DrawColor << "   " << FillColor << '\n';
+}
+
+void CTriangle::Load(ifstream& InputFile, CFigure*& s)
+{
+}
