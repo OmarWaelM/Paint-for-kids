@@ -97,10 +97,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new BringToFront(this);
 			break;
 
-		case TO_PLAY:
-			pAct = new SwitchToPlayModeAction(this);
-			break;
-
 		case TO_FIGURETYPE:
 			pAct = new PickByTypeAction(this);
 			break;
