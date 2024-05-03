@@ -1,4 +1,6 @@
 #include "CRectangle.h"
+#include "AddRectAction.h"
+#include "colors.h"
 
 CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
@@ -79,4 +81,57 @@ void CRectangle::Save(ofstream& OutputFile)
 
 void CRectangle::Load(ifstream& InputFile, CFigure*& s)
 {
+	string DrawCol, FillCol;
+	InputFile >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y >> DrawCol >> FillCol;
+
+	if (DrawCol == "BLACK")
+		FigGfxInfo.DrawClr = BLACK;
+	else if (DrawCol == "YELLOW")
+		FigGfxInfo.DrawClr = YELLOW;
+	else if (DrawCol == "ORANGE")
+		FigGfxInfo.DrawClr = ORANGE;
+	else if (DrawCol == "RED")
+		FigGfxInfo.DrawClr = RED;
+	else if (DrawCol == "GREEN")
+		FigGfxInfo.DrawClr = GREEN;
+	else if (DrawCol == "BLUE")
+		FigGfxInfo.DrawClr = BLUE;
+
+	if (FillCol == "BLACK")
+	{
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = BLACK;
+	}
+	else if (FillCol == "YELLOW")
+	{
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = YELLOW;
+	}
+	else if (FillCol == "ORANGE")
+	{
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = ORANGE;
+	}
+	else if (FillCol == "RED")
+	{
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = RED;
+	}
+	else if (FillCol == "GREEN")
+	{
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = GREEN;
+	}
+	else if (FillCol == "BLUE")
+	{
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = BLUE;
+	}
+	else if (FillCol == "NO_FILL")
+	{
+		FigGfxInfo.isFilled = false;
+	}
+
+	CRectangle* R = new CRectangle(Corner1, Corner2, FigGfxInfo);
+	s = R;
 }

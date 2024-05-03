@@ -1,7 +1,7 @@
 #include "SaveGraphAction.h"
 #include <fstream>
 
-SaveGraphAction::SaveGraphAction(ApplicationManager* pApp, bool switch = false): Action(pApp) {}
+SaveGraphAction::SaveGraphAction(ApplicationManager* pApp, bool check = false): Action(pApp) {}
 
 void SaveGraphAction::ReadActionParameters()
 {
@@ -16,7 +16,7 @@ void SaveGraphAction::Execute()
 {
 	Output* pOut = pManager->GetOutput();
 
-	if (switch == false)
+	if (check == false)
 		ReadActionParameters();
 	else FileName = "Pre-switch File";
 
