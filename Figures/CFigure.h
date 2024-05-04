@@ -23,6 +23,7 @@ public:
 	
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
+	void ChngNumberOfFigures(int num); //changes static value of Number_Of_Figures
 
 	bool isFilled() { return FigGfxInfo.isFilled; };
 	color Get_Filled_Colour() { return FigGfxInfo.FillClr; };
@@ -36,7 +37,7 @@ public:
 	///Decide the parameters that you should pass to each function	
 
 	virtual void Save(ofstream& OutputFile) = 0;
-	virtual void Load(ifstream& InputFile, CFigure*& s) = 0;
+	virtual void Load(ifstream& InputFile) = 0;
 };
 
 #endif
