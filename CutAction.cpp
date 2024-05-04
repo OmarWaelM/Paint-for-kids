@@ -10,4 +10,16 @@ void CutAction::ReadActionParameters()
 
 void CutAction::Execute()
 {
+	pOut = pManager->GetOutput();
+	pOut->PrintMessage("Cut tool selected");
+
+	if (pManager->GetSelectedCount() == 1)
+	{
+		pManager->SetClipboard(SelectedFig);
+		SelectedFig->SetCut(true);
+	}
+	else
+	{
+		pOut->PrintMessage("Select ONLY ONE Figure");
+	}
 }
