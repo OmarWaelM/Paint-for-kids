@@ -36,6 +36,16 @@ bool CCircle::IsWithin(Point P)
 	return false;
 }
 
+void CCircle::Move(Point P)
+{
+	int dist_x = P.x - Centre.x;
+	int dist_y = P.y - Centre.y;
+	Centre.y = P.x; 
+	Centre.y = P.y;
+	Radius.x = Radius.x + dist_x;
+	Radius.y = Radius.y + dist_y;
+}
+
 void CCircle::Save(ofstream& OutputFile)
 {
 	string DrawColor;

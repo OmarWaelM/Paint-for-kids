@@ -38,7 +38,7 @@ public:
 	virtual void Draw(Output* pOut) const  = 0 ;		//Draw the figure
 	virtual void PrintInfo(Output* pOut) = 0;          //print all figure info on the status bar
 	virtual bool IsWithin(Point P) = 0;
-
+	virtual void Move(Point P) = 0;
 	///Decide the parameters that you should pass to each function	
 
 	virtual void Save(ofstream& OutputFile) = 0;

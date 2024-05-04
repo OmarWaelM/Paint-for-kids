@@ -16,6 +16,8 @@ public:
 
 	virtual bool IsWithin(Point P);
 
+	virtual void Move(Point P);
+
 	virtual void Save(ofstream& OutputFile);
 
 	virtual void Load(ifstream& InputFile);

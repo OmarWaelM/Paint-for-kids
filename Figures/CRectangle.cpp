@@ -39,6 +39,22 @@ bool CRectangle::IsWithin(Point P)
 	return false;
 }
 
+void CRectangle::Move(Point P) 
+{
+	Point Centre;
+	Centre.x = (Corner1.x + Corner2.x) / 2;
+	Centre.y = (Corner2.y + Corner2.y) / 2;
+
+	int dist_x = P.x - Centre.x;
+	int dist_y = P.y - Centre.y;
+
+	Corner1.x = Corner1.x + dist_x;
+	Corner1.y = Corner1.y + dist_y;
+
+	Corner2.x = Corner2.x + dist_x;
+	Corner2.y = Corner2.y + dist_y;
+}
+
 void CRectangle::Save(ofstream& OutputFile)
 {
 	string DrawColor;

@@ -55,6 +55,12 @@ bool CHexagon::IsWithinHelper(int P1x, int P1y, int P2x, int P2y, int P3x, int P
 	return false;
 }
 
+void CHexagon::Move(Point P)
+{
+	Centre.x = P.x;
+	Centre.y = P.y;
+}
+
 void CHexagon::Save(ofstream& OutputFile)
 {
 	string DrawColor;

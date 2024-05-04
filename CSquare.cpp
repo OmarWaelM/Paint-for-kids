@@ -31,6 +31,12 @@ bool CSquare::IsWithin(Point P)
 	return false;
 }
 
+void CSquare::Move(Point P)
+{
+	Centre.x = P.x;
+	Centre.y = P.y;
+}
+
 void CSquare::Save(ofstream& OutputFile)
 {
 	string DrawColor;
