@@ -10,6 +10,6 @@ class ClearAllAction : public Action
 	Output* pOut;
 public:
 	ClearAllAction (ApplicationManager* pApp);
-	void ReadActionParameters();
-	void Execute();
+	virtual void ReadActionParameters();
+	virtual void Execute();
 };

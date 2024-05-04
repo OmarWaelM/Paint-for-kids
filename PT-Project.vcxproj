@@ -177,6 +177,7 @@
     <ClCompile Include="CopyAction.cpp" />
     <ClCompile Include="CSquare.cpp" />
     <ClCompile Include="CTriangle.cpp" />
+    <ClCompile Include="CutAction.cpp" />
     <ClCompile Include="DeleteAction.cpp" />
     <ClCompile Include="ExitAction.cpp" />
     <ClCompile Include="Figures\CFigure.cpp" />
@@ -230,6 +231,7 @@
     <ClInclude Include="CopyAction.h" />
     <ClInclude Include="CSquare.h" />
     <ClInclude Include="CTriangle.h" />
+    <ClInclude Include="CutAction.h" />
     <ClInclude Include="DeleteAction.h" />
     <ClInclude Include="ExitAction.h" />
     <ClInclude Include="Figures\CFigure.h" />

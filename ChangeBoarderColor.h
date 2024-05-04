@@ -12,7 +12,7 @@ class ChangeBoarderColor : public Action
 	ActionType ActType;
 public:
 	ChangeBoarderColor(ApplicationManager* pApp);
-	void ReadActionParameters();
-	void Execute();
+	virtual void ReadActionParameters();
+	virtual void Execute();
 };
 
