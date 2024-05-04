@@ -21,6 +21,8 @@
 #include "SwitchToDrawModeAction.h"
 #include "ExitAction.h"
 
+#include "CopyAction.h"
+#include "CutAction.h"
 #include "Figures/CRectangle.h"
 #include "CCircle.h"
 #include "CHexagon.h"
@@ -42,6 +44,7 @@ ApplicationManager::ApplicationManager()
 		FigList[i] = NULL;
 		SelectedFig[i] = NULL;
 	}
+	Clipboard = NULL;
 }
 
 //==================================================================================//
@@ -132,6 +135,13 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case TO_CLEARALL:
 			pAct = new ClearAllAction(this);
+			break;
+		case TO_COPYFIGURE:
+			pAct = new CopyAction(this);
+			break;
+
+		case TO_CUTFIGURE:
+			pAct = new CutAction(this);
 			break;
 
 		case TO_FIGUREANDFILL:
@@ -327,8 +337,17 @@ void ApplicationManager::DeleteSelected(int i, CFigure* Fig)
 	SelCount--;
 }
 /////////////////////////////////////////////////////////////////
+//Set Clipboard Function
 void ApplicationManager::SetClipboard(CFigure* Fig)
 {
+	if (Clipboard != NULL)
+	{
+		if (Clipboard->IsCut())
+		{
+			Clipboard->SetCut(false);
+		}
+	}
+	
 	Clipboard = Fig;
 }
 //==================================================================================//

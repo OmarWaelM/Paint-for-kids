@@ -26,6 +26,17 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.FillClr = Fclr; 
 }
 
+bool CFigure::IsCut() const
+{
+	return Cut;
+}
+
+void CFigure::SetCut(bool c)
+{
+	Cut = c;
+}
+
+
 void CFigure::ChngNumberOfFigures(int num)
 {
 	Number_Of_Figures = 0;
