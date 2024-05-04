@@ -225,6 +225,7 @@
     <ClInclude Include="CSquare.h" />
     <ClInclude Include="CTriangle.h" />
     <ClInclude Include="DeleteAction.h" />
+    <ClInclude Include="ExitAction.h" />
     <ClInclude Include="Figures\CFigure.h" />
     <ClInclude Include="Figures\CRectangle.h" />
     <ClInclude Include="Actions\Action.h" />
