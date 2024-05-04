@@ -14,6 +14,7 @@ protected:
 	GfxInfo FigGfxInfo;	//Figure graphics info
 	static int Number_Of_Figures;
 	/// Add more parameters if needed.
+	bool Cut; // true if the shape is cut
 
 public:
 	CFigure(GfxInfo FigureGfxInfo);
@@ -24,6 +25,10 @@ public:
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
 	void ChngNumberOfFigures(int num); //changes static value of Number_Of_Figures
+
+	
+	bool IsCut() const;  // checks whether the figure is cut
+	void SetCut(bool c); // cuts/ uncuts the figure
 
 	bool isFilled() { return FigGfxInfo.isFilled; };
 	color Get_Filled_Colour() { return FigGfxInfo.FillClr; };
