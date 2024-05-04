@@ -17,8 +17,9 @@ void ClearAllAction::Execute()
 	pManager->SetClipboard(NULL);
 	for (int i = pManager->GetFigCount() - 1; i >= 0; i--)
 	{
-		Fig = pManager -> GetFigListItem(i);
-		pManager -> Delete_Figure(Fig);
+		Fig = pManager->GetFigListItem(i);
+		Fig->ChngNumberOfFigures(0);
+		pManager->Delete_Figure(Fig);
 		pManager->DeleteSelected(i, Fig);
 	}
 }

@@ -7,6 +7,10 @@
 #include "GUI\input.h"
 #include "GUI\output.h"
 
+#include "SaveGraphAction.h"
+#include "SwitchToPlayModeAction.h"
+#include "ExitAction.h"
+
 //Main class that manages everything in the application.
 class ApplicationManager
 {

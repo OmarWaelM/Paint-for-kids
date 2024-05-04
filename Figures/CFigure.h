@@ -24,6 +24,7 @@ public:
 	
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
+	void ChngNumberOfFigures(int num); //changes static value of Number_Of_Figures
 
 	const bool IsCopied();  // checks whether the figure is copied
 	void SetCopied(bool copy); // copies/ uncopies the figure
@@ -41,9 +42,8 @@ public:
 
 	///Decide the parameters that you should pass to each function	
 
-	/*virtual void Save(ofstream& F, int n) = 0;
-	virtual void Load(ifstream& F, CFigure*& s) = 0;*/
-
+	virtual void Save(ofstream& OutputFile) = 0;
+	virtual void Load(ifstream& InputFile) = 0;
 };
 
 #endif

@@ -9,8 +9,9 @@ class SaveGraphAction : public Action
 {
 private:
 	string FileName;
+	bool check;
 public:
-	SaveGraphAction(ApplicationManager* pApp);
+	SaveGraphAction(ApplicationManager* pApp, bool check = false);
 	virtual void ReadActionParameters();
 	virtual void Execute();
 };

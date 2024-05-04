@@ -6,6 +6,7 @@
 #include "AddTriangleAction.h"
 #include "PickByTypeAction.h"
 #include "PickByColourAction.h"
+#include "PickByBothAction.h"
 #include "DeleteAction.h"
 #include "SelectFigure.h"
 #include "DeleteAction.h"
@@ -14,6 +15,12 @@
 #include "ChangeFillColor.h"
 #include "ChangeBoarderColor.h"
 #include "ClearAllAction.h"
+#include "SaveGraphAction.h"
+#include "LoadGraphAction.h"
+#include "SwitchToPlayModeAction.h"
+#include "SwitchToDrawModeAction.h"
+#include "ExitAction.h"
+
 #include "CopyAction.h"
 #include "Figures/CRectangle.h"
 #include "CCircle.h"
@@ -58,7 +65,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
 			break;
-		
+
 		case DRAW_HEXAGON:
 			pAct = new AddHexagonAction(this);
 			break;
@@ -75,6 +82,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new AddSquareAction(this);
 			break;
       
+		case TO_CHANGEFILL:
+			pAct = new ChangeFillColor(this);
+			break;
+
+		case TO_CHANGEBORDER:
+			pAct = new ChangeBoarderColor(this);
+			break;
+
 		case TO_SELECT:
 			pAct = new SelectFigure(this);
 			break;
@@ -99,24 +114,33 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new PickByColourAction(this);
 			break;
 
-		case TO_CHANGEFILL:
-			pAct = new ChangeFillColor(this);
+
+		case TO_SAVEGRAPH:
+			pAct = new SaveGraphAction(this);
 			break;
 
-		case TO_CHANGEBORDER:
-			pAct = new ChangeBoarderColor(this);
+		case TO_LOADGRAPH:
+			pAct = new LoadGraphAction(this);
+			break;
+
+		case TO_PLAY:
+			pAct = new SwitchToPlayModeAction(this);
+			break;
+
+		case TO_DRAW:
+			pAct = new SwitchToDrawModeAction(this);
 			break;
 
 		case TO_CLEARALL:
 			pAct = new ClearAllAction(this);
 			break;
 
-		case TO_COPYFIGURE:
-			pAct = new CopyAction(this);
+		case TO_FIGUREANDFILL:
+			pAct = new PickByBothAction(this);
 			break;
 
 		case EXIT:
-			///create ExitAction here
+			pAct = new ExitAction(this);
 			break;
 		
 		case STATUS:	//a click on the status bar ==> no action
@@ -313,51 +337,27 @@ void ApplicationManager::SetClipboard(CFigure* Fig)
 	}
 	
 	Clipboard = Fig;
-	
 }
-/////////////////////////////////////////////////////////////////
-// Copy Selected Function
-void ApplicationManager::CopySelected(CFigure* Fig)
-{
-	// checks if a figure is selected
-	// if not, Set Selected Status to not selected (false)
-	if (Fig == NULL)
-	{
-		Fig->SetSelected(false);
-	}
-	else
-	{
-		if (SelCount < MaxFigCount)
-		{
-			SelectedFig[SelCount] = Fig;
-			SelCount++;
-			Fig->SetSelected(true);
-			Fig->SetCopied(true);
-		}
-	}
-}
-
-
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
 
 //Save all figures
-//void ApplicationManager::SaveAllFigures(ofstream& F)
-//{
-//	F << FigCount << endl;
-//	for (int j = 0; j < FigCount; j++)
-//	{
-//		FigList[j]->Save(F, j);
-//	}
-//}
+void ApplicationManager::SaveAllFigures(ofstream& OutputFile)
+{
+	OutputFile << FigCount << endl;
+	for (int j = 0; j < FigCount; j++)
+	{
+		FigList[j]->Save(OutputFile);
+	}
+}
 
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {	
 	pOut->ClearDrawArea();
 	for(int i=0; i<FigCount; i++)
-		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+	FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input

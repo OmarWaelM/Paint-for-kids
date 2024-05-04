@@ -47,3 +47,7 @@ void CFigure::SetCut(bool c)
 }
 
 
+void CFigure::ChngNumberOfFigures(int num)
+{
+	Number_Of_Figures = 0;
+}
