@@ -144,10 +144,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new CutAction(this);
 			break;
 
-		case TO_COPYFIGURE:
-			pAct = new CopyAction(this);
-			break;
-
 		case TO_FIGUREANDFILL:
 			pAct = new PickByBothAction(this);
 			break;
