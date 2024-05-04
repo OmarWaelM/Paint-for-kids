@@ -26,8 +26,7 @@ public:
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
 	void ChngNumberOfFigures(int num); //changes static value of Number_Of_Figures
 
-	const bool IsCopied();  // checks whether the figure is copied
-	void SetCopied(bool copy); // copies/ uncopies the figure
+	
 	const bool IsCut();  // checks whether the figure is cut
 	void SetCut(bool c); // cuts/ uncuts the figure
 

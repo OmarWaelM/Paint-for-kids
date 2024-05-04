@@ -16,7 +16,6 @@ void CopyAction::Execute()
 	if (pManager->GetSelectedCount() == 1)
 	{
 		pManager->SetClipboard(SelectedFig);
-		pManager->CopySelected(SelectedFig);
 	}
 	else 
 	{
