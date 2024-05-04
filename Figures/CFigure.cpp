@@ -26,4 +26,24 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.FillClr = Fclr; 
 }
 
+const bool CFigure::IsCopied()
+{
+	return Copied;
+}
+
+void CFigure::SetCopied(bool copy)
+{
+	Copied = copy;
+}
+
+const bool CFigure::IsCut()
+{
+	return Cut;
+}
+
+void CFigure::SetCut(bool c)
+{
+	Cut = c;
+}
+
 

@@ -14,6 +14,7 @@
 #include "ChangeFillColor.h"
 #include "ChangeBoarderColor.h"
 #include "ClearAllAction.h"
+#include "CopyAction.h"
 #include "Figures/CRectangle.h"
 #include "CCircle.h"
 #include "CHexagon.h"
@@ -108,6 +109,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case TO_CLEARALL:
 			pAct = new ClearAllAction(this);
+			break;
+
+		case TO_COPYFIGURE:
+			pAct = new CopyAction(this);
 			break;
 
 		case EXIT:
@@ -299,11 +304,38 @@ void ApplicationManager::DeleteSelected(int i, CFigure* Fig)
 	SelCount--;
 }
 /////////////////////////////////////////////////////////////////
+//Set Clipboard Function
 void ApplicationManager::SetClipboard(CFigure* Fig)
 {
+	if (Fig->IsCut())
+	{
+		Fig->SetCut(false);
+	}
+	
 	Clipboard = Fig;
+	
 }
-
+/////////////////////////////////////////////////////////////////
+// Copy Selected Function
+void ApplicationManager::CopySelected(CFigure* Fig)
+{
+	// checks if a figure is selected
+	// if not, Set Selected Status to not selected (false)
+	if (Fig == NULL)
+	{
+		Fig->SetSelected(false);
+	}
+	else
+	{
+		if (SelCount < MaxFigCount)
+		{
+			SelectedFig[SelCount] = Fig;
+			SelCount++;
+			Fig->SetSelected(true);
+			Fig->SetCopied(true);
+		}
+	}
+}
 
 
 //==================================================================================//
