@@ -15,6 +15,7 @@ void CutAction::Execute()
 
 	if (pManager->GetSelectedCount() == 1)
 	{
+		SelectedFig = pManager->GetSelected(0);
 		pManager->SetClipboard(SelectedFig);
 		SelectedFig->SetCut(true);
 	}
