@@ -72,13 +72,13 @@ void CCircle::Save(ofstream& OutputFile)
 	}
 	else FillColor = "NO_FILL";
 
-	OutputFile << FigureType << "   " << ID << "   " << Centre.x << "   " << Centre.y << "   " << Radius.x << "   " << Radius.y << "   " << DrawColor << "   " << FillColor << '\n';
+	OutputFile << FigureType << "\t\t" << ID << "\t" << Centre.x << "\t" << Centre.y << "\t" << Radius.x << "\t" << Radius.y << "\t" << DrawColor << "\t" << FillColor << '\n';
 }
 
-void CCircle::Load(ifstream& InputFile, CFigure*& s)
+void CCircle::Load(ifstream& InputFile)
 {
 	string DrawCol, FillCol;
-	InputFile >> Centre.x >> Centre.y >> Radius.x >> Radius.y >> DrawCol >> FillCol;
+	InputFile >> ID >> Centre.x >> Centre.y >> Radius.x >> Radius.y >> DrawCol >> FillCol;
 
 	if (DrawCol == "BLACK")
 		FigGfxInfo.DrawClr = BLACK;
@@ -127,8 +127,5 @@ void CCircle::Load(ifstream& InputFile, CFigure*& s)
 	{
 		FigGfxInfo.isFilled = false;
 	}
-
-	CCircle* R = new CCircle(Centre, Radius, FigGfxInfo);
-	s = R;
 }
 

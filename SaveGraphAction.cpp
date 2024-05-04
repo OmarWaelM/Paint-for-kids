@@ -2,7 +2,8 @@
 #include <fstream>
 #include "ApplicationManager.h"
 
-SaveGraphAction::SaveGraphAction(ApplicationManager* pApp, bool check): Action(pApp) {}
+
+SaveGraphAction::SaveGraphAction(ApplicationManager* pApp, bool check) : Action(pApp), check(check) {}
 
 void SaveGraphAction::ReadActionParameters()
 {
@@ -16,12 +17,16 @@ void SaveGraphAction::Execute()
 {
 	Output* pOut = pManager->GetOutput();
 
-	if (check == false)
+
+	if (!check)
 		ReadActionParameters();
 	else FileName = "Pre-switch File";
 
 	string CrntDrawColour;
 	string CrntFillColour;
+
+	ofstream OutputFile;
+	OutputFile.open(FileName + ".txt", ios::out);
 
 	if (pOut->getCrntDrawColor() == BLACK)
 		CrntDrawColour = "BLACK";
@@ -50,10 +55,8 @@ void SaveGraphAction::Execute()
 		CrntFillColour = "BLUE";
 	else CrntFillColour = "NO_FILL";
 
-	ofstream OutputFile;
-	OutputFile.open(FileName + ".txt", ios::out);
-	OutputFile << CrntDrawColour << "   " << CrntFillColour << endl;
+	OutputFile << CrntDrawColour << "  " << CrntFillColour << "\n";
 	pManager->SaveAllFigures(OutputFile);
 	OutputFile.close();
-  pOut->PrintMessage("Your file was saved successfully");
+	pOut->PrintMessage("Your file was saved successfully");
 }

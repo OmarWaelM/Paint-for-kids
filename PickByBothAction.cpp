@@ -78,22 +78,23 @@ void PickByBothAction::Execute()
 		switch (param[0])
 		{
 		case (1):
-			message = message + "Rectangles";
+			message = message + "Rectangle(s)";
 			break;
 		case (2):
-			message = message + "Hexagons";
+			message = message + "Hexagon(s)";
 			break;
 		case (3):
-			message = message + "Triangles";
+			message = message + "Triangle(s)";
 			break;
 		case (4):
-			message = message + "Squares";
+			message = message + "Square(s)";
 			break;
 		case (5):
-			message = message + "Circles";
+			message = message + "Circle(s)";
 			break;
 		}
-		pOut->PrintMessage(message);
+
+		pOut->PrintMessage(message + " : " + to_string(Correct_Count) + " / " + to_string(Total_Count + Correct_Count));
 
 		while (Total_Count > 0)
 		{
@@ -107,6 +108,8 @@ void PickByBothAction::Execute()
 					Correct_Count++;
 					Total_Count--;
 					pManager->Delete_Figure(pFig);
+					pManager->UpdateInterface();
+					pOut->PrintMessage(message + " : " + to_string(Correct_Count) + " / " + to_string(Total_Count + Correct_Count));
 				}
 				else
 					Wrong_Count++;
