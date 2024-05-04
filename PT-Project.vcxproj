@@ -192,6 +192,7 @@
     <ClCompile Include="SaveGraphAction.cpp" />
     <ClCompile Include="SelectFigure.cpp" />
     <ClCompile Include="SendToBack.cpp" />
+    <ClCompile Include="SwitchToDrawModeAction.cpp" />
     <ClCompile Include="SwitchToPlayModeAction.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -245,6 +246,7 @@
     <ClInclude Include="SaveGraphAction.h" />
     <ClInclude Include="SelectFigure.h" />
     <ClInclude Include="SendToBack.h" />
+    <ClInclude Include="SwitchToDrawModeAction.h" />
     <ClInclude Include="SwitchToPlayModeAction.h" />
   </ItemGroup>
   <ItemGroup>

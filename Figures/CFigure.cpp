@@ -26,4 +26,7 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.FillClr = Fclr; 
 }
 
-
+void CFigure::ChngNumberOfFigures(int num)
+{
+	Number_Of_Figures = 0;
+}

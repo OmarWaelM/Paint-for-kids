@@ -128,9 +128,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case TO_DRAW:
 			pAct = new SwitchToDrawModeAction(this);
+			break;
 
 		case TO_CLEARALL:
 			pAct = new ClearAllAction(this);
+			break;
 
 		case TO_FIGUREANDFILL:
 			pAct = new PickByBothAction(this);
@@ -138,7 +140,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case EXIT:
 			pAct = new ExitAction(this);
-			///create ExitAction here
 			break;
 		
 		case STATUS:	//a click on the status bar ==> no action

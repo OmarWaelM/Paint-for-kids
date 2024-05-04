@@ -71,10 +71,10 @@ void CSquare::Save(ofstream& OutputFile)
 
 }
 
-void CSquare::Load(ifstream& InputFile, CFigure*& s)
+void CSquare::Load(ifstream& InputFile)
 {
 	string DrawCol, FillCol;
-	InputFile >> Centre.x >> Centre.y >> DrawCol >> FillCol;
+	InputFile >> ID >> Centre.x >> Centre.y >> DrawCol >> FillCol;
 
 	if (DrawCol == "BLACK")
 		FigGfxInfo.DrawClr = BLACK;
@@ -123,7 +123,4 @@ void CSquare::Load(ifstream& InputFile, CFigure*& s)
 	{
 		FigGfxInfo.isFilled = false;
 	}
-
-	CSquare* R = new CSquare(Centre, FigGfxInfo);
-	s = R;
 }
