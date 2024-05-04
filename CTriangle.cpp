@@ -78,9 +78,59 @@ void CTriangle::Save(ofstream& OutputFile)
 	}
 	else FillColor = "NO_FILL";
 
-	OutputFile << FigureType << "   " << ID << "   " << P1.x << "   " << P1.y << "   " << P2.x << "   " << P2.y << "   " << P3.x << "   " << P3.y << "   " << DrawColor << "   " << FillColor << '\n';
+	OutputFile << FigureType << "\t" << ID << "\t" << P1.x << "\t" << P1.y << "\t" << P2.x << "\t" << P2.y << "\t" << P3.x << "\t" << P3.y << "\t" << DrawColor << "\t" << FillColor << '\n';
 }
 
-void CTriangle::Load(ifstream& InputFile, CFigure*& s)
+void CTriangle::Load(ifstream& InputFile)
 {
+	string DrawCol, FillCol;
+	InputFile >> ID >> P1.x >> P1.y >> P2.x >> P2.y >> P3.x >> P3.y >> DrawCol >> FillCol;
+
+	if (DrawCol == "BLACK")
+		FigGfxInfo.DrawClr = BLACK;
+	else if (DrawCol == "YELLOW")
+		FigGfxInfo.DrawClr = YELLOW;
+	else if (DrawCol == "ORANGE")
+		FigGfxInfo.DrawClr = ORANGE;
+	else if (DrawCol == "RED")
+		FigGfxInfo.DrawClr = RED;
+	else if (DrawCol == "GREEN")
+		FigGfxInfo.DrawClr = GREEN;
+	else if (DrawCol == "BLUE")
+		FigGfxInfo.DrawClr = BLUE;
+
+	if (FillCol == "BLACK")
+	{
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = BLACK;
+	}
+	else if (FillCol == "YELLOW")
+	{
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = YELLOW;
+	}
+	else if (FillCol == "ORANGE")
+	{
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = ORANGE;
+	}
+	else if (FillCol == "RED")
+	{
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = RED;
+	}
+	else if (FillCol == "GREEN")
+	{
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = GREEN;
+	}
+	else if (FillCol == "BLUE")
+	{
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = BLUE;
+	}
+	else if (FillCol == "NO_FILL")
+	{
+		FigGfxInfo.isFilled = false;
+	}
 }

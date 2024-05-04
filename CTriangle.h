@@ -20,6 +20,6 @@ public:
 
 	virtual void Save(ofstream& OutputFile);
 
-	virtual void Load(ifstream& InputFile, CFigure*& s);
+	virtual void Load(ifstream& InputFile);
 };
 #endif

@@ -16,7 +16,10 @@
 #include "ChangeBoarderColor.h"
 #include "ClearAllAction.h"
 #include "SaveGraphAction.h"
+#include "LoadGraphAction.h"
 #include "SwitchToPlayModeAction.h"
+#include "SwitchToDrawModeAction.h"
+#include "ExitAction.h"
 
 #include "Figures/CRectangle.h"
 #include "CCircle.h"
@@ -78,6 +81,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new AddSquareAction(this);
 			break;
       
+		case TO_CHANGEFILL:
+			pAct = new ChangeFillColor(this);
+			break;
+
+		case TO_CHANGEBORDER:
+			pAct = new ChangeBoarderColor(this);
+			break;
+
 		case TO_SELECT:
 			pAct = new SelectFigure(this);
 			break;
@@ -94,14 +105,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new BringToFront(this);
 			break;
 
-		case TO_SAVEGRAPH:
-			pAct = new SaveGraphAction(this);
-			break;
-
-		case TO_PLAY:
-			pAct = new SwitchToPlayModeAction(this);
-			break;
-
 		case TO_FIGURETYPE:
 			pAct = new PickByTypeAction(this);
 			break;
@@ -110,29 +113,33 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new PickByColourAction(this);
 			break;
 
-		case TO_CHANGEFILL:
-			pAct = new ChangeFillColor(this);
-			break;
-
-		case TO_CHANGEBORDER:
-			pAct = new ChangeBoarderColor(this);
 
 		case TO_SAVEGRAPH:
 			pAct = new SaveGraphAction(this);
 			break;
 
+		case TO_LOADGRAPH:
+			pAct = new LoadGraphAction(this);
+			break;
+
 		case TO_PLAY:
 			pAct = new SwitchToPlayModeAction(this);
+			break;
 
+		case TO_DRAW:
+			pAct = new SwitchToDrawModeAction(this);
 			break;
 
 		case TO_CLEARALL:
 			pAct = new ClearAllAction(this);
 			break;
 
+		case TO_FIGUREANDFILL:
+			pAct = new PickByBothAction(this);
+			break;
+
 		case EXIT:
 			pAct = new ExitAction(this);
-			///create ExitAction here
 			break;
 		
 		case STATUS:	//a click on the status bar ==> no action
@@ -343,7 +350,7 @@ void ApplicationManager::UpdateInterface() const
 {	
 	pOut->ClearDrawArea();
 	for(int i=0; i<FigCount; i++)
-		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+	FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input

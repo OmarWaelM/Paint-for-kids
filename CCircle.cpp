@@ -72,10 +72,60 @@ void CCircle::Save(ofstream& OutputFile)
 	}
 	else FillColor = "NO_FILL";
 
-	OutputFile << FigureType << "   " << ID << "   " << Centre.x << "   " << Centre.y << "   " << Radius.x << "   " << Radius.y << "   " << DrawColor << "   " << FillColor << '\n';
+	OutputFile << FigureType << "\t\t" << ID << "\t" << Centre.x << "\t" << Centre.y << "\t" << Radius.x << "\t" << Radius.y << "\t" << DrawColor << "\t" << FillColor << '\n';
 }
 
-void CCircle::Load(ifstream& InputFile, CFigure*& s)
+void CCircle::Load(ifstream& InputFile)
 {
+	string DrawCol, FillCol;
+	InputFile >> ID >> Centre.x >> Centre.y >> Radius.x >> Radius.y >> DrawCol >> FillCol;
+
+	if (DrawCol == "BLACK")
+		FigGfxInfo.DrawClr = BLACK;
+	else if (DrawCol == "YELLOW")
+		FigGfxInfo.DrawClr = YELLOW;
+	else if (DrawCol == "ORANGE")
+		FigGfxInfo.DrawClr = ORANGE;
+	else if (DrawCol == "RED")
+		FigGfxInfo.DrawClr = RED;
+	else if (DrawCol == "GREEN")
+		FigGfxInfo.DrawClr = GREEN;
+	else if (DrawCol == "BLUE")
+		FigGfxInfo.DrawClr = BLUE;
+
+	if (FillCol == "BLACK")
+	{
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = BLACK;
+	}
+	else if (FillCol == "YELLOW")
+	{
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = YELLOW;
+	}
+	else if (FillCol == "ORANGE")
+	{
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = ORANGE;
+	}
+	else if (FillCol == "RED")
+	{
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = RED;
+	}
+	else if (FillCol == "GREEN")
+	{
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = GREEN;
+	}
+	else if (FillCol == "BLUE")
+	{
+		FigGfxInfo.isFilled = true;
+		FigGfxInfo.FillClr = BLUE;
+	}
+	else if (FillCol == "NO_FILL")
+	{
+		FigGfxInfo.isFilled = false;
+	}
 }
 
