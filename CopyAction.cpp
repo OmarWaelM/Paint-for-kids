@@ -16,6 +16,7 @@ void CopyAction::Execute()
 	if (pManager->GetSelectedCount() == 1)
 	{
 		pManager->SetClipboard(SelectedFig);
+		pOut->PrintMessage("Figure Copied to the Clipboard.");
 	}
 	else 
 	{
