@@ -9,7 +9,7 @@ CSquare::CSquare(Point P, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 
 void CSquare::Draw(Output* pOut) const
 {
-	pOut->DrawSqr(Centre, FigGfxInfo, Selected);
+	pOut->DrawSqr(Centre, FigGfxInfo, Selected, Cut);
 }
 
 void CSquare::PrintInfo(Output* pOut)

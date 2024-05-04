@@ -7,6 +7,7 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false;
+	Cut = false;
 	Number_Of_Figures++;
 
 }

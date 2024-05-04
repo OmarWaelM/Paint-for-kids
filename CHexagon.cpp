@@ -9,7 +9,7 @@ CHexagon::CHexagon(Point P, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 
 void CHexagon::Draw(Output* pOut) const
 {
-	pOut->DrawHex(Centre, FigGfxInfo, Selected);
+	pOut->DrawHex(Centre, FigGfxInfo, Selected, Cut);
 }
 
 void CHexagon::PrintInfo(Output* pOut)

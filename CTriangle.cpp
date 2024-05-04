@@ -12,7 +12,7 @@ CTriangle::CTriangle(Point p1, Point p2, Point p3, GfxInfo FigureGfxInfo):CFigur
 
 void CTriangle::Draw(Output* pOut) const
 {
-	pOut->DrawTri(P1, P2, P3, FigGfxInfo, Selected);
+	pOut->DrawTri(P1, P2, P3, FigGfxInfo, Selected, Cut);
 }
 
 void CTriangle::PrintInfo(Output* pOut)

@@ -6,12 +6,11 @@ CCircle::CCircle(Point p1, Point p2, GfxInfo FigureGfxInfo):CFigure(FigureGfxInf
 	Radius = p2;
 
 	ID = Number_Of_Figures;
-
 }
 
 void CCircle::Draw(Output* pOut) const
 {
-	pOut->DrawCirc(Centre, Radius, FigGfxInfo, Selected);
+	pOut->DrawCirc(Centre, Radius, FigGfxInfo, Selected, Cut);
 }
 
 void CCircle::PrintInfo(Output* pOut)
