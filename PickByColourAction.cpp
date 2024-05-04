@@ -39,39 +39,43 @@ void PickByColourAction::Execute()
 		}
 		color clr = pManager->GetFigListItem(r)->Get_Filled_Colour();
 
+		string message = "Pick by color: pick all ";
+
 		if (clr == BLACK)
 		{
-			pOut->PrintMessage("Pick by color: pick all Black Figures");
+			message = message + " Black Figures";
 			param[1] = 1;
 		}
 		else if (clr == RED)
 		{
-			pOut->PrintMessage("Pick by color: pick all Red Figures");
+			message = message + " Red Figures";
 			param[1] = 2;
 		}
 		else if (clr == ORANGE)
 		{
-			pOut->PrintMessage("Pick by color: pick all Orange Figures");
+			message = message + " Orange Figures";
 			param[1] = 3;
 		}
 		else if (clr == YELLOW)
 		{
-			pOut->PrintMessage("Pick by color: pick all Yellow Figures");
+			message = message + " Yellow Figures";
 			param[1] = 4;
 
 		}
 		else if (clr == GREEN)
 		{
-			pOut->PrintMessage("Pick by color: pick all Green Figures");
+			message = message + " Greeb Figures";
 			param[1] = 5;
 		}
 		else if (clr == BLUE)
 		{
-			pOut->PrintMessage("Pick by color: pick all Blue Figures");
+			message = message + " Blue Figures";
 			param[1] = 6;
 		}
 
 		Total_Count = pManager->Get_Play_Mode_Count(param);
+
+		pOut->PrintMessage(message + " : " + to_string(Correct_Count) + " / " + to_string(Total_Count + Correct_Count));
 
 		while (Total_Count > 0)
 		{
@@ -85,6 +89,8 @@ void PickByColourAction::Execute()
 					Correct_Count++;
 					Total_Count--;
 					pManager->Delete_Figure(pFig);
+					pManager->UpdateInterface();
+					pOut->PrintMessage(message + " : " + to_string(Correct_Count) + " / " + to_string(Total_Count + Correct_Count));
 				}
 				else
 					Wrong_Count++;

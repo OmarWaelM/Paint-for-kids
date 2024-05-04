@@ -31,27 +31,30 @@ void PickByTypeAction::Execute()
 		srand(time(0));
 		int r = rand() % pManager->GetFigCount(); // 34an ytala3 rakam 3a4wa2y // % :to check that random number netween 0 and figcount
 		int params[2] = { getType(pManager->GetFigListItem(r)) , -1 };
-
+		
+		Total_Count = pManager->Get_Play_Mode_Count(params);
+		
+		string message = "Pick by type: pick all ";
 		switch (params[0])
 		{
 		case (1):
-			pOut->PrintMessage("Pick by type: pick all Rectangles");
+			message = message + "Rectangle(s)";
 			break;
 		case (2):
-			pOut->PrintMessage("Pick by type: pick all Hexagons");
+			message = message + "Hexagon(s)";
 			break;
 		case (3):
-			pOut->PrintMessage("Pick by type: pick all Triangles");
+			message = message + "Triangle(s)";
 			break;
 		case (4):
-			pOut->PrintMessage("Pick by type: pick all Squares");
+			message = message + "Square(s)";
 			break;
 		case (5):
-			pOut->PrintMessage("Pick by type: pick all Circles");
+			message = message + "Circle(s)";
 			break;
 		};
 
-		Total_Count = pManager->Get_Play_Mode_Count(params);
+		pOut->PrintMessage(message + " : " + to_string(Correct_Count) + " / " + to_string(Total_Count + Correct_Count));
 
 		while (Total_Count > 0)
 		{
@@ -64,6 +67,8 @@ void PickByTypeAction::Execute()
 					Correct_Count++;
 					Total_Count--;
 					pManager->Delete_Figure(pFig);
+					pManager->UpdateInterface();
+					pOut->PrintMessage(message + " : " + to_string(Correct_Count) + " / " + to_string(Total_Count + Correct_Count));
 				}
 				else
 					Wrong_Count++;
