@@ -22,6 +22,7 @@
 #include "ExitAction.h"
 
 #include "CopyAction.h"
+#include "CutAction.h"
 #include "Figures/CRectangle.h"
 #include "CCircle.h"
 #include "CHexagon.h"
@@ -134,6 +135,13 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case TO_CLEARALL:
 			pAct = new ClearAllAction(this);
+			break;
+		case TO_COPYFIGURE:
+			pAct = new CopyAction(this);
+			break;
+
+		case TO_CUTFIGURE:
+			pAct = new CutAction(this);
 			break;
 
 		case TO_FIGUREANDFILL:
