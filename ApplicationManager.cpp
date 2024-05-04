@@ -331,9 +331,12 @@ void ApplicationManager::DeleteSelected(int i, CFigure* Fig)
 //Set Clipboard Function
 void ApplicationManager::SetClipboard(CFigure* Fig)
 {
-	if (Clipboard->IsCut())
+	if (Clipboard != NULL)
 	{
-		Clipboard->SetCut(false);
+		if (Clipboard->IsCut())
+		{
+			Clipboard->SetCut(false);
+		}
 	}
 	
 	Clipboard = Fig;
