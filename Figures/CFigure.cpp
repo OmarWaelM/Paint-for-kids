@@ -26,7 +26,7 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.FillClr = Fclr; 
 }
 
-const bool CFigure::IsCut()
+bool CFigure::IsCut() const
 {
 	return Cut;
 }
