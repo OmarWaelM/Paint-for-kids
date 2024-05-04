@@ -43,6 +43,7 @@ ApplicationManager::ApplicationManager()
 		FigList[i] = NULL;
 		SelectedFig[i] = NULL;
 	}
+	Clipboard = NULL;
 }
 
 //==================================================================================//
