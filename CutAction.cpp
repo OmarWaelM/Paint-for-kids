@@ -19,6 +19,10 @@ void CutAction::Execute()
 		pManager->SetClipboard(SelectedFig);
 		SelectedFig->SetCut(true);
 	}
+	else if (pManager->GetSelectedCount() == 0)
+	{
+		pOut->PrintMessage("No items are selected");
+	}
 	else
 	{
 		pOut->PrintMessage("Select ONLY ONE Figure");
