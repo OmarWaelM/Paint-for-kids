@@ -4,6 +4,10 @@
 #include "Figures/CFigure.h"
 #include "CCircle.h"
 #include "CSquare.h"
+#include "Figures/CRectangle.h"
+#include "CTriangle.h"
+#include "CHexagon.h"
+
 
 class PasteAction : public Action
 {
@@ -11,6 +15,7 @@ class PasteAction : public Action
 	Input* pIn;
 	CFigure* PasteFigure;
 	Point PointClicked;
+	GfxInfo PasteFigureGfxInfo;
 
 public:
 	PasteAction(ApplicationManager* pAct);
