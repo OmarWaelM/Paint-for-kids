@@ -7,9 +7,15 @@ CSquare::CSquare(Point P, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 
 }
 
+CSquare::CSquare(CSquare* old, GfxInfo newGfxInfo) :CFigure(newGfxInfo)
+{
+	Centre = old->Centre;
+	ID = Number_Of_Figures;
+}
+
 void CSquare::Draw(Output* pOut) const
 {
-	pOut->DrawSqr(Centre, FigGfxInfo, Selected);
+	pOut->DrawSqr(Centre, FigGfxInfo, Selected, Cut);
 }
 
 void CSquare::PrintInfo(Output* pOut)
@@ -29,6 +35,12 @@ bool CSquare::IsWithin(Point P)
 	if (abs(P.x - Centre.x) <= 100 && abs(P.y - Centre.y) <= 100)
 		return true;
 	return false;
+}
+
+void CSquare::Move(Point P)
+{
+	Centre.x = P.x;
+	Centre.y = P.y;
 }
 
 void CSquare::Save(ofstream& OutputFile)

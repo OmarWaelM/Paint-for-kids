@@ -163,9 +163,6 @@
     <ClCompile Include="CTriangle.cpp">
       <Filter>Figures Classes</Filter>
     </ClCompile>
-    <ClCompile Include="SondToBack.cpp">
-      <Filter>Action Classes</Filter>
-    </ClCompile>
     <ClCompile Include="BringToFront.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
@@ -184,6 +181,10 @@
     <ClCompile Include="DeleteAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="ChangeBoarderColor.cpp" />
+    <ClCompile Include="ChangeFillColor.cpp" />
+    <ClCompile Include="ClearAllAction.cpp" />
+    <ClCompile Include="CopyAction.cpp" />
     <ClCompile Include="PickByColourAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
@@ -195,6 +196,11 @@
     <ClCompile Include="PickByBothAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="ExitAction.cpp" />
+    <ClCompile Include="LoadGraphAction.cpp" />
+    <ClCompile Include="SendToBack.cpp" />
+    <ClCompile Include="SwitchToDrawModeAction.cpp" />
+    <ClCompile Include="CutAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -318,6 +324,11 @@
     <ClInclude Include="DeleteAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
+    <ClInclude Include="ChangeBoarderColor.h" />
+    <ClInclude Include="ChangeFillColor.h" />
+    <ClInclude Include="ClearAllAction.h" />
+    <ClInclude Include="CopyAction.h" />
+    <ClInclude Include="ExitAction.h" />
     <ClInclude Include="PickByColourAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
@@ -327,6 +338,11 @@
     <ClInclude Include="SaveGraphAction.h" />
     <ClInclude Include="SwitchToPlayModeAction.h" />
     <ClInclude Include="PickByBothAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadGraphAction.h" />
+    <ClInclude Include="SwitchToDrawModeAction.h" />
+    <ClInclude Include="CutAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

@@ -15,12 +15,18 @@ void ClearAllAction::Execute()
 	pOut->ClearDrawArea();
 	pOut->ClearStatusBar();
 	pManager->SetClipboard(NULL);
+
+	for (int i = pManager->GetSelectedCount() - 1; i >= 0; i--)
+	{
+		Fig = pManager->GetSelected(i);
+		pManager->DeleteSelected(i, Fig);
+	}
+
 	for (int i = pManager->GetFigCount() - 1; i >= 0; i--)
 	{
 		Fig = pManager->GetFigListItem(i);
-		Fig->ChngNumberOfFigures(0);
 		pManager->Delete_Figure(Fig);
-		pManager->DeleteSelected(i, Fig);
 	}
+	CFigure::ChngNumberOfFigures(0);
 }
 

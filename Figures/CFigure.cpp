@@ -7,8 +7,8 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false;
+	Cut = false;
 	Number_Of_Figures++;
-
 }
 
 void CFigure::SetSelected(bool s)
@@ -25,6 +25,17 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr; 
 }
+
+bool CFigure::IsCut() const
+{
+	return Cut;
+}
+
+void CFigure::SetCut(bool c)
+{
+	Cut = c;
+}
+
 
 void CFigure::ChngNumberOfFigures(int num)
 {

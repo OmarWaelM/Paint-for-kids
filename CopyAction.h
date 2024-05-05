@@ -2,14 +2,13 @@
 #include"ApplicationManager.h"
 #include "Actions/Action.h"
 #include "Figures/CFigure.h"
-#include "DeleteAction.h"
 
-class ClearAllAction : public Action
+class CopyAction : public Action
 {
-	CFigure* Fig;
+	CFigure* SelectedFig;
 	Output* pOut;
 public:
-	ClearAllAction (ApplicationManager* pApp);
+	CopyAction(ApplicationManager* pAct);
 	virtual void ReadActionParameters();
 	virtual void Execute();
 };

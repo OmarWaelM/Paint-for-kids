@@ -28,6 +28,7 @@ private:
 	Output* pOut;
 
 	CFigure* Clipboard;  //Pointer to copied/cut figure
+	GfxInfo ClipboardGfxInfo; //Gfx Info for figure in clipboard
 
 public:
 	ApplicationManager();
@@ -50,9 +51,13 @@ public:
 
 	void AddSelected(CFigure* sFig); //Adds a Figure to selected list
 	void DeleteSelected(int i, CFigure* Fig = NULL); //Removes Figure at index i from selected list or the given figure pointer
-	void SetClipboard(CFigure* Fig); // Sets the Clipboard pointer 
+	
 	int GetSelectedCount() const { return SelCount; } //Getter for SelectedCount
 	CFigure* GetSelected(int i) const { return SelectedFig[i]; } // Getter for Selected figure in index i
+	
+	void SetClipboard(CFigure* Fig); // Sets the Clipboard pointer 
+	CFigure* GetClipboard(); // Gets the clipboard pointer
+	GfxInfo GetClipboardGfxInfo() { return ClipboardGfxInfo; } //Gets the gfxinfo for
 
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input

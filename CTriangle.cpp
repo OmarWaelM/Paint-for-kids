@@ -10,9 +10,18 @@ CTriangle::CTriangle(Point p1, Point p2, Point p3, GfxInfo FigureGfxInfo):CFigur
 
 }
 
+CTriangle::CTriangle(CTriangle* old, GfxInfo newGfxInfo) :CFigure(newGfxInfo)
+{
+	P1 = old->P1;
+	P2 = old->P2;
+	P3 = old->P3;
+
+	ID = Number_Of_Figures;
+}
+
 void CTriangle::Draw(Output* pOut) const
 {
-	pOut->DrawTri(P1, P2, P3, FigGfxInfo, Selected);
+	pOut->DrawTri(P1, P2, P3, FigGfxInfo, Selected, Cut);
 }
 
 void CTriangle::PrintInfo(Output* pOut)
@@ -40,6 +49,25 @@ bool CTriangle::IsWithin(Point P)
 	if (AT == (A1 + A2 + A3))
 		return true;
 	return false;
+}
+
+void CTriangle::Move(Point P)
+{
+	Point Centre;
+	Centre.x = (P1.x + P2.x + P3.x) / 3;
+	Centre.y = (P1.y + P2.y + P3.y) / 3;
+
+	int dist_x = P.x - Centre.x;
+	int dist_y = P.y - Centre.y;
+
+	P1.x = P1.x + dist_x;
+	P1.y = P1.y + dist_y;
+
+	P2.x = P2.x + dist_x;
+	P2.y = P2.y + dist_y;
+
+	P3.x = P3.x + dist_x;
+	P3.y = P3.y + dist_y;
 }
 
 void CTriangle::Save(ofstream& OutputFile)
