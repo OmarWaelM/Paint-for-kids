@@ -18,8 +18,8 @@ void ClearAllAction::Execute()
 	for (int i = pManager->GetFigCount() - 1; i >= 0; i--)
 	{
 		Fig = pManager->GetFigListItem(i);
-		pManager->Delete_Figure(Fig);
 		pManager->DeleteSelected(i, Fig);
+		pManager->Delete_Figure(Fig);
 	}
 	CFigure::ChngNumberOfFigures(0);
 }
