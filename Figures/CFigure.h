@@ -32,6 +32,7 @@ public:
 
 	bool isFilled() { return FigGfxInfo.isFilled; };
 	color Get_Filled_Colour() { return FigGfxInfo.FillClr; };
+	color Get_Draw_Colour() { return FigGfxInfo.DrawClr; }
 
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure:

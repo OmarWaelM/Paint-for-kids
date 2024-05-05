@@ -28,6 +28,7 @@ private:
 	Output* pOut;
 
 	CFigure* Clipboard;  //Pointer to copied/cut figure
+	GfxInfo ClipboardGfxInfo; //Gfx Info for figure in clipboard
 
 public:
 	ApplicationManager();

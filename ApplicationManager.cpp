@@ -349,6 +349,9 @@ void ApplicationManager::SetClipboard(CFigure* Fig)
 	}
 	
 	Clipboard = Fig;
+	ClipboardGfxInfo.DrawClr = Clipboard->Get_Draw_Colour();
+	ClipboardGfxInfo.FillClr = Clipboard->Get_Filled_Colour();
+	ClipboardGfxInfo.isFilled = Clipboard->isFilled();
 }
 //==================================================================================//
 //							Interface Management Functions							//
