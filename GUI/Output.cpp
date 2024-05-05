@@ -187,7 +187,7 @@ int Output::getCrntPenWidth() const		//get current pen width
 //								Figures Drawing Functions								//
 //======================================================================================//
 
-void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) const
+void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected, bool cut) const
 {
 	color DrawingClr;
 	if (selected)
@@ -205,6 +205,13 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	else
 		style = FRAME;
 
+	if (cut)
+	{
+		style = FILLED;
+		pWind->SetBrush(GREY);
+		pWind->SetPen(GREY, UI.PenWidth);
+	}
+
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
 	
 	if (UI.InterfaceMode == MODE_DRAW)
@@ -213,7 +220,7 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 		this->CreatePlayToolBar();
 }
 
-void Output::DrawSqr(Point P, GfxInfo SqrGfxInfo, bool selected) const
+void Output::DrawSqr(Point P, GfxInfo SqrGfxInfo, bool selected, bool cut) const
 {
 	int sideLen = 200;
 
@@ -233,6 +240,13 @@ void Output::DrawSqr(Point P, GfxInfo SqrGfxInfo, bool selected) const
 	else
 		style = FRAME;
 
+	if (cut)
+	{
+		style = FILLED;
+		pWind->SetBrush(GREY);
+		pWind->SetPen(GREY, UI.PenWidth);
+	}
+
 	Point P1;
 	P1.x = P.x - sideLen / 2;
 	P1.y = P.y - sideLen / 2;
@@ -249,7 +263,7 @@ void Output::DrawSqr(Point P, GfxInfo SqrGfxInfo, bool selected) const
 		this->CreatePlayToolBar();
 }
 
-void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool selected) const
+void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool selected, bool cut) const
 {
 	color DrawingClr;
 	if (selected)
@@ -267,6 +281,13 @@ void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool sele
 	else
 		style = FRAME;
 
+	if (cut)
+	{
+		style = FILLED;
+		pWind->SetBrush(GREY);
+		pWind->SetPen(GREY, UI.PenWidth);
+	}
+
 	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
 
 	if (UI.InterfaceMode == MODE_DRAW)
@@ -276,7 +297,7 @@ void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool sele
 
 }
 
-void Output::DrawHex(Point P, GfxInfo HexGfxInfo, bool selected) const
+void Output::DrawHex(Point P, GfxInfo HexGfxInfo, bool selected, bool cut) const
 {
 	color DrawingClr;
 	if (selected)
@@ -284,6 +305,7 @@ void Output::DrawHex(Point P, GfxInfo HexGfxInfo, bool selected) const
 	else
 		DrawingClr = HexGfxInfo.DrawClr;
 
+	
 	pWind->SetPen(DrawingClr, UI.PenWidth);
 	drawstyle style;
 	if (HexGfxInfo.isFilled)
@@ -293,6 +315,13 @@ void Output::DrawHex(Point P, GfxInfo HexGfxInfo, bool selected) const
 	}
 	else
 		style = FRAME;
+
+	if (cut)
+	{
+		style = FILLED;
+		pWind->SetBrush(GREY);
+		pWind->SetPen(GREY, UI.PenWidth);
+	}
 
 	//Distances from center of different points
 	int vertDist = 100;
@@ -325,7 +354,7 @@ void Output::DrawHex(Point P, GfxInfo HexGfxInfo, bool selected) const
 		this->CreatePlayToolBar();
 }
 
-void Output::DrawCirc(Point P1, Point P2, GfxInfo CircGfxInfo, bool selected) const
+void Output::DrawCirc(Point P1, Point P2, GfxInfo CircGfxInfo, bool selected, bool cut) const
 {
 	color DrawingClr;
 	if (selected)
@@ -342,6 +371,13 @@ void Output::DrawCirc(Point P1, Point P2, GfxInfo CircGfxInfo, bool selected) co
 	}
 	else
 		style = FRAME;
+
+	if (cut)
+	{
+		style = FILLED;
+		pWind->SetBrush(GREY);
+		pWind->SetPen(GREY, UI.PenWidth);
+	}
 
 	int radius = sqrt(pow(P1.x - P2.x, 2) + pow(P1.y - P2.y, 2));
 

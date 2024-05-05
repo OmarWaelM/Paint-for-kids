@@ -23,6 +23,7 @@
 
 #include "CopyAction.h"
 #include "CutAction.h"
+#include "PasteAction.h"
 #include "Figures/CRectangle.h"
 #include "CCircle.h"
 #include "CHexagon.h"
@@ -142,6 +143,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case TO_CUTFIGURE:
 			pAct = new CutAction(this);
+			break;
+
+		case TO_PASTEFIGURE:
+			pAct = new PasteAction(this);
 			break;
 
 		case TO_FIGUREANDFILL:
@@ -349,6 +354,19 @@ void ApplicationManager::SetClipboard(CFigure* Fig)
 	}
 	
 	Clipboard = Fig;
+	if (Clipboard != NULL)
+	{
+		ClipboardGfxInfo.DrawClr = Clipboard->Get_Draw_Colour();
+		ClipboardGfxInfo.FillClr = Clipboard->Get_Filled_Colour();
+		ClipboardGfxInfo.isFilled = Clipboard->isFilled();
+	}
+	
+}
+//////////////////////////////////////////////////////////////
+//Get Clipboard Function
+CFigure* ApplicationManager::GetClipboard()
+{
+	return Clipboard;
 }
 //==================================================================================//
 //							Interface Management Functions							//

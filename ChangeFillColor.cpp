@@ -10,7 +10,7 @@ void ChangeFillColor::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
-	pOut->PrintMessage("Change Fill tool picked, Click on a color.");
+	pOut->PrintMessage("Change fill tool picked, Click on a color.");
 	ActType = pIn->GetUserAction();
 	
 	
@@ -57,6 +57,10 @@ void ChangeFillColor::Execute()
 		ReadActionParameters();
 		SelectedFig = pManager->GetSelected(0);
 		SelectedFig->ChngFillClr(SelectedColor);
+	}
+	else if (pManager->GetSelectedCount() == 0)
+	{
+		pOut->PrintMessage("No items are selected");
 	}
 	else
 	{
