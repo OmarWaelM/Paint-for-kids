@@ -354,9 +354,13 @@ void ApplicationManager::SetClipboard(CFigure* Fig)
 	}
 	
 	Clipboard = Fig;
-	ClipboardGfxInfo.DrawClr = Clipboard->Get_Draw_Colour();
-	ClipboardGfxInfo.FillClr = Clipboard->Get_Filled_Colour();
-	ClipboardGfxInfo.isFilled = Clipboard->isFilled();
+	if (Clipboard != NULL)
+	{
+		ClipboardGfxInfo.DrawClr = Clipboard->Get_Draw_Colour();
+		ClipboardGfxInfo.FillClr = Clipboard->Get_Filled_Colour();
+		ClipboardGfxInfo.isFilled = Clipboard->isFilled();
+	}
+	
 }
 //////////////////////////////////////////////////////////////
 //Get Clipboard Function

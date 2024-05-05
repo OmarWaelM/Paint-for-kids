@@ -58,16 +58,16 @@ void CTriangle::Move(Point P)
 	Centre.y = (P1.y + P2.y + P3.y) / 3;
 
 	int dist_x = P.x - Centre.x;
-	int dist_y = P.y = Centre.y;
+	int dist_y = P.y - Centre.y;
 
 	P1.x = P1.x + dist_x;
-	P1.y = P1.y + dist_x;
+	P1.y = P1.y + dist_y;
 
 	P2.x = P2.x + dist_x;
-	P2.y = P2.y + dist_x;
+	P2.y = P2.y + dist_y;
 
 	P3.x = P3.x + dist_x;
-	P3.y = P3.y + dist_x;
+	P3.y = P3.y + dist_y;
 }
 
 void CTriangle::Save(ofstream& OutputFile)
