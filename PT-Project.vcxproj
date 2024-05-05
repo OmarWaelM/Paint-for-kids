@@ -188,6 +188,7 @@
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="LoadGraphAction.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PasteAction.cpp" />
     <ClCompile Include="PickByBothAction.cpp" />
     <ClCompile Include="PickByColourAction.cpp" />
     <ClCompile Include="PickByTypeAction.cpp" />
@@ -244,6 +245,7 @@
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="LoadGraphAction.h" />
+    <ClInclude Include="PasteAction.h" />
     <ClInclude Include="PickByBothAction.h" />
     <ClInclude Include="PickByColourAction.h" />
     <ClInclude Include="PickByTypeAction.h" />

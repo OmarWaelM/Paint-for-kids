@@ -51,7 +51,8 @@ public:
 
 	void AddSelected(CFigure* sFig); //Adds a Figure to selected list
 	void DeleteSelected(int i, CFigure* Fig = NULL); //Removes Figure at index i from selected list or the given figure pointer
-	void SetClipboard(CFigure* Fig); // Sets the Clipboard pointer and adds the figure to the selected list
+	void SetClipboard(CFigure* Fig); // Sets the Clipboard pointer 
+	CFigure* GetClipboard(); // Gets the clipboard pointer
 	int GetSelectedCount() const { return SelCount; } //Getter for SelectedCount
 	CFigure* GetSelected(int i) const { return SelectedFig[i]; } // Getter for Selected figure in index i
 
