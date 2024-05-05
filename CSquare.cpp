@@ -15,7 +15,7 @@ CSquare::CSquare(CSquare* old, GfxInfo newGfxInfo) :CFigure(newGfxInfo)
 
 void CSquare::Draw(Output* pOut) const
 {
-	pOut->DrawSqr(Centre, FigGfxInfo, Selected, Cut);
+	pOut->DrawSqr(Centre, FigGfxInfo, scale, Selected, Cut);
 }
 
 void CSquare::PrintInfo(Output* pOut)
@@ -41,6 +41,26 @@ void CSquare::Move(Point P)
 {
 	Centre.x = P.x;
 	Centre.y = P.y;
+}
+
+void CSquare::SetScale(double scale)
+{
+	this->scale = scale;
+	int sideLen = 200 * scale;
+	//collision condition
+	bool cond1 = (Centre.x - sideLen) < 0;
+	bool cond2 = (Centre.x + sideLen) > UI.width;
+	bool cond3 = (Centre.y - sideLen) < UI.ToolBarHeight;
+	bool cond4 = (Centre.y + sideLen) > UI.height - UI.StatusBarHeight;
+
+	if (cond1)
+		Centre.x = sideLen;
+	if (cond2)
+		Centre.x = UI.width - sideLen;
+	if (cond3)
+		Centre.y = UI.ToolBarHeight + sideLen;
+	if (cond4)
+		Centre.y = UI.height - UI.StatusBarHeight - sideLen;
 }
 
 void CSquare::Save(ofstream& OutputFile)

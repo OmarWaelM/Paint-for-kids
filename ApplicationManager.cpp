@@ -400,11 +400,15 @@ Output *ApplicationManager::GetOutput() const
 //Destructor
 ApplicationManager::~ApplicationManager()
 {
-	for (int i = 0; i < FigCount; i++)
+	for (int i = 0; i < SelCount; i++)
 	{
 		SelectedFig[i] = NULL;
+	}
+	for (int i = 0; i < FigCount; i++)
+	{
 		delete FigList[i];
 	}
+	Clipboard = NULL;
 	delete pIn;
 	delete pOut;
 	

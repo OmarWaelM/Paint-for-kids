@@ -220,9 +220,9 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected, bo
 		this->CreatePlayToolBar();
 }
 
-void Output::DrawSqr(Point P, GfxInfo SqrGfxInfo, bool selected, bool cut) const
+void Output::DrawSqr(Point P, GfxInfo SqrGfxInfo, double scale, bool selected, bool cut) const
 {
-	int sideLen = 200;
+	int sideLen = 200 * scale;
 
 	color DrawingClr;
 	if (selected)
@@ -297,7 +297,7 @@ void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool sele
 
 }
 
-void Output::DrawHex(Point P, GfxInfo HexGfxInfo, bool selected, bool cut) const
+void Output::DrawHex(Point P, GfxInfo HexGfxInfo, double scale, bool selected, bool cut) const
 {
 	color DrawingClr;
 	if (selected)
@@ -324,9 +324,9 @@ void Output::DrawHex(Point P, GfxInfo HexGfxInfo, bool selected, bool cut) const
 	}
 
 	//Distances from center of different points
-	int vertDist = 100;
-	int diagDist = (int)(100 * sqrt(3) / 3);
-	int horizDist = (int)(100 * 2 * sqrt(3) / 3);
+	int vertDist = 100 * scale;
+	int diagDist = (int)(vertDist * sqrt(3) / 3);
+	int horizDist = (int)(vertDist * 2 * sqrt(3) / 3);
 
 	//Creating and filling array of vertices co-ordinates
 	int X[6];

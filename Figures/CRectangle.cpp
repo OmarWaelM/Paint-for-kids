@@ -61,6 +61,38 @@ void CRectangle::Move(Point P)
 	Corner2.y = Corner2.y + dist_y;
 }
 
+void CRectangle::SetScale(double scale)
+{
+	this->scale = scale;
+	Point Centre;
+	Centre.x = (Corner1.x + Corner2.x) / 2;
+	Centre.y = (Corner1.y + Corner2.y) / 2;
+
+	int dist_x = Corner1.x - Centre.x;
+	int dist_y = Corner1.y - Centre.y;
+
+	Corner1.x = Corner1.x + (dist_x * scale);
+	Corner1.y = Corner1.y + (dist_x * scale);
+
+	Corner2.x = Corner2.x - (dist_x * scale);
+	Corner2.y = Corner2.y - (dist_y * scale);
+	//collision condition
+	bool cond1 = (Centre.x - (abs(dist_x) * scale)) < 0;
+	bool cond2 = (Centre.x + (abs(dist_x) * scale)) > UI.width;
+	bool cond3 = (Centre.y - (abs(dist_y) * scale)) < UI.ToolBarHeight;
+	bool cond4 = (Centre.y + (abs(dist_y) * scale)) > UI.height - UI.StatusBarHeight;
+
+	if (cond1)
+		Centre.x = abs(dist_x) * scale;
+	if (cond2)
+		Centre.x = UI.width - (abs(dist_x) * scale);
+	if (cond3)
+		Centre.y = UI.ToolBarHeight + (abs(dist_y) * scale);
+	if (cond4)
+		Centre.y = UI.height - UI.StatusBarHeight - (abs(dist_y) * scale);
+	Move(Centre);
+}
+
 void CRectangle::Save(ofstream& OutputFile)
 {
 	string DrawColor;

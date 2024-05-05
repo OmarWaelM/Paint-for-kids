@@ -192,6 +192,7 @@
     <ClCompile Include="PickByBothAction.cpp" />
     <ClCompile Include="PickByColourAction.cpp" />
     <ClCompile Include="PickByTypeAction.cpp" />
+    <ClCompile Include="ResizeAction.cpp" />
     <ClCompile Include="SaveGraphAction.cpp" />
     <ClCompile Include="SelectFigure.cpp" />
     <ClCompile Include="SendToBack.cpp" />
@@ -249,6 +250,7 @@
     <ClInclude Include="PickByBothAction.h" />
     <ClInclude Include="PickByColourAction.h" />
     <ClInclude Include="PickByTypeAction.h" />
+    <ClInclude Include="ResizeAction.h" />
     <ClInclude Include="SaveGraphAction.h" />
     <ClInclude Include="SelectFigure.h" />
     <ClInclude Include="SendToBack.h" />
