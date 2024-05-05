@@ -14,6 +14,7 @@ class PasteAction : public Action
 	Output* pOut;
 	Input* pIn;
 	CFigure* PasteFigure;
+	CFigure* NewFigure;
 	Point PointClicked;
 	GfxInfo PasteFigureGfxInfo;
 
