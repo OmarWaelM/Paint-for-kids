@@ -49,7 +49,7 @@ void CRectangle::Move(Point P)
 {
 	Point Centre;
 	Centre.x = (Corner1.x + Corner2.x) / 2;
-	Centre.y = (Corner2.y + Corner2.y) / 2;
+	Centre.y = (Corner1.y + Corner2.y) / 2;
 
 	int dist_x = P.x - Centre.x;
 	int dist_y = P.y - Centre.y;
