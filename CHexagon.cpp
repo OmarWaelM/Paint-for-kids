@@ -7,6 +7,12 @@ CHexagon::CHexagon(Point P, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 
 }
 
+CHexagon::CHexagon(CHexagon* old, GfxInfo newGfxInfo) :CFigure(newGfxInfo)
+{
+	Centre = old->Centre;
+	ID = Number_Of_Figures;
+}
+
 void CHexagon::Draw(Output* pOut) const
 {
 	pOut->DrawHex(Centre, FigGfxInfo, Selected, Cut);

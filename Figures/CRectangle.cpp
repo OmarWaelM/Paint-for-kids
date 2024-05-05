@@ -9,7 +9,13 @@ CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(Figure
 	ID = Number_Of_Figures;
 }
 
-	
+CRectangle::CRectangle(CRectangle* old, GfxInfo newGfxInfo) :CFigure(newGfxInfo)
+{
+	Corner1 = old->Corner1;
+	Corner2 = old->Corner2;
+
+	ID = Number_Of_Figures;
+}
 
 void CRectangle::Draw(Output* pOut) const
 {

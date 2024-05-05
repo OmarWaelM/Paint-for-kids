@@ -7,6 +7,12 @@ CSquare::CSquare(Point P, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 
 }
 
+CSquare::CSquare(CSquare* old, GfxInfo newGfxInfo) :CFigure(newGfxInfo)
+{
+	Centre = old->Centre;
+	ID = Number_Of_Figures;
+}
+
 void CSquare::Draw(Output* pOut) const
 {
 	pOut->DrawSqr(Centre, FigGfxInfo, Selected, Cut);

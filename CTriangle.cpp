@@ -10,6 +10,15 @@ CTriangle::CTriangle(Point p1, Point p2, Point p3, GfxInfo FigureGfxInfo):CFigur
 
 }
 
+CTriangle::CTriangle(CTriangle* old, GfxInfo newGfxInfo) :CFigure(newGfxInfo)
+{
+	P1 = old->P1;
+	P2 = old->P2;
+	P3 = old->P3;
+
+	ID = Number_Of_Figures;
+}
+
 void CTriangle::Draw(Output* pOut) const
 {
 	pOut->DrawTri(P1, P2, P3, FigGfxInfo, Selected, Cut);

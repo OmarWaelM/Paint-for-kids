@@ -11,6 +11,8 @@ private:
 public:
 	CHexagon(Point, GfxInfo FigureGfxInfo);
 
+	CHexagon(CHexagon* old, GfxInfo newGfxInfo);
+
 	virtual void Draw(Output* pOut) const;
 
 	virtual void PrintInfo(Output* pOut);

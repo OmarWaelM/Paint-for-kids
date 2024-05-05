@@ -14,6 +14,8 @@ private:
 public:
 	CRectangle(Point , Point, GfxInfo FigureGfxInfo );
 
+	CRectangle(CRectangle* old, GfxInfo newGfxInfo);
+
 	virtual void Draw(Output* pOut) const;
 
 	virtual void PrintInfo(Output* pOut);

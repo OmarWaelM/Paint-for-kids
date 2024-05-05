@@ -10,6 +10,8 @@ private:
 public:
 	CSquare(Point, GfxInfo FigureGfxInfo);
 
+	CSquare(CSquare* old, GfxInfo newGfxInfo);
+
 	virtual void Draw(Output* pOut) const;
 
 	virtual void PrintInfo(Output* pOut);
