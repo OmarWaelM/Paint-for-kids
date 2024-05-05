@@ -11,6 +11,8 @@ private:
 public:
 	CHexagon(Point, GfxInfo FigureGfxInfo);
 
+	CHexagon(CHexagon* old, GfxInfo newGfxInfo);
+
 	virtual void Draw(Output* pOut) const;
 
 	virtual void PrintInfo(Output* pOut);
@@ -18,6 +20,8 @@ public:
 	virtual bool IsWithin(Point P);
 
 	bool IsWithinHelper(int P1x, int P1y, int P2x, int P2y, int P3x, int P3y, int Px, int Py);
+
+	virtual void Move(Point P);
 
 	virtual void Save(ofstream& OutputFile);
 

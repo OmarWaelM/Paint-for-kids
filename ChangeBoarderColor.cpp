@@ -11,7 +11,7 @@ void ChangeBoarderColor::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
-	pOut->PrintMessage("Change boarder color tool picked, Click on a color.");
+	pOut->PrintMessage("Change border color tool picked, Click on a color.");
 	ActType = pIn->GetUserAction();
 
 
@@ -56,6 +56,10 @@ void ChangeBoarderColor::Execute()
 		ReadActionParameters();
 		SelectedFig = pManager->GetSelected(0);
 		SelectedFig->ChngDrawClr(SelectedColor);
+	}
+	else if (pManager->GetSelectedCount() == 0)
+	{
+		pOut->PrintMessage("No items are selected");
 	}
 	else
 	{

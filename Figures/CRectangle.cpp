@@ -9,12 +9,18 @@ CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(Figure
 	ID = Number_Of_Figures;
 }
 
-	
+CRectangle::CRectangle(CRectangle* old, GfxInfo newGfxInfo) :CFigure(newGfxInfo)
+{
+	Corner1 = old->Corner1;
+	Corner2 = old->Corner2;
+
+	ID = Number_Of_Figures;
+}
 
 void CRectangle::Draw(Output* pOut) const
 {
 	//Call Output::DrawRect to draw a rectangle on the screen	
-	pOut->DrawRect(Corner1, Corner2, FigGfxInfo, Selected);
+	pOut->DrawRect(Corner1, Corner2, FigGfxInfo, Selected, Cut);
 }
 
 void CRectangle::PrintInfo(Output* pOut)
@@ -37,6 +43,22 @@ bool CRectangle::IsWithin(Point P)
 			return true;
 	}
 	return false;
+}
+
+void CRectangle::Move(Point P) 
+{
+	Point Centre;
+	Centre.x = (Corner1.x + Corner2.x) / 2;
+	Centre.y = (Corner1.y + Corner2.y) / 2;
+
+	int dist_x = P.x - Centre.x;
+	int dist_y = P.y - Centre.y;
+
+	Corner1.x = Corner1.x + dist_x;
+	Corner1.y = Corner1.y + dist_y;
+
+	Corner2.x = Corner2.x + dist_x;
+	Corner2.y = Corner2.y + dist_y;
 }
 
 void CRectangle::Save(ofstream& OutputFile)

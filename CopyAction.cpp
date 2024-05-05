@@ -19,6 +19,10 @@ void CopyAction::Execute()
 		pManager->SetClipboard(SelectedFig);
 		pOut->PrintMessage("Figure Copied to the Clipboard.");
 	}
+	else if (pManager->GetSelectedCount() == 0)
+	{
+		pOut->PrintMessage("No items are selected");
+	}
 	else 
 	{
 		pOut->PrintMessage("Select ONLY ONE Figure");

@@ -7,9 +7,15 @@ CHexagon::CHexagon(Point P, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 
 }
 
+CHexagon::CHexagon(CHexagon* old, GfxInfo newGfxInfo) :CFigure(newGfxInfo)
+{
+	Centre = old->Centre;
+	ID = Number_Of_Figures;
+}
+
 void CHexagon::Draw(Output* pOut) const
 {
-	pOut->DrawHex(Centre, FigGfxInfo, Selected);
+	pOut->DrawHex(Centre, FigGfxInfo, Selected, Cut);
 }
 
 void CHexagon::PrintInfo(Output* pOut)
@@ -53,6 +59,12 @@ bool CHexagon::IsWithinHelper(int P1x, int P1y, int P2x, int P2y, int P3x, int P
 	if (AT == (A1 + A2 + A3))
 		return true;
 	return false;
+}
+
+void CHexagon::Move(Point P)
+{
+	Centre.x = P.x;
+	Centre.y = P.y;
 }
 
 void CHexagon::Save(ofstream& OutputFile)
