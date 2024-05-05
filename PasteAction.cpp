@@ -40,5 +40,8 @@ void PasteAction::Execute()
 	{
 		PasteFigure = NewFigure;
 		pManager->SetClipboard(PasteFigure);
+		PasteFigure->SetCut(false);
+
 	}
+	PasteFigure->Move(PointClicked);
 }
