@@ -24,7 +24,7 @@ void CSquare::PrintInfo(Output* pOut)
 
 	msg = msg + " , Centre Point is : ( " + to_string(Centre.x) + " , " + to_string(Centre.y) + " )";
 
-	msg = msg + " , Side Length = 200 ";
+	msg = msg + " , Side Length = " + to_string((int)(scale * 200));
 
 	pOut->PrintMessage(msg);
 
@@ -32,7 +32,7 @@ void CSquare::PrintInfo(Output* pOut)
 
 bool CSquare::IsWithin(Point P)
 {
-	if (abs(P.x - Centre.x) <= 100 && abs(P.y - Centre.y) <= 100)
+	if (abs(P.x - Centre.x) <= (100 * scale) && abs(P.y - Centre.y) <= (100 * scale))
 		return true;
 	return false;
 }
@@ -45,8 +45,8 @@ void CSquare::Move(Point P)
 
 void CSquare::SetScale(double scale)
 {
-	this->scale = scale;
-	int sideLen = 200 * scale;
+	this->scale = this->scale * scale;
+	int sideLen = 100 * this->scale;
 	//collision condition
 	bool cond1 = (Centre.x - sideLen) < 0;
 	bool cond2 = (Centre.x + sideLen) > UI.width;
@@ -55,11 +55,11 @@ void CSquare::SetScale(double scale)
 
 	if (cond1)
 		Centre.x = sideLen;
-	if (cond2)
+	else if (cond2)
 		Centre.x = UI.width - sideLen;
 	if (cond3)
 		Centre.y = UI.ToolBarHeight + sideLen;
-	if (cond4)
+	else if (cond4)
 		Centre.y = UI.height - UI.StatusBarHeight - sideLen;
 }
 

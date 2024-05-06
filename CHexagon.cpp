@@ -24,7 +24,7 @@ void CHexagon::PrintInfo(Output* pOut)
 
 	msg=msg+ ", Center is ( " + to_string(Centre.x) + " , " + to_string(Centre.y) + " )";
 
-	msg = msg + ", Height = 200 ";
+	msg = msg + ", Height = " + to_string((int)(100 * scale));
 
 	pOut->PrintMessage(msg);
 }
@@ -50,9 +50,9 @@ bool CHexagon::IsWithin(Point P)
 
 void CHexagon::SetScale(double scale)
 {
-	this->scale = scale;
+	this->scale = this->scale * scale;
 
-	int vertDist = 100 * scale;
+	int vertDist = 100 * this->scale;
 	int horizDist = (int)(vertDist * 2 * sqrt(3) / 3);
 	// collision conditions
 	bool cond1 = (Centre.x - horizDist) < 0;
@@ -62,11 +62,11 @@ void CHexagon::SetScale(double scale)
 
 	if (cond1)
 		Centre.x = horizDist;
-	if (cond2)
+	else if (cond2)
 		Centre.x = UI.width - horizDist;
 	if (cond3)
 		Centre.y = vertDist + UI.ToolBarHeight;
-	if (cond4)
+	else if (cond4)
 		Centre.y = UI.height - UI.StatusBarHeight - vertDist;
 }
 

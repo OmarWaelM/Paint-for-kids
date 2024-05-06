@@ -181,26 +181,54 @@
     <ClCompile Include="DeleteAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="ChangeBoarderColor.cpp" />
-    <ClCompile Include="ChangeFillColor.cpp" />
-    <ClCompile Include="ClearAllAction.cpp" />
-    <ClCompile Include="CopyAction.cpp" />
     <ClCompile Include="PickByColourAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
     <ClCompile Include="PickByTypeAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="SaveGraphAction.cpp" />
-    <ClCompile Include="SwitchToPlayModeAction.cpp" />
     <ClCompile Include="PickByBothAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="ExitAction.cpp" />
-    <ClCompile Include="LoadGraphAction.cpp" />
-    <ClCompile Include="SendToBack.cpp" />
-    <ClCompile Include="SwitchToDrawModeAction.cpp" />
-    <ClCompile Include="CutAction.cpp" />
+    <ClCompile Include="ChangeBoarderColor.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeFillColor.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="ClearAllAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="CopyAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="CutAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="ExitAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadGraphAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="PasteAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="ResizeAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveGraphAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="SendToBack.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchToDrawModeAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchToPlayModeAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -324,25 +352,49 @@
     <ClInclude Include="DeleteAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="ChangeBoarderColor.h" />
-    <ClInclude Include="ChangeFillColor.h" />
-    <ClInclude Include="ClearAllAction.h" />
-    <ClInclude Include="CopyAction.h" />
-    <ClInclude Include="ExitAction.h" />
     <ClInclude Include="PickByColourAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="PickByTypeAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="SaveGraphAction.h" />
-    <ClInclude Include="SwitchToPlayModeAction.h" />
     <ClInclude Include="PickByBothAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="LoadGraphAction.h" />
-    <ClInclude Include="SwitchToDrawModeAction.h" />
     <ClInclude Include="CutAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeBoarderColor.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeFillColor.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="ClearAllAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="CopyAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="ExitAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadGraphAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="PasteAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="ResizeAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveGraphAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchToDrawModeAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchToPlayModeAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

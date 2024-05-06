@@ -91,43 +91,43 @@ void CTriangle::SetScale(double scale)
 	P3.x = Centre.x - dist3_x * scale;
 	P3.y = Centre.y - dist3_y * scale;
 
-	int dif1_x, dif1_y, dif2_x, dif2_y, dif3_x, dif3_y = 0;
+	int dif1_x = 0, dif1_y = 0, dif2_x = 0, dif2_y = 0, dif3_x = 0, dif3_y = 0;
 	
 	if (P1.x < 0)
-		dif1_x = P1.x;
-	if (P1.x > UI.width)
+		dif1_x = 0 - P1.x;
+	else if (P1.x > UI.width)
 		dif1_x = UI.width - P1.x;
 	if (P1.y < UI.ToolBarHeight)
 		dif1_y = UI.ToolBarHeight - P1.y;
-	if (P1.y > UI.height - UI.StatusBarHeight)
-		dif1_y = UI.height - UI.StatusBarHeight - P1.y;
+	else if (P1.y > UI.height - UI.StatusBarHeight)
+		dif1_y = P1.y - UI.height - UI.StatusBarHeight;
 
 	if (P2.x < 0)
-		dif2_x = P2.x;
-	if (P2.x > UI.width)
+		dif2_x = 0 - P2.x;
+	else if (P2.x > UI.width)
 		dif2_x = UI.width - P2.x;
 	if (P2.y < UI.ToolBarHeight)
 		dif2_y = UI.ToolBarHeight - P2.y;
-	if (P2.y > UI.height - UI.StatusBarHeight)
-		dif2_y = UI.height - UI.StatusBarHeight - P2.y;
+	else if (P2.y > UI.height - UI.StatusBarHeight)
+		dif2_y = P2.y - UI.height - UI.StatusBarHeight;
 
 	if (P3.x < 0)
-		dif3_x = P3.x;
-	if (P3.x > UI.width)
+		dif3_x = 0 - P3.x;
+	else if (P3.x > UI.width)
 		dif3_x = UI.width - P3.x;
 	if (P3.y < UI.ToolBarHeight)
 		dif3_y = UI.ToolBarHeight - P3.y;
-	if (P3.y > UI.height - UI.StatusBarHeight)
-		dif3_y = UI.height - UI.StatusBarHeight - P3.y;
+	else if (P3.y > UI.height - UI.StatusBarHeight)
+		dif3_y = P3.y - UI.height - UI.StatusBarHeight ;
 
 	if (max(dif1_x, max(dif2_x, dif3_x)) > 0)
 		Centre.x = Centre.x + max(dif1_x, max(dif2_x, dif3_x));
-	else
+	else if (min(dif1_x, min(dif2_x, dif3_x)) < 0)
 		Centre.x = Centre.x + min(dif1_x, min(dif2_x, dif3_x));
 
 	if (max(dif1_y, max(dif2_y, dif3_y)) > 0)
 		Centre.y = Centre.y + max(dif1_y, max(dif2_y, dif3_y));
-	else
+	else if (min(dif1_y, min(dif2_y, dif3_y)) < 0)
 		Centre.y = Centre.y + min(dif1_y, min(dif2_y, dif3_y));
 
 	Move(Centre);

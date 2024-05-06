@@ -61,9 +61,6 @@ void CCircle::SetScale(double scale)
 	int dist_x = Radius.x - Centre.x;
 	int dist_y = Radius.y - Centre.y;
 	int radius = sqrt(pow(dist_x, 2) + pow(dist_y, 2));
-
-	Radius.x = Centre.x + (dist_x * scale);
-	Radius.y = Centre.y + (dist_y * scale);
 	
 	//collision conditions
 	bool cond1 = (Centre.x - (radius * scale) < 0);
@@ -73,12 +70,15 @@ void CCircle::SetScale(double scale)
 
 	if (cond1)
 		Centre.x = radius * scale;
-	if (cond2)
+	else if (cond2)
 		Centre.x = UI.width - (radius * scale);
 	if (cond3)
 		Centre.y = UI.ToolBarHeight + (radius * scale);
-	if (cond4)
+	else if (cond4)
 		Centre.y = UI.height - UI.StatusBarHeight - (radius * scale);
+
+	Radius.x = Centre.x + (dist_x * scale);
+	Radius.y = Centre.y + (dist_y * scale);
 }
 
 void CCircle::Save(ofstream& OutputFile)

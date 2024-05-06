@@ -71,11 +71,11 @@ void CRectangle::SetScale(double scale)
 	int dist_x = Corner1.x - Centre.x;
 	int dist_y = Corner1.y - Centre.y;
 
-	Corner1.x = Corner1.x + (dist_x * scale);
-	Corner1.y = Corner1.y + (dist_x * scale);
+	Corner1.x = Centre.x + (dist_x * scale);
+	Corner1.y = Centre.y + (dist_y * scale);
 
-	Corner2.x = Corner2.x - (dist_x * scale);
-	Corner2.y = Corner2.y - (dist_y * scale);
+	Corner2.x = Centre.x - (dist_x * scale);
+	Corner2.y = Centre.y - (dist_y * scale);
 	//collision condition
 	bool cond1 = (Centre.x - (abs(dist_x) * scale)) < 0;
 	bool cond2 = (Centre.x + (abs(dist_x) * scale)) > UI.width;
@@ -84,11 +84,11 @@ void CRectangle::SetScale(double scale)
 
 	if (cond1)
 		Centre.x = abs(dist_x) * scale;
-	if (cond2)
+	else if (cond2)
 		Centre.x = UI.width - (abs(dist_x) * scale);
 	if (cond3)
 		Centre.y = UI.ToolBarHeight + (abs(dist_y) * scale);
-	if (cond4)
+	else if (cond4)
 		Centre.y = UI.height - UI.StatusBarHeight - (abs(dist_y) * scale);
 	Move(Centre);
 }
