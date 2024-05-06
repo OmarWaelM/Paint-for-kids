@@ -21,6 +21,8 @@ public:
 
 	virtual void Move(Point P);
 
+	virtual void SetScale(double scale);
+
 	virtual void Save(ofstream& OutputFile);
 
 	virtual void Load(ifstream& InputFile);

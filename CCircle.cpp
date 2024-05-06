@@ -54,6 +54,33 @@ void CCircle::Move(Point P)
 	Radius.y = Radius.y + dist_y;
 }
 
+void CCircle::SetScale(double scale)
+{
+	this->scale = scale;
+
+	int dist_x = Radius.x - Centre.x;
+	int dist_y = Radius.y - Centre.y;
+	int radius = sqrt(pow(dist_x, 2) + pow(dist_y, 2));
+	
+	//collision conditions
+	bool cond1 = (Centre.x - (radius * scale) < 0);
+	bool cond2 = (Centre.x + (radius * scale) > UI.width);
+	bool cond3 = (Centre.y - (radius * scale) < UI.ToolBarHeight);
+	bool cond4 = (Centre.y + (radius * scale) > (UI.height - UI.StatusBarHeight));
+
+	if (cond1)
+		Centre.x = radius * scale;
+	else if (cond2)
+		Centre.x = UI.width - (radius * scale);
+	if (cond3)
+		Centre.y = UI.ToolBarHeight + (radius * scale);
+	else if (cond4)
+		Centre.y = UI.height - UI.StatusBarHeight - (radius * scale);
+
+	Radius.x = Centre.x + (dist_x * scale);
+	Radius.y = Centre.y + (dist_y * scale);
+}
+
 void CCircle::Save(ofstream& OutputFile)
 {
 	string DrawColor;

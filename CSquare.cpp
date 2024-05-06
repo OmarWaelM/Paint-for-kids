@@ -15,7 +15,7 @@ CSquare::CSquare(CSquare* old, GfxInfo newGfxInfo) :CFigure(newGfxInfo)
 
 void CSquare::Draw(Output* pOut) const
 {
-	pOut->DrawSqr(Centre, FigGfxInfo, Selected, Cut);
+	pOut->DrawSqr(Centre, FigGfxInfo, scale, Selected, Cut);
 }
 
 void CSquare::PrintInfo(Output* pOut)
@@ -24,7 +24,7 @@ void CSquare::PrintInfo(Output* pOut)
 
 	msg = msg + " , Centre Point is : ( " + to_string(Centre.x) + " , " + to_string(Centre.y) + " )";
 
-	msg = msg + " , Side Length = 200 ";
+	msg = msg + " , Side Length = " + to_string((int)(scale * 200));
 
 	pOut->PrintMessage(msg);
 
@@ -32,7 +32,7 @@ void CSquare::PrintInfo(Output* pOut)
 
 bool CSquare::IsWithin(Point P)
 {
-	if (abs(P.x - Centre.x) <= 100 && abs(P.y - Centre.y) <= 100)
+	if (abs(P.x - Centre.x) <= (100 * scale) && abs(P.y - Centre.y) <= (100 * scale))
 		return true;
 	return false;
 }
@@ -41,6 +41,26 @@ void CSquare::Move(Point P)
 {
 	Centre.x = P.x;
 	Centre.y = P.y;
+}
+
+void CSquare::SetScale(double scale)
+{
+	this->scale = this->scale * scale;
+	int sideLen = 100 * this->scale;
+	//collision condition
+	bool cond1 = (Centre.x - sideLen) < 0;
+	bool cond2 = (Centre.x + sideLen) > UI.width;
+	bool cond3 = (Centre.y - sideLen) < UI.ToolBarHeight;
+	bool cond4 = (Centre.y + sideLen) > UI.height - UI.StatusBarHeight;
+
+	if (cond1)
+		Centre.x = sideLen;
+	else if (cond2)
+		Centre.x = UI.width - sideLen;
+	if (cond3)
+		Centre.y = UI.ToolBarHeight + sideLen;
+	else if (cond4)
+		Centre.y = UI.height - UI.StatusBarHeight - sideLen;
 }
 
 void CSquare::Save(ofstream& OutputFile)

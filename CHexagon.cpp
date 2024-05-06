@@ -4,7 +4,7 @@ CHexagon::CHexagon(Point P, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
 	Centre = P;
 	ID = Number_Of_Figures;
-
+	
 }
 
 CHexagon::CHexagon(CHexagon* old, GfxInfo newGfxInfo) :CFigure(newGfxInfo)
@@ -15,7 +15,7 @@ CHexagon::CHexagon(CHexagon* old, GfxInfo newGfxInfo) :CFigure(newGfxInfo)
 
 void CHexagon::Draw(Output* pOut) const
 {
-	pOut->DrawHex(Centre, FigGfxInfo, Selected, Cut);
+	pOut->DrawHex(Centre, FigGfxInfo, scale, Selected, Cut);
 }
 
 void CHexagon::PrintInfo(Output* pOut)
@@ -24,7 +24,7 @@ void CHexagon::PrintInfo(Output* pOut)
 
 	msg=msg+ ", Center is ( " + to_string(Centre.x) + " , " + to_string(Centre.y) + " )";
 
-	msg = msg + ", Height = 200 ";
+	msg = msg + ", Height = " + to_string((int)(100 * scale));
 
 	pOut->PrintMessage(msg);
 }
@@ -48,6 +48,28 @@ bool CHexagon::IsWithin(Point P)
 	return false;
 }
 
+void CHexagon::SetScale(double scale)
+{
+	this->scale = this->scale * scale;
+
+	int vertDist = 100 * this->scale;
+	int horizDist = (int)(vertDist * 2 * sqrt(3) / 3);
+	// collision conditions
+	bool cond1 = (Centre.x - horizDist) < 0;
+	bool cond2 = (Centre.x + horizDist) > UI.width;
+	bool cond3 = (Centre.y - vertDist) < UI.ToolBarHeight;
+	bool cond4 = (Centre.y + vertDist) > (UI.height - UI.StatusBarHeight);
+
+	if (cond1)
+		Centre.x = horizDist;
+	else if (cond2)
+		Centre.x = UI.width - horizDist;
+	if (cond3)
+		Centre.y = vertDist + UI.ToolBarHeight;
+	else if (cond4)
+		Centre.y = UI.height - UI.StatusBarHeight - vertDist;
+}
+
 bool CHexagon::IsWithinHelper(int P1x, int P1y, int P2x, int P2y, int P3x, int P3y, int Px, int Py)
 {
 	int AT, A1, A2, A3;
@@ -66,6 +88,8 @@ void CHexagon::Move(Point P)
 	Centre.x = P.x;
 	Centre.y = P.y;
 }
+
+
 
 void CHexagon::Save(ofstream& OutputFile)
 {
