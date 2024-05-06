@@ -1,6 +1,6 @@
-#include "AddHexagonAction.h"
-#include"ApplicationManager.h"
-#include"CHexagon.h"
+#include "..\Actions\AddHexagonAction.h"
+#include "..\ApplicationManager.h"
+#include "..\Figures\CHexagon.h"
 
 AddHexagonAction::AddHexagonAction(ApplicationManager* pApp):Action(pApp)
 {
@@ -30,7 +30,9 @@ void AddHexagonAction::Execute()
 {
 	// This action needs to read some parameters first
 	ReadActionParameters();
-
+	// Add sound after drawing the shape if not muted
+	if (UI.audio == AUDIO_ON)
+		PlaySound("Audio/hexagon.wav", NULL, SND_ASYNC);
 	//Create a Square with the parameters read from the user
 	CHexagon* H = new CHexagon(Centre, HexagonGfxInfo);
 

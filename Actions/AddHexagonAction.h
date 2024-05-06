@@ -2,8 +2,8 @@
 #ifndef ADD_HEXAGON_ACTION_H
 #define ADD_HEXAGON_ACTION_H
 
-#include "Actions/Action.h"
-#include "Figures/CFigure.h"
+#include "..\Actions\Action.h"
+#include "..\Figures\CFigure.h"
 
 class AddHexagonAction :public Action
 {

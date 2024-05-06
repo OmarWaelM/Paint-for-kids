@@ -1,22 +1,15 @@
+#ifndef EXIT_H
+#define EXIT_H
+
 #pragma once
 #include "..\ApplicationManager.h"
 #include "..\Actions\Action.h"
 
-
-class DeleteAction : public Action
+class ExitAction : public Action
 {
-private:
-	CFigure* pFig;
-	Output* pOut;
-
 public:
-	DeleteAction(ApplicationManager*pApp);
-
+	ExitAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
-
 	virtual void Execute();
-
-
 };
-
-
+#endif

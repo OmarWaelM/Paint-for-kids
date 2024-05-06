@@ -1,17 +1,16 @@
-#include "..\Actions\BringToFront.h"
+#include "..\Actions\SendToBack.h"
 #include "..\ApplicationManager.h"
 
-void BringToFront::ReadActionParameters()
+void SendToBack::ReadActionParameters()
 {
 }
 
-void BringToFront::Execute()
+void SendToBack::Execute()
 {
-
 	Output* pOut = pManager->GetOutput();
 
 	if (pManager->GetSelectedCount() == 1)
-		pManager->MoveFig(pManager->GetSelected(0), pManager->GetFigCount() - 1);
+		pManager->MoveFig(pManager->GetSelected(0), 0);
 	else if (pManager->GetSelectedCount() == 0)
 		pOut->PrintMessage("No Figure Selected");
 	else
