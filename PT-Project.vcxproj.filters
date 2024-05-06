@@ -190,6 +190,7 @@
     <ClCompile Include="PickByBothAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+
     <ClCompile Include="ChangeBoarderColor.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
@@ -229,6 +230,7 @@
     <ClCompile Include="SwitchToPlayModeAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\AddAudioAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -396,9 +398,16 @@
     </ClInclude>
     <ClInclude Include="SwitchToPlayModeAction.h">
       <Filter>Action Classes</Filter>
-    </ClInclude>
+    </ClInclude>r
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Audio\circle.wav" />
+    <Media Include="Audio\hexagon.wav" />
+    <Media Include="Audio\rectangle.wav" />
+    <Media Include="Audio\triangle.wav" />
+    <Media Include="Audio\square.wav" />
   </ItemGroup>
 </Project>

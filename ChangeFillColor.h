@@ -10,6 +10,9 @@ class ChangeFillColor : public Action
 	CFigure* SelectedFig;
 	color SelectedColor;
 	ActionType ActType;
+	Output* pOut;
+	Input* pIn;
+
 public:
 	ChangeFillColor(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
