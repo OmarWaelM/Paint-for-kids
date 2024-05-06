@@ -10,6 +10,7 @@ void CopyAction::ReadActionParameters()
 
 void CopyAction::Execute()
 {
+	//initializing pOut pointer
 	pOut = pManager->GetOutput();
 	pOut->PrintMessage("Copy Tool Selected");
 
