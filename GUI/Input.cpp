@@ -71,10 +71,15 @@ ActionType Input::GetUserAction() const
 			case ITM_COPYFIGURE: return TO_COPYFIGURE;
 			case ITM_CUTFIGURE: return TO_CUTFIGURE;
 			case ITM_PASTEFIGURE: return TO_PASTEFIGURE;
+			case ITM_RESIZEFOUR: return TO_RESIZEFOUR;
+			case ITM_RESIZETWO: return TO_RESIZETWO;
+			case ITM_RESIZEHALF: return TO_RESIZEHALF;
+			case ITM_RESIZEQUART: return TO_RESIZEQUART;
 			case ITM_SENDTOBACK: return TO_SENDBACK;
 			case ITM_BRINGTOFRONT: return TO_BRINGFRONT;
 			case ITM_SAVEGRAPH: return TO_SAVEGRAPH;
 			case ITM_LOADGRAPH: return TO_LOADGRAPH;
+			case ITM_AUDIO: return TO_TOGGLEAUDIO;
 			case ITM_EXIT: return EXIT;
 
 			default: return EMPTY;	//A click on empty place in desgin toolbar

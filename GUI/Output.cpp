@@ -5,7 +5,7 @@ Output::Output()
 {
 	//Initialize user interface parameters
 	UI.InterfaceMode = MODE_DRAW;
-
+	UI.audio = AUDIO_ON;
 	UI.width = 1250;
 	UI.height = 650;
 	UI.wx = 5;
@@ -13,9 +13,9 @@ Output::Output()
 
 
 	UI.StatusBarHeight = 50;
-	UI.ToolBarHeight = 50;
+	UI.ToolBarHeight = 40;
 	UI.LineUnderTBWidth = 2;
-	UI.MenuItemWidth = 49;
+	UI.MenuItemWidth = 40;
 
 	UI.DrawColor = BLACK;	//Drawing color
 	UI.FillColor = GREEN;	//Filling color
@@ -101,11 +101,18 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_COPYFIGURE] = "images\\MenuItems\\Menu_Copy.jpg";
 	MenuItemImages[ITM_CUTFIGURE] = "images\\MenuItems\\Menu_Cut.jpg";
 	MenuItemImages[ITM_PASTEFIGURE] = "images\\MenuItems\\Menu_Paste.jpg";
+	MenuItemImages[ITM_RESIZEFOUR] = "images\\MenuItems\\Menu_ResizeFour.jpg";
+	MenuItemImages[ITM_RESIZETWO] = "images\\MenuItems\\Menu_ResizeTwo.jpg";
+	MenuItemImages[ITM_RESIZEHALF] = "images\\MenuItems\\Menu_ResizeHalf.jpg";
+	MenuItemImages[ITM_RESIZEQUART] = "images\\MenuItems\\Menu_ResizeQuart.jpg";
 	MenuItemImages[ITM_SENDTOBACK] = "images\\MenuItems\\Menu_Back.jpg";
 	MenuItemImages[ITM_BRINGTOFRONT] = "images\\MenuItems\\Menu_Front.jpg";
 	MenuItemImages[ITM_SAVEGRAPH] = "images\\MenuItems\\Menu_Save.jpg";
 	MenuItemImages[ITM_LOADGRAPH] = "images\\MenuItems\\Menu_Load.jpg";
-
+	if (UI.audio == AUDIO_ON) 
+		MenuItemImages[ITM_AUDIO] = "images\\MenuItems\\Menu_AudioOn.jpg";
+	else
+		MenuItemImages[ITM_AUDIO] = "images\\MenuItems\\Menu_AudioOff.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 
 	pWind->DrawImage("images\\MenuItems\\Toolbar_Background.jpg", 0, 0, UI.width, UI.ToolBarHeight);
@@ -213,16 +220,11 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected, bo
 	}
 
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
-	
-	if (UI.InterfaceMode == MODE_DRAW)
-		this->CreateDrawToolBar();
-	else
-		this->CreatePlayToolBar();
 }
 
-void Output::DrawSqr(Point P, GfxInfo SqrGfxInfo, bool selected, bool cut) const
+void Output::DrawSqr(Point P, GfxInfo SqrGfxInfo, double scale, bool selected, bool cut) const
 {
-	int sideLen = 200;
+	int sideLen = 200 * scale;
 
 	color DrawingClr;
 	if (selected)
@@ -256,11 +258,6 @@ void Output::DrawSqr(Point P, GfxInfo SqrGfxInfo, bool selected, bool cut) const
 	P2.y = P.y + sideLen / 2;
 
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
-
-	if (UI.InterfaceMode == MODE_DRAW)
-		this->CreateDrawToolBar();
-	else
-		this->CreatePlayToolBar();
 }
 
 void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool selected, bool cut) const
@@ -289,15 +286,9 @@ void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool sele
 	}
 
 	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
-
-	if (UI.InterfaceMode == MODE_DRAW)
-		this->CreateDrawToolBar();
-	else
-		this->CreatePlayToolBar();
-
 }
 
-void Output::DrawHex(Point P, GfxInfo HexGfxInfo, bool selected, bool cut) const
+void Output::DrawHex(Point P, GfxInfo HexGfxInfo, double scale, bool selected, bool cut) const
 {
 	color DrawingClr;
 	if (selected)
@@ -324,9 +315,9 @@ void Output::DrawHex(Point P, GfxInfo HexGfxInfo, bool selected, bool cut) const
 	}
 
 	//Distances from center of different points
-	int vertDist = 100;
-	int diagDist = (int)(100 * sqrt(3) / 3);
-	int horizDist = (int)(100 * 2 * sqrt(3) / 3);
+	int vertDist = 100 * scale;
+	int diagDist = (int)(vertDist * sqrt(3) / 3);
+	int horizDist = (int)(vertDist * 2 * sqrt(3) / 3);
 
 	//Creating and filling array of vertices co-ordinates
 	int X[6];
@@ -347,11 +338,6 @@ void Output::DrawHex(Point P, GfxInfo HexGfxInfo, bool selected, bool cut) const
 	Y[5] = P.y;
 
 	pWind->DrawPolygon(X, Y, 6, style);
-
-	if (UI.InterfaceMode == MODE_DRAW)
-		this->CreateDrawToolBar();
-	else
-		this->CreatePlayToolBar();
 }
 
 void Output::DrawCirc(Point P1, Point P2, GfxInfo CircGfxInfo, bool selected, bool cut) const
@@ -382,11 +368,6 @@ void Output::DrawCirc(Point P1, Point P2, GfxInfo CircGfxInfo, bool selected, bo
 	int radius = sqrt(pow(P1.x - P2.x, 2) + pow(P1.y - P2.y, 2));
 
 	pWind->DrawCircle(P1.x, P1.y, radius, style);
-
-	if (UI.InterfaceMode == MODE_DRAW)
-		this->CreateDrawToolBar();
-	else
-		this->CreatePlayToolBar();
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////

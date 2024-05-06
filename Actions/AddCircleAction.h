@@ -3,10 +3,10 @@
 #ifndef ADD_CIRCLE_ACTION_H
 #define ADD_CIRCLE_ACTION_H
 
-#include "Actions/Action.h"
-#include "Figures/CFigure.h"
-#include"ApplicationManager.h"
-#include"CCircle.h"
+#include "..\Actions\Action.h"
+#include "..\Figures\CFigure.h"
+#include "..\ApplicationManager.h"
+#include "..\Figures\CCircle.h"
 
 class AddCircleAction :public Action
 {
@@ -21,8 +21,6 @@ public:
 	virtual void ReadActionParameters();
 
 	virtual void Execute();
-
-
 
 };
 #endif

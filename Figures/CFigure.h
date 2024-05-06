@@ -15,7 +15,7 @@ protected:
 	static int Number_Of_Figures;
 	/// Add more parameters if needed.
 	bool Cut; // true if the shape is cut
-
+	double scale;
 public:
 	CFigure(GfxInfo FigureGfxInfo);
 
@@ -34,6 +34,7 @@ public:
 	bool isFilled() { return FigGfxInfo.isFilled; };
 	color Get_Filled_Colour() { return FigGfxInfo.FillClr; };
 	color Get_Draw_Colour() { return FigGfxInfo.DrawClr; }
+	double Get_Scale() { return scale; }
 
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure:
@@ -41,6 +42,7 @@ public:
 	virtual void PrintInfo(Output* pOut) = 0;          //print all figure info on the status bar
 	virtual bool IsWithin(Point P) = 0;
 	virtual void Move(Point P) = 0;
+	virtual void SetScale(double scale) = 0;
 	///Decide the parameters that you should pass to each function	
 
 	virtual void Save(ofstream& OutputFile) = 0;
