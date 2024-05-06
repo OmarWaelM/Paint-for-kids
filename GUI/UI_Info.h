@@ -13,6 +13,12 @@ enum GUI_MODE	//Graphical user interface mode
 	MODE_PLAY	//Playing mode
 };
 
+enum AUDIO_MODE //Audio mode
+{
+	AUDIO_ON,	//Audio on
+	AUDIO_OFF	//Mute
+};
+
 enum DrawMenuItem //The items of the Draw menu (you should add more items)
 {
 	//Note: Items are **(ordered)** here as they appear in menu
@@ -37,10 +43,15 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_COPYFIGURE,
 	ITM_CUTFIGURE,
 	ITM_PASTEFIGURE,
+	ITM_RESIZEFOUR,
+	ITM_RESIZETWO,
+	ITM_RESIZEHALF,
+	ITM_RESIZEQUART,
 	ITM_SENDTOBACK,
 	ITM_BRINGTOFRONT,
 	ITM_SAVEGRAPH,
 	ITM_LOADGRAPH,
+	ITM_AUDIO,
 	ITM_EXIT,		//Exit item
 
 	DRAW_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
@@ -66,6 +77,7 @@ __declspec(selectany) //This line to prevent "redefinition error"
 struct UI_Info	//User Interface Info.
 {
 	GUI_MODE InterfaceMode;
+	AUDIO_MODE audio;
 
 	int	width, height,	    //Window width and height
 		wx, wy,			//Window starting coordinates

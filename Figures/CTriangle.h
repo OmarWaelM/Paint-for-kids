@@ -1,20 +1,18 @@
-#ifndef CRECT_H
-#define CRECT_H
+#ifndef CTRIANGLE_H
+#define CTRIANGLE_H
+#include "..\Figures\CFigure.h"
 
-#include "CFigure.h"
-
-class CRectangle : public CFigure
+class CTriangle :public CFigure
 {
 private:
-	Point Corner1;	
-	Point Corner2;
-	Point Upper_Left;
-	Point Bottom_Right;
+	Point P1;
+	Point P2;
+	Point P3;
 
 public:
-	CRectangle(Point , Point, GfxInfo FigureGfxInfo );
+	CTriangle(Point, Point, Point, GfxInfo FigureGfxInfo);
 
-	CRectangle(CRectangle* old, GfxInfo newGfxInfo);
+	CTriangle(CTriangle* old, GfxInfo newGfxInfo);
 
 	virtual void Draw(Output* pOut) const;
 
@@ -27,8 +25,7 @@ public:
 	virtual void SetScale(double scale);
 
 	virtual void Save(ofstream& OutputFile);
-	
+
 	virtual void Load(ifstream& InputFile);
 };
-
 #endif

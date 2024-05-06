@@ -39,7 +39,9 @@ void AddRectAction::Execute()
 {
 	//This action needs to read some parameters first
 	ReadActionParameters();
-	
+	// Add sound after drawing the shape if not muted
+	if (UI.audio == AUDIO_ON)
+		PlaySound("Audio/rectangle.wav", NULL, SND_ASYNC);
 	//Create a rectangle with the parameters read from the user
 	CRectangle *R=new CRectangle(P1, P2, RectGfxInfo);
 

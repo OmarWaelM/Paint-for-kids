@@ -26,17 +26,19 @@ enum ActionType //The actions supported (you can add more if needed)
 	TO_COPYFIGURE,
 	TO_CUTFIGURE,
 	TO_PASTEFIGURE,
+	TO_RESIZEFOUR,
+	TO_RESIZETWO,
+	TO_RESIZEHALF,
+	TO_RESIZEQUART,
 	TO_SENDBACK,
 	TO_BRINGFRONT,
 	TO_SAVEGRAPH,
 	TO_LOADGRAPH,
+	TO_TOGGLEAUDIO,
 	EXIT,
 	TO_FIGURETYPE,
 	TO_FILLCOLOUR,
 	TO_FIGUREANDFILL,
-
-
-	//Exit
 	TO_DRAW,		//Switch interface to Draw mode
 	EMPTY,			//A click on empty place in the toolbar
 	DRAWING_AREA,
@@ -45,19 +47,6 @@ enum ActionType //The actions supported (you can add more if needed)
 
 	///TODO: Add the other action types of the two modes
 };
-
-enum FillColors
-{
-	black,
-	red,
-	orange,
-	yellow,
-	green,
-	blue,
-	UNFILLED
-};
-
-
 
 struct Point	//To be used for figures points
 {
@@ -72,5 +61,6 @@ struct GfxInfo	//Graphical info of each figure (you may add more members)
 	int BorderWdth;	//Width of figure borders
 
 };
+
 
 #endif

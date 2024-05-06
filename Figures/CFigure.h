@@ -1,6 +1,7 @@
 #ifndef CFIGURE_H
 #define CFIGURE_H
 
+#include <fstream>
 #include "..\defs.h"
 #include "..\GUI\Output.h"
 
@@ -13,7 +14,8 @@ protected:
 	GfxInfo FigGfxInfo;	//Figure graphics info
 	static int Number_Of_Figures;
 	/// Add more parameters if needed.
-
+	bool Cut; // true if the shape is cut
+	double scale;
 public:
 	CFigure(GfxInfo FigureGfxInfo);
 
@@ -23,22 +25,28 @@ public:
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
 
+	static void ChngNumberOfFigures(int num); //changes static value of Number_Of_Figures
+
+	
+	bool IsCut() const;  // checks whether the figure is cut
+	void SetCut(bool c); // cuts/ uncuts the figure
+
 	bool isFilled() { return FigGfxInfo.isFilled; };
 	color Get_Filled_Colour() { return FigGfxInfo.FillClr; };
-	FillColors Get_Filled_Colour_ENUM();
+	color Get_Draw_Colour() { return FigGfxInfo.DrawClr; }
+	double Get_Scale() { return scale; }
 
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure:
 	virtual void Draw(Output* pOut) const  = 0 ;		//Draw the figure
 	virtual void PrintInfo(Output* pOut) = 0;          //print all figure info on the status bar
 	virtual bool IsWithin(Point P) = 0;
-	virtual char Get_My_Type() = 0;
+	virtual void Move(Point P) = 0;
+	virtual void SetScale(double scale) = 0;
 	///Decide the parameters that you should pass to each function	
 
-
-	//virtual void Save(ofstream &OutFile) = 0;	//Save the figure parameters to the file
-	//virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
-	//
+	virtual void Save(ofstream& OutputFile) = 0;
+	virtual void Load(ifstream& InputFile) = 0;
 };
 
 #endif

@@ -1,20 +1,17 @@
-#ifndef CRECT_H
-#define CRECT_H
+#ifndef CCIRCLE_H
+#define CCIRCLE_H
+#include"..\Figures\CFigure.h"
 
-#include "CFigure.h"
-
-class CRectangle : public CFigure
+class CCircle :public CFigure
 {
 private:
-	Point Corner1;	
-	Point Corner2;
-	Point Upper_Left;
-	Point Bottom_Right;
-
+	Point Centre;
+	Point Radius;
+	 
 public:
-	CRectangle(Point , Point, GfxInfo FigureGfxInfo );
+	CCircle(Point, Point, GfxInfo FigureGfxInfo);
 
-	CRectangle(CRectangle* old, GfxInfo newGfxInfo);
+	CCircle(CCircle* old, GfxInfo newGfxInfo);
 
 	virtual void Draw(Output* pOut) const;
 
@@ -27,8 +24,9 @@ public:
 	virtual void SetScale(double scale);
 
 	virtual void Save(ofstream& OutputFile);
-	
-	virtual void Load(ifstream& InputFile);
-};
 
+	virtual void Load(ifstream& InputFile);
+	
+
+};
 #endif

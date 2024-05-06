@@ -128,13 +128,30 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AddCircleAction.cpp" />
-    <ClCompile Include="AddHexagonAction.cpp" />
-    <ClCompile Include="AddSquareAction.cpp" />
-    <ClCompile Include="AddTriangleAction.cpp" />
-    <ClCompile Include="BringToFront.cpp" />
-    <ClCompile Include="CCircle.cpp" />
-    <ClCompile Include="CHexagon.cpp" />
+    <ClCompile Include="Actions\AddCircleAction.cpp" />
+    <ClCompile Include="Actions\AddHexagonAction.cpp" />
+    <ClCompile Include="Actions\AddSquareAction.cpp" />
+    <ClCompile Include="Actions\AddTriangleAction.cpp" />
+    <ClCompile Include="Actions\BringToFront.cpp" />
+    <ClCompile Include="Actions\ChangeBoarderColor.cpp" />
+    <ClCompile Include="Actions\ChangeFillColor.cpp" />
+    <ClCompile Include="Actions\ClearAllAction.cpp" />
+    <ClCompile Include="Actions\CopyAction.cpp" />
+    <ClCompile Include="Actions\CutAction.cpp" />
+    <ClCompile Include="Actions\DeleteAction.cpp" />
+    <ClCompile Include="Actions\ExitAction.cpp" />
+    <ClCompile Include="Actions\LoadGraphAction.cpp" />
+    <ClCompile Include="Actions\PasteAction.cpp" />
+    <ClCompile Include="Actions\PickByBothAction.cpp" />
+    <ClCompile Include="Actions\PickByColourAction.cpp" />
+    <ClCompile Include="Actions\PickByTypeAction.cpp" />
+    <ClCompile Include="Actions\ResizeAction.cpp" />
+    <ClCompile Include="Actions\SaveGraphAction.cpp" />
+    <ClCompile Include="Actions\SelectFigure.cpp" />
+    <ClCompile Include="Actions\SendToBack.cpp" />
+    <ClCompile Include="Actions\SwitchToDrawModeAction.cpp" />
+    <ClCompile Include="Actions\SwitchToPlayModeAction.cpp" />
+    <ClCompile Include="Actions\ToggleAudioAction.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\colors.cpp" />
@@ -171,29 +188,43 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant1.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant2.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
-    <ClCompile Include="CSquare.cpp" />
-    <ClCompile Include="CTriangle.cpp" />
-    <ClCompile Include="DeleteAction.cpp" />
+    <ClCompile Include="Figures\CCircle.cpp" />
     <ClCompile Include="Figures\CFigure.cpp" />
+    <ClCompile Include="Figures\CHexagon.cpp" />
     <ClCompile Include="Figures\CRectangle.cpp" />
     <ClCompile Include="Actions\AddRectAction.cpp" />
+    <ClCompile Include="Figures\CSquare.cpp" />
+    <ClCompile Include="Figures\CTriangle.cpp" />
     <ClCompile Include="GUI\Input.cpp" />
     <ClCompile Include="GUI\Output.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="PickByColourAction.cpp" />
-    <ClCompile Include="PickByTypeAction.cpp" />
-    <ClCompile Include="SelectFigure.cpp" />
-    <ClCompile Include="SondToBack.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AddCircleAction.h" />
-    <ClInclude Include="AddHexagonAction.h" />
-    <ClInclude Include="AddSquareAction.h" />
-    <ClInclude Include="AddTriangleAction.h" />
-    <ClInclude Include="BringToFront.h" />
-    <ClInclude Include="CCircle.h" />
-    <ClInclude Include="CHexagon.h" />
+    <ClInclude Include="Actions\AddCircleAction.h" />
+    <ClInclude Include="Actions\AddHexagonAction.h" />
+    <ClInclude Include="Actions\AddSquareAction.h" />
+    <ClInclude Include="Actions\AddTriangleAction.h" />
+    <ClInclude Include="Actions\BringToFront.h" />
+    <ClInclude Include="Actions\ChangeBoarderColor.h" />
+    <ClInclude Include="Actions\ChangeFillColor.h" />
+    <ClInclude Include="Actions\ClearAllAction.h" />
+    <ClInclude Include="Actions\CopyAction.h" />
+    <ClInclude Include="Actions\CutAction.h" />
+    <ClInclude Include="Actions\DeleteAction.h" />
+    <ClInclude Include="Actions\ExitAction.h" />
+    <ClInclude Include="Actions\LoadGraphAction.h" />
+    <ClInclude Include="Actions\PasteAction.h" />
+    <ClInclude Include="Actions\PickByBothAction.h" />
+    <ClInclude Include="Actions\PickByColourAction.h" />
+    <ClInclude Include="Actions\PickByTypeAction.h" />
+    <ClInclude Include="Actions\ResizeAction.h" />
+    <ClInclude Include="Actions\SaveGraphAction.h" />
+    <ClInclude Include="Actions\SelectFigure.h" />
+    <ClInclude Include="Actions\SendToBack.h" />
+    <ClInclude Include="Actions\SwitchToDrawModeAction.h" />
+    <ClInclude Include="Actions\SwitchToPlayModeAction.h" />
+    <ClInclude Include="Actions\ToggleAudioAction.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />
@@ -214,25 +245,29 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jpegint.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jpeglib.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
-    <ClInclude Include="CSquare.h" />
-    <ClInclude Include="CTriangle.h" />
-    <ClInclude Include="DeleteAction.h" />
+    <ClInclude Include="Figures\CCircle.h" />
     <ClInclude Include="Figures\CFigure.h" />
+    <ClInclude Include="Figures\CHexagon.h" />
     <ClInclude Include="Figures\CRectangle.h" />
     <ClInclude Include="Actions\Action.h" />
     <ClInclude Include="Actions\AddRectAction.h" />
+    <ClInclude Include="Figures\CSquare.h" />
+    <ClInclude Include="Figures\CTriangle.h" />
     <ClInclude Include="GUI\Input.h" />
     <ClInclude Include="GUI\Output.h" />
     <ClInclude Include="GUI\UI_Info.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
-    <ClInclude Include="PickByColourAction.h" />
-    <ClInclude Include="PickByTypeAction.h" />
-    <ClInclude Include="SelectFigure.h" />
-    <ClInclude Include="SendToBack.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Audio\circle.wav" />
+    <Media Include="Audio\hexagon.wav" />
+    <Media Include="Audio\rectangle.wav" />
+    <Media Include="Audio\square.wav" />
+    <Media Include="Audio\triangle.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

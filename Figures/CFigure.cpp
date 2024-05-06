@@ -7,8 +7,9 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false;
+	Cut = false;
+	scale = 1;
 	Number_Of_Figures++;
-
 }
 
 void CFigure::SetSelected(bool s)
@@ -26,25 +27,17 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.FillClr = Fclr; 
 }
 
-FillColors CFigure::Get_Filled_Colour_ENUM()
+bool CFigure::IsCut() const
 {
-
-	color c = FigGfxInfo.FillClr;
-
-	if (c == BLACK)
-		return black;
-	if (c == RED)
-		return red;
-	if (c == ORANGE)
-		return orange;
-	if (c == YELLOW)
-		return yellow;
-	if (c == BLUE)
-		return blue;
-	if (c == GREEN)
-		return green;
-
+	return Cut;
 }
 
+void CFigure::SetCut(bool c)
+{
+	Cut = c;
+}
 
-
+void CFigure::ChngNumberOfFigures(int num)
+{
+	Number_Of_Figures = 0;
+}
