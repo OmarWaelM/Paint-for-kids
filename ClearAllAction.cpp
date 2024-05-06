@@ -11,10 +11,10 @@ void ClearAllAction::ReadActionParameters()
 
 void ClearAllAction::Execute()
 {
-	pOut = pManager->GetOutput();//initializing pOut pointer
-	pOut->ClearDrawArea(); //clears the drawing area
-	pOut->ClearStatusBar(); //clears the status bar
-	pManager->SetClipboard(NULL); //empties the clipboard
+	pOut = pManager->GetOutput();				//initializing pOut pointer
+	pOut->ClearDrawArea();						//clears the drawing area
+	pOut->ClearStatusBar();						//clears the status bar
+	pManager->SetClipboard(NULL);				//empties the clipboard
 
 	//clears the selected figure list items
 	for (int i = pManager->GetSelectedCount() - 1; i >= 0; i--)
