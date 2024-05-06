@@ -20,6 +20,8 @@ void LoadGraphAction::ReadActionParameters()
 
 void LoadGraphAction::Execute()
 {
+
+	// To check whether the file is beinng loaded naturally or due to switching to draw mode, and not prompting the user to enter a file name in the latter case
 	if (check == false)
 		ReadActionParameters();
 	else FileName = "Pre-switch File";
