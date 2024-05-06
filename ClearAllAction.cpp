@@ -11,7 +11,7 @@ void ClearAllAction::ReadActionParameters()
 
 void ClearAllAction::Execute()
 {
-	pOut = pManager->GetOutput();
+	pOut = pManager->GetOutput();//initializing pOut pointer
 	pOut->ClearDrawArea(); //clears the drawing area
 	pOut->ClearStatusBar(); //clears the status bar
 	pManager->SetClipboard(NULL); //empties the clipboard
