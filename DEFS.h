@@ -30,6 +30,7 @@ enum ActionType //The actions supported (you can add more if needed)
 	TO_BRINGFRONT,
 	TO_SAVEGRAPH,
 	TO_LOADGRAPH,
+	TO_TOGGLEAUDIO,
 	EXIT,
 	TO_FIGURETYPE,
 	TO_FILLCOLOUR,

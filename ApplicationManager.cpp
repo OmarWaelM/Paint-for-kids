@@ -19,6 +19,7 @@
 #include "LoadGraphAction.h"
 #include "SwitchToPlayModeAction.h"
 #include "SwitchToDrawModeAction.h"
+#include "Actions/ToggleAudioAction.h"
 #include "ExitAction.h"
 
 #include "CopyAction.h"
@@ -151,6 +152,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case TO_FIGUREANDFILL:
 			pAct = new PickByBothAction(this);
+			break;
+
+		case TO_TOGGLEAUDIO:
+			pAct = new ToggleAudioAction(this);
 			break;
 
 		case EXIT:
@@ -387,7 +392,11 @@ void ApplicationManager::UpdateInterface() const
 {	
 	pOut->ClearDrawArea();
 	for(int i=0; i<FigCount; i++)
-	FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+	if (UI.InterfaceMode == MODE_DRAW)
+		pOut->CreateDrawToolBar();
+	else
+		pOut->CreatePlayToolBar();
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input

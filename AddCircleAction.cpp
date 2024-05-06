@@ -1,4 +1,5 @@
 #include "AddCircleAction.h"
+#include <Windows.h>
 
 AddCircleAction::AddCircleAction(ApplicationManager* pApp):Action(pApp)
 {
@@ -32,7 +33,9 @@ void AddCircleAction::Execute()
 {
 	// This action needs to read some parameters first
 	ReadActionParameters();
-
+	// Add sound after drawing the shape if not muted
+	if (UI.audio == AUDIO_ON)
+		PlaySound("Audio/circle.wav", NULL, SND_ASYNC);
 	//Create a Square with the parameters read from the user
 	CCircle* C = new CCircle(Centre, Radius, CircleGfxInfo);
 

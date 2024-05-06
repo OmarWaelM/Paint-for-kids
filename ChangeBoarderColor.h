@@ -10,6 +10,9 @@ class ChangeBoarderColor : public Action
 	CFigure* SelectedFig;
 	color SelectedColor;
 	ActionType ActType;
+	Output* pOut;
+	Input* pIn;
+
 public:
 	ChangeBoarderColor(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
