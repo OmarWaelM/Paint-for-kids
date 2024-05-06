@@ -201,6 +201,8 @@
     <ClCompile Include="SendToBack.cpp" />
     <ClCompile Include="SwitchToDrawModeAction.cpp" />
     <ClCompile Include="CutAction.cpp" />
+    <ClCompile Include="PasteAction.cpp" />
+    <ClCompile Include="Actions\AddAudioAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -345,8 +347,17 @@
     <ClInclude Include="CutAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
+    <ClInclude Include="PasteAction.h" />
+    <ClInclude Include="Actions\AddAudioAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Audio\circle.wav" />
+    <Media Include="Audio\hexagon.wav" />
+    <Media Include="Audio\rectangle.wav" />
+    <Media Include="Audio\triangle.wav" />
+    <Media Include="Audio\square.wav" />
   </ItemGroup>
 </Project>

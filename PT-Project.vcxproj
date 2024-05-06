@@ -128,6 +128,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actions\AddAudioAction.cpp" />
     <ClCompile Include="AddCircleAction.cpp" />
     <ClCompile Include="AddHexagonAction.cpp" />
     <ClCompile Include="AddSquareAction.cpp" />
@@ -199,6 +200,7 @@
     <ClCompile Include="SwitchToPlayModeAction.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actions\AddAudioAction.h" />
     <ClInclude Include="AddCircleAction.h" />
     <ClInclude Include="AddHexagonAction.h" />
     <ClInclude Include="AddSquareAction.h" />
@@ -257,6 +259,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Audio\circle.wav" />
+    <Media Include="Audio\hexagon.wav" />
+    <Media Include="Audio\rectangle.wav" />
+    <Media Include="Audio\square.wav" />
+    <Media Include="Audio\triangle.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

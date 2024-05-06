@@ -5,7 +5,7 @@ Output::Output()
 {
 	//Initialize user interface parameters
 	UI.InterfaceMode = MODE_DRAW;
-
+	UI.audio = AUDIO_ON;
 	UI.width = 1250;
 	UI.height = 650;
 	UI.wx = 5;
@@ -15,7 +15,7 @@ Output::Output()
 	UI.StatusBarHeight = 50;
 	UI.ToolBarHeight = 50;
 	UI.LineUnderTBWidth = 2;
-	UI.MenuItemWidth = 49;
+	UI.MenuItemWidth = 40;
 
 	UI.DrawColor = BLACK;	//Drawing color
 	UI.FillColor = GREEN;	//Filling color
@@ -105,6 +105,14 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_BRINGTOFRONT] = "images\\MenuItems\\Menu_Front.jpg";
 	MenuItemImages[ITM_SAVEGRAPH] = "images\\MenuItems\\Menu_Save.jpg";
 	MenuItemImages[ITM_LOADGRAPH] = "images\\MenuItems\\Menu_Load.jpg";
+	if (UI.audio == AUDIO_ON) 
+	{
+		MenuItemImages[ITM_AUDIO] = "images\\MenuItems\\Menu_AudioOn.jpg";
+	}
+	else
+	{
+		MenuItemImages[ITM_AUDIO] = "images\\MenuItems\\Menu_AudioOff.jpg";
+	}
 
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 
