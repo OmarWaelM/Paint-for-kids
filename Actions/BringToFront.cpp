@@ -1,5 +1,5 @@
-#include "BringToFront.h"
-#include "ApplicationManager.h"
+#include "..\Actions\BringToFront.h"
+#include "..\ApplicationManager.h"
 
 void BringToFront::ReadActionParameters()
 {

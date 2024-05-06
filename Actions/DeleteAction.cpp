@@ -1,5 +1,5 @@
-#include "DeleteAction.h"
-#include "ApplicationManager.h"
+#include "..\Actions\DeleteAction.h"
+#include "..\ApplicationManager.h"
 
 
 DeleteAction::DeleteAction(ApplicationManager* pApp):Action(pApp)

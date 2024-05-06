@@ -1,18 +1,20 @@
 #pragma once
-#include "ApplicationManager.h"
-#include "Actions/Action.h"
-#include "SelectFigure.h"
-#include "Figures/CFigure.h"
-#include "CMUgraphicsLib/colors.h"
+#include "..\ApplicationManager.h"
+#include "..\Actions\Action.h"
+#include "..\Actions\SelectFigure.h"
+#include "..\Figures\CFigure.h"
 
 class ChangeBoarderColor : public Action
 {
 	CFigure* SelectedFig;
 	color SelectedColor;
 	ActionType ActType;
+	Output* pOut;
+	Input* pIn;
+
 public:
 	ChangeBoarderColor(ApplicationManager* pApp);
-	void ReadActionParameters();
-	void Execute();
+	virtual void ReadActionParameters();
+	virtual void Execute();
 };
 
