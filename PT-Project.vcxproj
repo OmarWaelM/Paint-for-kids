@@ -128,7 +128,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Actions\AddAudioAction.cpp" />
+    <ClCompile Include="Actions\ToggleAudioAction.cpp" />
     <ClCompile Include="AddCircleAction.cpp" />
     <ClCompile Include="AddHexagonAction.cpp" />
     <ClCompile Include="AddSquareAction.cpp" />
@@ -200,7 +200,7 @@
     <ClCompile Include="SwitchToPlayModeAction.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Actions\AddAudioAction.h" />
+    <ClInclude Include="Actions\ToggleAudioAction.h" />
     <ClInclude Include="AddCircleAction.h" />
     <ClInclude Include="AddHexagonAction.h" />
     <ClInclude Include="AddSquareAction.h" />
