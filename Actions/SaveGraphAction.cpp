@@ -18,7 +18,7 @@ void SaveGraphAction::Execute()
 	Output* pOut = pManager->GetOutput();
 
 
-	if (!check)
+	if (check == false) 
 		ReadActionParameters();
 	else FileName = "Pre-switch File";
 
