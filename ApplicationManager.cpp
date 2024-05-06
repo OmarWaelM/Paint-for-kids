@@ -1,35 +1,36 @@
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
-#include "AddCircleAction.h"
-#include "AddHexagonAction.h"
-#include "AddSquareAction.h"
-#include "AddTriangleAction.h"
-#include "PickByTypeAction.h"
-#include "PickByColourAction.h"
-#include "PickByBothAction.h"
-#include "DeleteAction.h"
-#include "SelectFigure.h"
-#include "DeleteAction.h"
-#include "SendToBack.h"
-#include "BringToFront.h"
-#include "ChangeFillColor.h"
-#include "ChangeBoarderColor.h"
-#include "ClearAllAction.h"
-#include "SaveGraphAction.h"
-#include "LoadGraphAction.h"
-#include "SwitchToPlayModeAction.h"
-#include "SwitchToDrawModeAction.h"
-#include "Actions/ToggleAudioAction.h"
-#include "ExitAction.h"
+#include "Actions\AddCircleAction.h"
+#include "Actions\AddHexagonAction.h"
+#include "Actions\AddSquareAction.h"
+#include "Actions\AddTriangleAction.h"
+#include "Actions\PickByTypeAction.h"
+#include "Actions\PickByColourAction.h"
+#include "Actions\PickByBothAction.h"
+#include "Actions\DeleteAction.h"
+#include "Actions\SelectFigure.h"
+#include "Actions\DeleteAction.h"
+#include "Actions\SendToBack.h"
+#include "Actions\BringToFront.h"
+#include "Actions\ChangeFillColor.h"
+#include "Actions\ChangeBoarderColor.h"
+#include "Actions\ClearAllAction.h"
+#include "Actions\ResizeAction.h"
+#include "Actions\SaveGraphAction.h"
+#include "Actions\LoadGraphAction.h"
+#include "Actions\SwitchToPlayModeAction.h"
+#include "Actions\SwitchToDrawModeAction.h"
+#include "Actions\ToggleAudioAction.h"
+#include "Actions\ExitAction.h"
+#include "Actions\CopyAction.h"
+#include "Actions\CutAction.h"
+#include "Actions\PasteAction.h"
 
-#include "CopyAction.h"
-#include "CutAction.h"
-#include "PasteAction.h"
-#include "Figures/CRectangle.h"
-#include "CCircle.h"
-#include "CHexagon.h"
-#include "CSquare.h"
-#include "CTriangle.h"
+#include "Figures\CRectangle.h"
+#include "Figures\CCircle.h"
+#include "Figures\CHexagon.h"
+#include "Figures\CSquare.h"
+#include "Figures\CTriangle.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -102,6 +103,38 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new DeleteAction(this);
 			break;
 
+		case TO_CLEARALL:
+			pAct = new ClearAllAction(this);
+			break;
+
+		case TO_COPYFIGURE:
+			pAct = new CopyAction(this);
+			break;
+
+		case TO_CUTFIGURE:
+			pAct = new CutAction(this);
+			break;
+
+		case TO_PASTEFIGURE:
+			pAct = new PasteAction(this);
+			break;
+
+		case TO_RESIZEFOUR:
+			pAct = new ResizeAction(this, 4);
+			break;
+
+		case TO_RESIZETWO:
+			pAct = new ResizeAction(this, 2);
+			break;
+
+		case TO_RESIZEHALF:
+			pAct = new ResizeAction(this, 0.5);
+			break;
+
+		case TO_RESIZEQUART:
+			pAct = new ResizeAction(this, 0.25);
+			break;
+
 		case TO_SENDBACK:
 			pAct = new SendToBack(this);
 			break;
@@ -118,6 +151,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new PickByColourAction(this);
 			break;
 
+		case TO_FIGUREANDFILL:
+			pAct = new PickByBothAction(this);
+			break;
 
 		case TO_SAVEGRAPH:
 			pAct = new SaveGraphAction(this);
@@ -135,29 +171,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new SwitchToDrawModeAction(this);
 			break;
 
-		case TO_CLEARALL:
-			pAct = new ClearAllAction(this);
-			break;
-		case TO_COPYFIGURE:
-			pAct = new CopyAction(this);
-			break;
-
-		case TO_CUTFIGURE:
-			pAct = new CutAction(this);
-			break;
-
-		case TO_PASTEFIGURE:
-			pAct = new PasteAction(this);
-			break;
-
-		case TO_FIGUREANDFILL:
-			pAct = new PickByBothAction(this);
-			break;
-
 		case TO_TOGGLEAUDIO:
 			pAct = new ToggleAudioAction(this);
 			break;
-
+      
 		case EXIT:
 			pAct = new ExitAction(this);
 			break;
@@ -409,11 +426,15 @@ Output *ApplicationManager::GetOutput() const
 //Destructor
 ApplicationManager::~ApplicationManager()
 {
-	for (int i = 0; i < FigCount; i++)
+	for (int i = 0; i < SelCount; i++)
 	{
 		SelectedFig[i] = NULL;
+	}
+	for (int i = 0; i < FigCount; i++)
+	{
 		delete FigList[i];
 	}
+	Clipboard = NULL;
 	delete pIn;
 	delete pOut;
 	

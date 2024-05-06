@@ -71,6 +71,10 @@ ActionType Input::GetUserAction() const
 			case ITM_COPYFIGURE: return TO_COPYFIGURE;
 			case ITM_CUTFIGURE: return TO_CUTFIGURE;
 			case ITM_PASTEFIGURE: return TO_PASTEFIGURE;
+			case ITM_RESIZEFOUR: return TO_RESIZEFOUR;
+			case ITM_RESIZETWO: return TO_RESIZETWO;
+			case ITM_RESIZEHALF: return TO_RESIZEHALF;
+			case ITM_RESIZEQUART: return TO_RESIZEQUART;
 			case ITM_SENDTOBACK: return TO_SENDBACK;
 			case ITM_BRINGTOFRONT: return TO_BRINGFRONT;
 			case ITM_SAVEGRAPH: return TO_SAVEGRAPH;

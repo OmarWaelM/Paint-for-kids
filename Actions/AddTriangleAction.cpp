@@ -1,6 +1,6 @@
-#include "AddTriangleAction.h"
-#include"ApplicationManager.h"
-#include"CTriangle.h"
+#include "..\Actions\AddTriangleAction.h"
+#include "..\ApplicationManager.h"
+#include "..\Figures\CTriangle.h"
 
 AddTriangleAction::AddTriangleAction(ApplicationManager* pApp):Action(pApp)
 {
@@ -37,7 +37,9 @@ void AddTriangleAction::Execute()
 {
 	// This action needs to read some parameters first
 	ReadActionParameters();
-
+	// Add sound after drawing the shape if not muted
+	if (UI.audio == AUDIO_ON)
+		PlaySound("Audio/triangle.wav", NULL, SND_ASYNC);
 	//Create a Square with the parameters read from the user
 	CTriangle* T = new CTriangle(P1,P2,P3,TriangleGfxInfo);
 

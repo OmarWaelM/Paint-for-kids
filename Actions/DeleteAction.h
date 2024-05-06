@@ -1,6 +1,6 @@
 #pragma once
-#include"ApplicationManager.h"
-#include "Actions/Action.h"
+#include "..\ApplicationManager.h"
+#include "..\Actions\Action.h"
 
 
 class DeleteAction : public Action
