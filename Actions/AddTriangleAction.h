@@ -2,8 +2,8 @@
 #ifndef ADD_TRIANGLE_ACTION_H
 #define ADD_TRIANGLE_ACTION_H
 
-#include "Actions/Action.h"
-#include "Figures/CFigure.h"
+#include "..\Actions\Action.h"
+#include "..\Figures\CFigure.h"
 
 class AddTriangleAction : public Action
 {

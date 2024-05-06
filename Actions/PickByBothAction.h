@@ -1,9 +1,9 @@
 #pragma once
-#include "..\Actions\Action.h"
+#include "..\Actions/Action.h"
 #include "..\ApplicationManager.h"
-#include "..\Figures\CFigure.h"
+#include "..\Figures/CFigure.h"
 
-class PickByTypeAction :public Action
+class PickByBothAction : public Action
 {
 private:
 	int Correct_Count;
@@ -16,7 +16,7 @@ private:
 	Point Clicked;
 
 public:
-	PickByTypeAction(ApplicationManager* pApp);
+	PickByBothAction(ApplicationManager* pApp);
 
 	virtual void ReadActionParameters();
 
@@ -24,5 +24,5 @@ public:
 
 	int getType(CFigure* Fig);
 
-	~PickByTypeAction();
+	~PickByBothAction();
 };

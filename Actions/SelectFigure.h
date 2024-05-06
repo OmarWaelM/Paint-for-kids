@@ -1,8 +1,8 @@
 #ifndef SEL_FIG_H
 #define SEL_FIG_H
 
-#include "Figures/CFigure.h"
-#include "Actions/Action.h"
+#include "..\Figures\CFigure.h"
+#include "..\Actions\Action.h"
 
 class SelectFigure : public Action
 {

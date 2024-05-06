@@ -1,6 +1,6 @@
-#include "AddSquareAction.h"
-#include"ApplicationManager.h"
-#include"CSquare.h"
+#include "..\Actions\AddSquareAction.h"
+#include "..\ApplicationManager.h"
+#include "..\Figures\CSquare.h"
 
 AddSquareAction::AddSquareAction(ApplicationManager* pApp):Action(pApp)
 {
@@ -30,8 +30,10 @@ void AddSquareAction::ReadActionParameters()
 void AddSquareAction::Execute()
 {
 	// This action needs to read some parameters first
-		ReadActionParameters();
-
+	ReadActionParameters();
+	// Add sound after drawing the shape if not muted
+	if (UI.audio == AUDIO_ON)
+		PlaySound("Audio/square.wav", NULL, SND_ASYNC);
 	//Create a Square with the parameters read from the user
 	CSquare* S = new CSquare(Centre,SquareGfxInfo);
 
