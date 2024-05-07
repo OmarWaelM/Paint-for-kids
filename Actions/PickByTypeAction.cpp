@@ -30,7 +30,7 @@ void PickByTypeAction::Execute()
 	{
 		srand(time(0));
 		int r = rand() % pManager->GetFigCount(); // 34an ytala3 rakam 3a4wa2y // % :to check that random number netween 0 and figcount
-		int params[2] = { getType(pManager->GetFigListItem(r)) , -1 };
+		int params[2] = { getType(pManager->GetFigListItem(r)) , -1 }; // type of figure// -1 cause we are working on figtype now
 		
 		Total_Count = pManager->Get_Play_Mode_Count(params);
 		
@@ -79,7 +79,7 @@ void PickByTypeAction::Execute()
 	}
 }
 
-int PickByTypeAction::getType(CFigure* Fig)
+int PickByTypeAction::getType(CFigure* Fig)  // make casting and returns a number
 {
 	if (dynamic_cast<CRectangle*>(Fig) != NULL)
 	{
