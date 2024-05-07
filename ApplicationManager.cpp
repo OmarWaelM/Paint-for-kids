@@ -265,11 +265,11 @@ int ApplicationManager::Get_Play_Mode_Count(int param[2]) // param [ Figure type
 	//Colors : Black, Red Orange, Yellow, Green, Blue, Unfilled
 	int count = 0;
 	
-	for (int i = 0; i < FigCount; i++)
+	for (int i = 0; i < FigCount; i++)  
 	{
-		bool condFig = (param[0] == -1);
+		bool condFig = (param[0] == -1); // if param[0]==-1 hayb2a b true 3alatool , msh haybos 3ala switch case nor the if condition downwards
 		bool condCol = (param[1] == -1);
-		switch (param[0])
+		switch (param[0])  // bashooof fl figlist if they satisfy the fig 
 		{
 		case 1:
 			condFig = (dynamic_cast<CRectangle*>(FigList[i]) != NULL);
@@ -329,7 +329,7 @@ int ApplicationManager::Get_Play_Mode_Count(int param[2]) // param [ Figure type
 			break;
 		}
 		
-		if (condFig && condCol)
+		if (condFig && condCol) // lw homa el etneen b true 
 			count++;
 	}
 	return count;
