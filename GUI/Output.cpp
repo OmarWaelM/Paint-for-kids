@@ -13,9 +13,9 @@ Output::Output()
 
 
 	UI.StatusBarHeight = 50;
-	UI.ToolBarHeight = 40;
+	UI.ToolBarHeight = 41;
 	UI.LineUnderTBWidth = 2;
-	UI.MenuItemWidth = 40;
+	UI.MenuItemWidth = 41;
 
 	UI.DrawColor = BLACK;	//Drawing color
 	UI.FillColor = GREEN;	//Filling color

@@ -262,7 +262,7 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 int ApplicationManager::Get_Play_Mode_Count(int param[2]) // param [ Figure type, Figure Color ]
 {
 	//Figures : Rect, Hex, Triangle, Square, Circle
-	//Colors : Black, Red Orange, Yellow, Green, Blue, Unfilled
+	//Colors : Black, Red, Orange, Yellow, Green, Blue, Unfilled
 	int count = 0;
 	
 	for (int i = 0; i < FigCount; i++)
