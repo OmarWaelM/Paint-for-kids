@@ -35,6 +35,14 @@ void LoadGraphAction::Execute()
 
 	ifstream InputFile;
 	InputFile.open(FileName + ".txt");
+
+	while (InputFile.fail())
+	{
+		pOut->PrintMessage("This file does not exist! Please re-enter a file name that exists to load it");
+		FileName = pIn->GetSrting(pOut);
+		InputFile.open(FileName + ".txt");
+	}
+
 	InputFile >> CrntDrawCol >> CrntFillCol;
 
 	if (CrntDrawCol == "BLACK")
