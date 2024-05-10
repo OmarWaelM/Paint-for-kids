@@ -65,7 +65,7 @@ void LoadGraphAction::Execute()
 
 	InputFile >> CountFig;
 
-	// Declaring dummy parameters: A Point and FigureGfxInfo's members to utilize and call the Load function of each figure type //
+	//Declaring dummy parameters: A Point and FigureGfxInfo's members to utilize and call the Load function of each figure type
 	Point P1;
 	P1.x = 0; P1.y = 0;
 	FigureGfxInfo.DrawClr = BLACK;
