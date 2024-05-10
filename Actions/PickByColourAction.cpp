@@ -17,14 +17,14 @@ void PickByColourAction::Execute()
 	pOut = pManager->GetOutput();
 	pIn = pManager->GetInput();
 
-	int param[2] = { -1, 7 };
+	int param[2] = { -1, 7 };   // -1:I am working on the colour now // 7:6 colours + unfilled
 
 	// if number of figures in list is zero 
 	if (pManager->GetFigCount() == 0)
 	{
 		pOut->PrintMessage("No More Figures ");
 	}
-	else if (pManager->Get_Play_Mode_Count(param) == pManager->GetFigCount())
+	else if (pManager->Get_Play_Mode_Count(param) == pManager->GetFigCount())  // if unfilled figures==figcount
 	{
 		pOut->PrintMessage("There are no colored figures!");
 	}
@@ -33,7 +33,7 @@ void PickByColourAction::Execute()
 		srand(time(0));
 		int r= rand() % pManager->GetFigCount();
 
-		while (!pManager->GetFigListItem(r)->isFilled())
+		while (!pManager->GetFigListItem(r)->isFilled())  // if fig not filled, ytala3 random number again
 		{
 			r = rand() % pManager->GetFigCount();
 		}
