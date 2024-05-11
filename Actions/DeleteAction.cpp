@@ -20,11 +20,11 @@ void DeleteAction::Execute()
 	{
 		for (int i = pManager->GetSelectedCount() - 1; i >= 0; i--)
 		{
-			pFig = pManager->GetSelected(i);
-			pManager->DeleteSelected(0, pFig); // just removed from selected list
-			pManager->Delete_Figure(pFig);
-			pOut->ClearStatusBar();
+			pFig = pManager->GetSelected(i); //gets figure from selected list
+			pManager->DeleteSelected(0, pFig); //removes figure from selected list
+			pManager->Delete_Figure(pFig); //deletes figure from figlist
 		}
+		pOut->ClearStatusBar();
 	}
 	else
 		pOut->PrintMessage("No Items Selected.");

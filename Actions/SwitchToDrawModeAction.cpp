@@ -9,8 +9,8 @@ void SwitchToDrawModeAction::Execute()
 {
 	Output* pOut = pManager->GetOutput();
 	pOut->ClearDrawArea();
-	pOut->CreateDrawToolBar();
-	LoadGraphAction l(pManager, true);
+	pOut->CreateDrawToolBar(); 
+	LoadGraphAction l(pManager, true); //loads pre-switching file
 	l.Execute();
 	pOut->PrintMessage("You have just switched to Draw mode, Enjoy!");
 }
