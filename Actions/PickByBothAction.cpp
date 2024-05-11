@@ -26,7 +26,7 @@ void PickByBothAction::Execute()
 	{
 		pOut->PrintMessage("No More Figures ");
 	}
-	else if (pManager->Get_Play_Mode_Count(param) == pManager->GetFigCount())
+	else if (pManager->Get_Play_Mode_Count(param) == pManager->GetFigCount()) // if not colored figures exist
 	{
 		pOut->PrintMessage("There are no colored figures!");
 	}
