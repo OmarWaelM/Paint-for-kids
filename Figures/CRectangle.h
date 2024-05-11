@@ -12,23 +12,23 @@ private:
 	Point Bottom_Right;
 
 public:
-	CRectangle(Point , Point, GfxInfo FigureGfxInfo );
+	CRectangle(Point , Point, GfxInfo FigureGfxInfo ); //Constructor
 
-	CRectangle(CRectangle* old, GfxInfo newGfxInfo);
+	CRectangle(CRectangle* old, GfxInfo newGfxInfo); //Copy constructor for Rectangle* (used in paste action)
 
-	virtual void Draw(Output* pOut) const;
+	virtual void Draw(Output* pOut) const; //Draw figure
 
-	virtual void PrintInfo(Output* pOut);
+	virtual void PrintInfo(Output* pOut); //Print info to status bar
 
-	virtual bool IsWithin(Point P);
+	virtual bool IsWithin(Point P);	//Checks if point is within the rectangle
 
-	virtual void Move(Point P);
+	virtual void Move(Point P);	//Moves center to different point
 
-	virtual void SetScale(double scale);
+	virtual void SetScale(double scale); //Changes scale of rectangle
 
-	virtual void Save(ofstream& OutputFile);
-	
-	virtual void Load(ifstream& InputFile);
+	virtual void Save(ofstream& OutputFile); //Saves Circle info to file
+
+	virtual void Load(ifstream& InputFile); //Loads Circle info from file
 };
 
 #endif

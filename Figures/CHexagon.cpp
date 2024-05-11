@@ -31,13 +31,14 @@ void CHexagon::PrintInfo(Output* pOut)
 
 bool CHexagon::IsWithin(Point P)
 {
-	int vertDist = 100;
-	int diagDist = (int)(100 * sqrt(3) / 3);
-	int horizDist = (int)(100 * 2 * sqrt(3) / 3);
-
+	//This function splits the hexagon into 6 triangles and checks if the point is within any of the triangles
+	int vertDist = 100 * this->scale;
+	int diagDist = (int)(vertDist * sqrt(3) / 3);
+	int horizDist = (int)(vertDist * 2 * sqrt(3) / 3);
+	//Getting vertices of hexagon
 	int PointsX[6] = { Centre.x - diagDist, Centre.x + diagDist, Centre.x + horizDist, Centre.x + diagDist, Centre.x - diagDist, Centre.x - horizDist };
 	int PointsY[6] = { Centre.y + vertDist, Centre.y + vertDist, Centre.y, Centre.y - vertDist, Centre.y - vertDist, Centre.y};
-
+	//Checks if point is within any triangle
 	if (IsWithinHelper(Centre.x, Centre.y, PointsX[5], PointsY[5], PointsX[0], PointsY[0], P.x, P.y))
 		return true;
 	for (int i = 0; i < 5; i++)
@@ -48,30 +49,10 @@ bool CHexagon::IsWithin(Point P)
 	return false;
 }
 
-void CHexagon::SetScale(double scale)
-{
-	this->scale = this->scale * scale;
-
-	int vertDist = 100 * this->scale;
-	int horizDist = (int)(vertDist * 2 * sqrt(3) / 3);
-	// collision conditions
-	bool cond1 = (Centre.x - horizDist) < 0;
-	bool cond2 = (Centre.x + horizDist) > UI.width;
-	bool cond3 = (Centre.y - vertDist) < UI.ToolBarHeight;
-	bool cond4 = (Centre.y + vertDist) > (UI.height - UI.StatusBarHeight);
-
-	if (cond1)
-		Centre.x = horizDist;
-	else if (cond2)
-		Centre.x = UI.width - horizDist;
-	if (cond3)
-		Centre.y = vertDist + UI.ToolBarHeight;
-	else if (cond4)
-		Centre.y = UI.height - UI.StatusBarHeight - vertDist;
-}
-
 bool CHexagon::IsWithinHelper(int P1x, int P1y, int P2x, int P2y, int P3x, int P3y, int Px, int Py)
 {
+	//This function gets the total area fo the triangle and then the area of three other triangles made when connecting the test point with two vertices
+	//If the sum of the three areas are equal to the total area then point is within the triangle
 	int AT, A1, A2, A3;
 	AT = abs(P1x * (P2y - P3y) + P2x * (P3y - P1y) + P3x * (P1y - P2y));
 	A1 = abs(Px * (P2y - P3y) + P2x * (P3y - Py) + P3x * (Py - P2y));
@@ -83,13 +64,33 @@ bool CHexagon::IsWithinHelper(int P1x, int P1y, int P2x, int P2y, int P3x, int P
 	return false;
 }
 
+void CHexagon::SetScale(double scale)
+{
+	this->scale = this->scale * scale;
+
+	int vertDist = 100 * this->scale;
+	int horizDist = (int)(vertDist * 2 * sqrt(3) / 3);
+	// collision conditions with bounds
+	bool cond1 = (Centre.x - horizDist) < 0;
+	bool cond2 = (Centre.x + horizDist) > UI.width;
+	bool cond3 = (Centre.y - vertDist) < UI.ToolBarHeight;
+	bool cond4 = (Centre.y + vertDist) > (UI.height - UI.StatusBarHeight);
+	// Moving centre in case of collision
+	if (cond1)
+		Centre.x = horizDist;
+	else if (cond2)
+		Centre.x = UI.width - horizDist;
+	if (cond3)
+		Centre.y = vertDist + UI.ToolBarHeight;
+	else if (cond4)
+		Centre.y = UI.height - UI.StatusBarHeight - vertDist;
+}
+
 void CHexagon::Move(Point P)
 {
 	Centre.x = P.x;
 	Centre.y = P.y;
 }
-
-
 
 void CHexagon::Save(ofstream& OutputFile)
 {

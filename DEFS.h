@@ -7,45 +7,43 @@
 enum ActionType //The actions supported (you can add more if needed)
 {
 	TO_PLAY,		//Switch interface to Play mode
-	DRAW_RECT,
-	DRAW_HEXAGON,
-	DRAW_TRIANGLE,
-	DRAW_SQUARE,
-	DRAW_CIRCLE,
-	TO_CHANGEBORDER,
-	TO_CHANGEFILL,
-	SEL_BLACK,
-	SEL_YELLOW,
-	SEL_ORANGE,
-	SEL_RED,
-	SEL_GREEN,
-	SEL_BLUE,
-	TO_SELECT,
-	TO_DELETEFIGURE,
-	TO_CLEARALL,
-	TO_COPYFIGURE,
-	TO_CUTFIGURE,
-	TO_PASTEFIGURE,
-	TO_RESIZEFOUR,
-	TO_RESIZETWO,
-	TO_RESIZEHALF,
-	TO_RESIZEQUART,
-	TO_SENDBACK,
-	TO_BRINGFRONT,
-	TO_SAVEGRAPH,
-	TO_LOADGRAPH,
-	TO_TOGGLEAUDIO,
-	EXIT,
-	TO_FIGURETYPE,
-	TO_FILLCOLOUR,
-	TO_FIGUREANDFILL,
+	DRAW_RECT,		//Draw rectangle
+	DRAW_HEXAGON,	//Draw Hexagon
+	DRAW_TRIANGLE,	//Draw Triangle
+	DRAW_SQUARE,	//Draw Square
+	DRAW_CIRCLE,	//Draw Circle
+	TO_CHANGEBORDER,//Change the border color
+	TO_CHANGEFILL,	//Change the fill color
+	SEL_BLACK,		//Selecting the color black
+	SEL_YELLOW,		//Selecting the color yellow
+	SEL_ORANGE,		//Selecting the color orange
+	SEL_RED,		//Selecting the color red
+	SEL_GREEN,		//Selecting the color green
+	SEL_BLUE,		//Selecting the color blue
+	TO_SELECT,		//Select a figure
+	TO_DELETEFIGURE,//Delete the selected figures
+	TO_CLEARALL,	//Clear all action
+	TO_COPYFIGURE,	//Copy selected figure
+	TO_CUTFIGURE,	//Cut selected figure
+	TO_PASTEFIGURE,	//Paste figure in clipboard
+	TO_RESIZEFOUR,	//Resize to four times figure size
+	TO_RESIZETWO,	//Resize to two times figure size
+	TO_RESIZEHALF,	//Resize to half figure size
+	TO_RESIZEQUART,	//Resize to quarter figure size
+	TO_SENDBACK,	//Send figure to back
+	TO_BRINGFRONT,	//Send figure to front
+	TO_SAVEGRAPH,	//Save current graph
+	TO_LOADGRAPH,	//Load saved graph
+	TO_TOGGLEAUDIO,	//Toggle audio mode from on to off
+	EXIT,			//Exit progrma
+	TO_FIGURETYPE,	//Pick and hide: pick using figure type
+	TO_FILLCOLOUR,	//Pick and hide: pick using figure color
+	TO_FIGUREANDFILL,//Pick and hide: pick using both figure type and color
 	TO_DRAW,		//Switch interface to Draw mode
 	EMPTY,			//A click on empty place in the toolbar
-	DRAWING_AREA,
-	PLAYING_AREA,	//A click on the drawing area
+	DRAWING_AREA,	//A click on the drawing area
+	PLAYING_AREA,	//A click on the playing area
 	STATUS			//A click on the status bar
-
-	///TODO: Add the other action types of the two modes
 };
 
 struct Point	//To be used for figures points

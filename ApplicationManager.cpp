@@ -203,6 +203,7 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 		FigList[FigCount++] = pFig;	
 }
 ////////////////////////////////////////////////////////////////////////////////////
+//Delete a figure from the figure list
 void ApplicationManager::Delete_Figure(CFigure* pFig)
 {
 	for (int i = 0; i < FigCount; i++)
@@ -219,13 +220,14 @@ void ApplicationManager::Delete_Figure(CFigure* pFig)
 	}
 }
 ////////////////////////////////////////////////////////////////////////////////////
+//Move a figure to a given index
 void ApplicationManager::MoveFig(CFigure* Fig, int in)
 {
 	for (int i = 0; i < FigCount; i++)
 	{
 		if (FigList[i] == Fig)
 		{
-			if (i > in)
+			if (i > in) //Shifting array depending on weather figure is before or after destination
 			{
 				for (int j = i-1; j >= in; j--)
 					FigList[j + 1] = FigList[j];
@@ -250,12 +252,10 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 
 	for (int i = FigCount-1; i >= 0; i--)
 	{
-		if (FigList[i]->IsWithin(P))
+		if (FigList[i]->IsWithin(P)) //Point is within figure
 			return FigList[i];
 	}
-	//Add your code here to search for a figure given a point x,y	
-	//Remember that ApplicationManager only calls functions do NOT implement it.
-
+	//If clicked on empty area
 	return NULL;
 }
 ////////////////////////////////////////////////////////////////////////////////////
@@ -267,9 +267,9 @@ int ApplicationManager::Get_Play_Mode_Count(int param[2]) // param [ Figure type
 	
 	for (int i = 0; i < FigCount; i++)  
 	{
-		bool condFig = (param[0] == -1); // if param[0]==-1 hayb2a b true 3alatool , msh haybos 3ala switch case nor the if condition downwards
-		bool condCol = (param[1] == -1);
-		switch (param[0])  // bashooof fl figlist if they satisfy the fig 
+		bool condFig = (param[0] == -1); //If param[0] is -1 then only counting by color
+		bool condCol = (param[1] == -1); //If parma[1] is -1 then only counting by figure
+		switch (param[0]) //Checking if figure type matches param[0] using dynamic_cast
 		{
 		case 1:
 			condFig = (dynamic_cast<CRectangle*>(FigList[i]) != NULL);
@@ -295,7 +295,7 @@ int ApplicationManager::Get_Play_Mode_Count(int param[2]) // param [ Figure type
 			break;
 		}
 		
-		switch (param[1])
+		switch (param[1]) //Checking if figure color matches param[1]
 		{
 		case 1:
 			condCol = (FigList[i]->Get_Filled_Colour() == BLACK);
@@ -329,7 +329,7 @@ int ApplicationManager::Get_Play_Mode_Count(int param[2]) // param [ Figure type
 			break;
 		}
 		
-		if (condFig && condCol) // lw homa el etneen b true 
+		if (condFig && condCol) // If both type and color are true increments the counter
 			count++;
 	}
 	return count;
@@ -343,6 +343,9 @@ void ApplicationManager::AddSelected(CFigure* sFig)
 ////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::DeleteSelected(int i, CFigure* Fig)
 {
+	//Given integer i and figure* fig 
+	//If fig is null (no figure * passed) then figure in index i is removed from list and fig is ignored
+	//If fig is not null then the figure is removed from selected list and i is ignored
 	if (Fig == NULL)
 	{
 		SelectedFig[i]->SetSelected(false);
@@ -358,7 +361,7 @@ void ApplicationManager::DeleteSelected(int i, CFigure* Fig)
 			}
 		}
 	}
-	for (int j = i; j < SelCount - 1; j++)
+	for (int j = i; j < SelCount - 1; j++) //Shifting selected array
 			SelectedFig[j] = SelectedFig[j + 1];
 	SelectedFig[SelCount - 1] = NULL;
 	SelCount--;
@@ -367,7 +370,7 @@ void ApplicationManager::DeleteSelected(int i, CFigure* Fig)
 //Set Clipboard Function
 void ApplicationManager::SetClipboard(CFigure* Fig)
 {
-	if (Clipboard != NULL)
+	if (Clipboard != NULL) //If there is a figure in the clipboard and figure is cut then figure is uncut
 	{
 		if (Clipboard->IsCut())
 		{
@@ -376,7 +379,7 @@ void ApplicationManager::SetClipboard(CFigure* Fig)
 	}
 	
 	Clipboard = Fig;
-	if (Clipboard != NULL)
+	if (Clipboard != NULL) //Updating ClipboardGfxInfo to newly added figure to clipboard
 	{
 		ClipboardGfxInfo.DrawClr = Clipboard->Get_Draw_Colour();
 		ClipboardGfxInfo.FillClr = Clipboard->Get_Filled_Colour();
@@ -390,6 +393,7 @@ CFigure* ApplicationManager::GetClipboard()
 {
 	return Clipboard;
 }
+
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
@@ -403,14 +407,15 @@ void ApplicationManager::SaveAllFigures(ofstream& OutputFile)
 		FigList[j]->Save(OutputFile);
 	}
 }
-
+////////////////////////////////////////////////////////////////////////////////////
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {	
 	pOut->ClearDrawArea();
 	for(int i=0; i<FigCount; i++)
 		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
-	if (UI.InterfaceMode == MODE_DRAW)
+
+	if (UI.InterfaceMode == MODE_DRAW) //Refreshes toolbar to cover any figures that overlap with toolbar
 		pOut->CreateDrawToolBar();
 	else
 		pOut->CreatePlayToolBar();
@@ -426,15 +431,15 @@ Output *ApplicationManager::GetOutput() const
 //Destructor
 ApplicationManager::~ApplicationManager()
 {
-	for (int i = 0; i < SelCount; i++)
+	for (int i = 0; i < SelCount; i++) //Setting selected list to NULL
 	{
 		SelectedFig[i] = NULL;
 	}
-	for (int i = 0; i < FigCount; i++)
+	for (int i = 0; i < FigCount; i++) //Deleting all figures
 	{
 		delete FigList[i];
 	}
-	Clipboard = NULL;
+	Clipboard = NULL; //Setting clipboard to NULL
 	delete pIn;
 	delete pOut;
 	

@@ -9,24 +9,24 @@ private:
 	Point Centre;
 
 public:
-	CHexagon(Point, GfxInfo FigureGfxInfo);
+	CHexagon(Point, GfxInfo FigureGfxInfo); //Constructor
 
-	CHexagon(CHexagon* old, GfxInfo newGfxInfo);
+	CHexagon(CHexagon* old, GfxInfo newGfxInfo); //Copy constructor for Hexagon* (used in paste action)
+	
+	virtual void Draw(Output* pOut) const; //Draw figure
 
-	virtual void Draw(Output* pOut) const;
+	virtual void PrintInfo(Output* pOut); //Print info to status bar
 
-	virtual void PrintInfo(Output* pOut);
+	virtual bool IsWithin(Point P);	//Checks if point is within the hexagon
 
-	virtual bool IsWithin(Point P);
+	bool IsWithinHelper(int P1x, int P1y, int P2x, int P2y, int P3x, int P3y, int Px, int Py); //Helper function for IsWithin
 
-	bool IsWithinHelper(int P1x, int P1y, int P2x, int P2y, int P3x, int P3y, int Px, int Py);
+	virtual void Move(Point P);	//Moves center to different point
 
-	virtual void Move(Point P);
+	virtual void SetScale(double scale); //Changes scale of hexagon
 
-	virtual void SetScale(double scale);
+	virtual void Save(ofstream& OutputFile); //Saves Circle info to file
 
-	virtual void Save(ofstream& OutputFile);
-
-	virtual void Load(ifstream& InputFile);
+	virtual void Load(ifstream& InputFile); //Loads Circle info from file
 };
 #endif

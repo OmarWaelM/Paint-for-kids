@@ -6,7 +6,6 @@
 #include "Figures\CFigure.h"
 #include "GUI\input.h"
 #include "GUI\output.h"
-
 #include "Actions\SaveGraphAction.h"
 #include "Actions\SwitchToPlayModeAction.h"
 #include "Actions\ExitAction.h"
@@ -35,8 +34,7 @@ public:
 	~ApplicationManager();
 
 	// -- Action-Related Functions
-	//Reads the input command from the user and returns the corresponding action type
-	ActionType GetUserAction() const;
+	ActionType GetUserAction() const; //Reads the input command from the user and returns the corresponding action type
 	void ExecuteAction(ActionType); //Creates an action and executes it
 	
 
@@ -51,7 +49,6 @@ public:
 
 	void AddSelected(CFigure* sFig); //Adds a Figure to selected list
 	void DeleteSelected(int i, CFigure* Fig = NULL); //Removes Figure at index i from selected list or the given figure pointer
-	
 	int GetSelectedCount() const { return SelCount; } //Getter for SelectedCount
 	CFigure* GetSelected(int i) const { return SelectedFig[i]; } // Getter for Selected figure in index i
 	

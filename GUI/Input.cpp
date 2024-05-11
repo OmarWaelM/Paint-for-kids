@@ -121,7 +121,7 @@ ActionType Input::GetUserAction() const
 			return PLAYING_AREA;
 		}
 
-		return STATUS;	//just for now. This should be updated
+		return STATUS;
 	}
 
 }

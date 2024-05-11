@@ -7,7 +7,6 @@ CTriangle::CTriangle(Point p1, Point p2, Point p3, GfxInfo FigureGfxInfo):CFigur
 	P3 = p3;
 
 	ID = Number_Of_Figures;
-
 }
 
 CTriangle::CTriangle(CTriangle* old, GfxInfo newGfxInfo) :CFigure(newGfxInfo)
@@ -40,6 +39,8 @@ void CTriangle::PrintInfo(Output* pOut)
 
 bool CTriangle::IsWithin(Point P)
 {
+	//This function gets the total area fo the triangle and then the area of three other triangles made when connecting the test point with two vertices
+	//If the sum of the three areas are equal to the total area then point is within the triangle
 	int AT, A1, A2, A3;
 	AT = abs(P1.x * (P2.y - P3.y) + P2.x * (P3.y - P1.y) + P3.x * (P1.y - P2.y));
 	A1 = abs(P.x * (P2.y - P3.y) + P2.x * (P3.y - P.y) + P3.x * (P.y - P2.y));
@@ -53,13 +54,14 @@ bool CTriangle::IsWithin(Point P)
 
 void CTriangle::Move(Point P)
 {
+	//getting centre
 	Point Centre;
 	Centre.x = (P1.x + P2.x + P3.x) / 3;
 	Centre.y = (P1.y + P2.y + P3.y) / 3;
-
+	
 	int dist_x = P.x - Centre.x;
 	int dist_y = P.y - Centre.y;
-
+	//moving points same distance as centre is moved
 	P1.x = P1.x + dist_x;
 	P1.y = P1.y + dist_y;
 
@@ -76,7 +78,7 @@ void CTriangle::SetScale(double scale)
 	Point Centre;
 	Centre.x = (P1.x + P2.x + P3.x) / 3;
 	Centre.y = (P1.y + P2.y + P3.y) / 3;
-
+	
 	int dist1_x = Centre.x - P1.x;
 	int dist1_y = Centre.y - P1.y;
 	int dist2_x = Centre.x - P2.x;
@@ -92,7 +94,7 @@ void CTriangle::SetScale(double scale)
 	P3.y = Centre.y - dist3_y * scale;
 
 	int dif1_x = 0, dif1_y = 0, dif2_x = 0, dif2_y = 0, dif3_x = 0, dif3_y = 0;
-	
+	//checking for collision with boundaries
 	if (P1.x < 0)
 		dif1_x = 0 - P1.x;
 	else if (P1.x > UI.width)
@@ -119,7 +121,7 @@ void CTriangle::SetScale(double scale)
 		dif3_y = UI.ToolBarHeight - P3.y;
 	else if (P3.y > UI.height - UI.StatusBarHeight)
 		dif3_y = P3.y - UI.height - UI.StatusBarHeight ;
-
+	//checking for maximum offset of point from boudary and moves centre by said distance
 	if (max(dif1_x, max(dif2_x, dif3_x)) > 0)
 		Centre.x = Centre.x + max(dif1_x, max(dif2_x, dif3_x));
 	else if (min(dif1_x, min(dif2_x, dif3_x)) < 0)
@@ -129,7 +131,7 @@ void CTriangle::SetScale(double scale)
 		Centre.y = Centre.y + max(dif1_y, max(dif2_y, dif3_y));
 	else if (min(dif1_y, min(dif2_y, dif3_y)) < 0)
 		Centre.y = Centre.y + min(dif1_y, min(dif2_y, dif3_y));
-
+	//updating centre
 	Move(Centre);
 }
 

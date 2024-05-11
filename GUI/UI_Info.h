@@ -23,38 +23,39 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 {
 	//Note: Items are **(ordered)** here as they appear in menu
 	//If you want to change the menu items order, change the order here
-	ITM_PLAYMODE,
+
+	ITM_PLAYMODE,	//Switch to play mode item in menu
 	ITM_RECT,		//Rectangle item in menu
 	ITM_HEXAGON,	//Hexagon item in menu		
 	ITM_TRIANGLE,   //Triangle item in menu
 	ITM_SQUARE,		//Square item in menu
 	ITM_CIRCLE,		//Circle item in menu
-	ITM_CHANGEBORDER,
-	ITM_CHANGEFILL,
-	ITM_BLACK,
-	ITM_YELLOW,
-	ITM_ORANGE,
-	ITM_RED,
-	ITM_GREEN,
-	ITM_BLUE,
-	ITM_SELECT,
-	ITM_DELETEFIGURE,
-	ITM_CLEARALL,
-	ITM_COPYFIGURE,
-	ITM_CUTFIGURE,
-	ITM_PASTEFIGURE,
-	ITM_RESIZEFOUR,
-	ITM_RESIZETWO,
-	ITM_RESIZEHALF,
-	ITM_RESIZEQUART,
-	ITM_SENDTOBACK,
-	ITM_BRINGTOFRONT,
-	ITM_SAVEGRAPH,
-	ITM_LOADGRAPH,
-	ITM_AUDIO,
+	ITM_CHANGEBORDER,//Change border color item in menu
+	ITM_CHANGEFILL,	//Change fill color item in menu
+	ITM_BLACK,		//Select black color item in menu
+	ITM_YELLOW,		//Select yellow color item in menu
+	ITM_ORANGE,		//Select orange color item in menu
+	ITM_RED,		//Select red color item in menu
+	ITM_GREEN,		//Select green color item in menu
+	ITM_BLUE,		//Select blue color item in menu
+	ITM_SELECT,		//Select figure item in menu
+	ITM_DELETEFIGURE,//Delete Selected figure item in menu
+	ITM_CLEARALL,	//Clear all item in menu
+	ITM_COPYFIGURE,	//Copy selected figure item in menu
+	ITM_CUTFIGURE,	//Cut selected figure item in menu
+	ITM_PASTEFIGURE,//Paste clipboard figure item in menu
+	ITM_RESIZEFOUR,	//Resize to four times figure size item in menu
+	ITM_RESIZETWO,	//Resize to twice figure size item in menu
+	ITM_RESIZEHALF,	//Resize to hald figure size item in menu
+	ITM_RESIZEQUART,//Resize to quarter figure size item in menu
+	ITM_SENDTOBACK,	//Send to back item in menu
+	ITM_BRINGTOFRONT,//Bring to front item in menu
+	ITM_SAVEGRAPH,	//Save graph item in menu
+	ITM_LOADGRAPH,	//Load saved graph item in menu
+	ITM_AUDIO,		//Toggle audio mode item in menu
 	ITM_EXIT,		//Exit item
 
-	DRAW_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
+	DRAW_ITM_COUNT	//no. of menu items ==> This should be the last line in this enum
 
 };
 
@@ -63,12 +64,12 @@ enum PlayMenuItem //The items of the Play menu (you should add more items)
 	//Note: Items are **(ordered)** here as they appear in menu
 	//If you want to change the menu items order, change the order here
 
-	ITM_DRAWMODE,
-	ITM_FIGURETYPE,//
-	ITM_FIGUREFILL,
-	ITM_BOTH,
-	ITM_EXIT_P,
-	PLAY_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
+	ITM_DRAWMODE,	//Switch to draw mode item in menu
+	ITM_FIGURETYPE,	//Pick and hide: pick by figure type in menu
+	ITM_FIGUREFILL,	//Pick and hide: pick by figure color item in menu
+	ITM_BOTH,		//Pick and hide: pick by both figure type and color item in menu
+	ITM_EXIT_P,		//Exit item
+	PLAY_ITM_COUNT	//no. of menu items ==> This should be the last line in this enum
 
 };
 
@@ -80,7 +81,7 @@ struct UI_Info	//User Interface Info.
 	AUDIO_MODE audio;
 
 	int	width, height,	    //Window width and height
-		wx, wy,			//Window starting coordinates
+		wx, wy,				//Window starting coordinates
 		StatusBarHeight,	//Status Bar Height
 		ToolBarHeight,		//Tool Bar Height (distance from top of window to bottom line of toolbar)
 		LineUnderTBWidth,	//line Under the Toolbar Pen Width
@@ -94,8 +95,6 @@ struct UI_Info	//User Interface Info.
 	color BkGrndColor;		//Background color
 	color StatusBarColor;	//Status bar color
 	int PenWidth;			//width of the pen that draws shapes
-
-	/// Add more members if needed
 
 }UI;	//create a global object UI
 

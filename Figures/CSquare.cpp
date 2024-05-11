@@ -32,6 +32,7 @@ void CSquare::PrintInfo(Output* pOut)
 
 bool CSquare::IsWithin(Point P)
 {
+	// checks if x and y distances are less athan 100 * scale
 	if (abs(P.x - Centre.x) <= (100 * scale) && abs(P.y - Centre.y) <= (100 * scale))
 		return true;
 	return false;
@@ -52,7 +53,7 @@ void CSquare::SetScale(double scale)
 	bool cond2 = (Centre.x + sideLen) > UI.width;
 	bool cond3 = (Centre.y - sideLen) < UI.ToolBarHeight;
 	bool cond4 = (Centre.y + sideLen) > UI.height - UI.StatusBarHeight;
-
+	//moving center if collision is found
 	if (cond1)
 		Centre.x = sideLen;
 	else if (cond2)

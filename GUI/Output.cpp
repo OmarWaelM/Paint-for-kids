@@ -109,12 +109,13 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_BRINGTOFRONT] = "images\\MenuItems\\Menu_Front.jpg";
 	MenuItemImages[ITM_SAVEGRAPH] = "images\\MenuItems\\Menu_Save.jpg";
 	MenuItemImages[ITM_LOADGRAPH] = "images\\MenuItems\\Menu_Load.jpg";
-	if (UI.audio == AUDIO_ON) 
+	if (UI.audio == AUDIO_ON) //Loads different images depending on audio mode
 		MenuItemImages[ITM_AUDIO] = "images\\MenuItems\\Menu_AudioOn.jpg";
 	else
 		MenuItemImages[ITM_AUDIO] = "images\\MenuItems\\Menu_AudioOff.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 
+	//Covers old toolbar with white rectangle 
 	pWind->DrawImage("images\\MenuItems\\Toolbar_Background.jpg", 0, 0, UI.width, UI.ToolBarHeight);
 
 	//Draw menu item one image at a time
@@ -131,7 +132,7 @@ void Output::CreateDrawToolBar() const
 void Output::CreatePlayToolBar() const
 {
 	UI.InterfaceMode = MODE_PLAY;
-	///TODO: write code to create Play mode menu
+	//Preparing list of images of menu items
 	string MenuItemImages[PLAY_ITM_COUNT];
 	MenuItemImages[ITM_DRAWMODE] = "images\\MenuItems\\To_Draw.jpg";
 	MenuItemImages[ITM_FIGURETYPE] = "images\\MenuItems\\Menu_FigureType.jpg";
@@ -139,14 +140,14 @@ void Output::CreatePlayToolBar() const
 	MenuItemImages[ITM_BOTH] = "images\\MenuItems\\Menu_Both.jpg";
 	MenuItemImages[ITM_EXIT_P] = "images\\MenuItems\\Menu_Exit.jpg";
 
-	pWind->SetBrush(WHITE);
-
+	//Covering old toolbar with white rectangle
 	pWind->DrawImage("images\\MenuItems\\Toolbar_Background.jpg", 0, 0, UI.width, UI.ToolBarHeight);
 
 	//Draw menu item one image at a time
 	for (int i = 0; i < PLAY_ITM_COUNT; i++)
 		pWind->DrawImage(MenuItemImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
 
+	//Draw line under the toolbar
 	pWind->SetPen(RED, UI.LineUnderTBWidth);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 
@@ -189,7 +190,6 @@ int Output::getCrntPenWidth() const		//get current pen width
 	return UI.PenWidth;
 }
 
-
 //======================================================================================//
 //								Figures Drawing Functions								//
 //======================================================================================//
@@ -212,6 +212,7 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected, bo
 	else
 		style = FRAME;
 
+	//If figure is cut drawn with grey fill and border
 	if (cut)
 	{
 		style = FILLED;
@@ -224,11 +225,11 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected, bo
 
 void Output::DrawSqr(Point P, GfxInfo SqrGfxInfo, double scale, bool selected, bool cut) const
 {
-	int sideLen = 200 * scale;
+	int sideLen = 200 * scale; //Side length of the square in terms of scale
 
 	color DrawingClr;
 	if (selected)
-		DrawingClr = UI.HighlightColor;
+		DrawingClr = UI.HighlightColor;	//Figure should be drawn highlighted
 	else
 		DrawingClr = SqrGfxInfo.DrawClr;
 
@@ -242,13 +243,15 @@ void Output::DrawSqr(Point P, GfxInfo SqrGfxInfo, double scale, bool selected, b
 	else
 		style = FRAME;
 
+	//If figure is cut drawn with grey fill and border
 	if (cut)
 	{
 		style = FILLED;
 		pWind->SetBrush(GREY);
 		pWind->SetPen(GREY, UI.PenWidth);
 	}
-
+	
+	//Calculating corner points of square
 	Point P1;
 	P1.x = P.x - sideLen / 2;
 	P1.y = P.y - sideLen / 2;
@@ -264,7 +267,7 @@ void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool sele
 {
 	color DrawingClr;
 	if (selected)
-		DrawingClr = UI.HighlightColor;
+		DrawingClr = UI.HighlightColor;	//Figure should be drawn highlighted
 	else
 		DrawingClr = TriGfxInfo.DrawClr;
 
@@ -278,6 +281,7 @@ void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool sele
 	else
 		style = FRAME;
 
+	//If figure is cut drawn with grey fill and border
 	if (cut)
 	{
 		style = FILLED;
@@ -292,7 +296,7 @@ void Output::DrawHex(Point P, GfxInfo HexGfxInfo, double scale, bool selected, b
 {
 	color DrawingClr;
 	if (selected)
-		DrawingClr = UI.HighlightColor;
+		DrawingClr = UI.HighlightColor;	//Figure should be drawn highlighted
 	else
 		DrawingClr = HexGfxInfo.DrawClr;
 
@@ -307,6 +311,7 @@ void Output::DrawHex(Point P, GfxInfo HexGfxInfo, double scale, bool selected, b
 	else
 		style = FRAME;
 
+	//If figure is cut drawn with grey fill and border
 	if (cut)
 	{
 		style = FILLED;
@@ -344,7 +349,7 @@ void Output::DrawCirc(Point P1, Point P2, GfxInfo CircGfxInfo, bool selected, bo
 {
 	color DrawingClr;
 	if (selected)
-		DrawingClr = UI.HighlightColor;
+		DrawingClr = UI.HighlightColor;	//Figure should be drawn highlighted
 	else
 		DrawingClr = CircGfxInfo.DrawClr;
 
@@ -358,6 +363,7 @@ void Output::DrawCirc(Point P1, Point P2, GfxInfo CircGfxInfo, bool selected, bo
 	else
 		style = FRAME;
 
+	//If figure is cut drawn with grey fill and border
 	if (cut)
 	{
 		style = FILLED;
@@ -365,7 +371,7 @@ void Output::DrawCirc(Point P1, Point P2, GfxInfo CircGfxInfo, bool selected, bo
 		pWind->SetPen(GREY, UI.PenWidth);
 	}
 
-	int radius = sqrt(pow(P1.x - P2.x, 2) + pow(P1.y - P2.y, 2));
+	int radius = sqrt(pow(P1.x - P2.x, 2) + pow(P1.y - P2.y, 2)); //Calculating radius
 
 	pWind->DrawCircle(P1.x, P1.y, radius, style);
 }

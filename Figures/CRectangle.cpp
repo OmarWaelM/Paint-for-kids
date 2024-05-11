@@ -47,6 +47,7 @@ bool CRectangle::IsWithin(Point P)
 
 void CRectangle::Move(Point P) 
 {
+	//Calculating centre
 	Point Centre;
 	Centre.x = (Corner1.x + Corner2.x) / 2;
 	Centre.y = (Corner1.y + Corner2.y) / 2;
@@ -54,6 +55,7 @@ void CRectangle::Move(Point P)
 	int dist_x = P.x - Centre.x;
 	int dist_y = P.y - Centre.y;
 
+	//Moves corners same distance as moved by center
 	Corner1.x = Corner1.x + dist_x;
 	Corner1.y = Corner1.y + dist_y;
 
@@ -76,12 +78,14 @@ void CRectangle::SetScale(double scale)
 
 	Corner2.x = Centre.x - (dist_x * scale);
 	Corner2.y = Centre.y - (dist_y * scale);
+
 	//collision condition
 	bool cond1 = (Centre.x - (abs(dist_x) * scale)) < 0;
 	bool cond2 = (Centre.x + (abs(dist_x) * scale)) > UI.width;
 	bool cond3 = (Centre.y - (abs(dist_y) * scale)) < UI.ToolBarHeight;
 	bool cond4 = (Centre.y + (abs(dist_y) * scale)) > UI.height - UI.StatusBarHeight;
 
+	//moving centre in case of collision
 	if (cond1)
 		Centre.x = abs(dist_x) * scale;
 	else if (cond2)
@@ -90,6 +94,8 @@ void CRectangle::SetScale(double scale)
 		Centre.y = UI.ToolBarHeight + (abs(dist_y) * scale);
 	else if (cond4)
 		Centre.y = UI.height - UI.StatusBarHeight - (abs(dist_y) * scale);
+
+	//moving figure to new centre
 	Move(Centre);
 }
 

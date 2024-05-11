@@ -22,7 +22,6 @@ void SaveGraphAction::Execute()
 		ReadActionParameters();
 	else FileName = "Pre-switch File";
 
-	Output* pOut = pManager->GetOutput();
 	string CrntDrawColour;
 	string CrntFillColour;
 

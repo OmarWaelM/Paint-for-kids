@@ -9,13 +9,12 @@
 class CFigure
 {
 protected:
-	int ID;		//Each figure has an ID
-	bool Selected;	//true if the figure is selected.
+	int ID;	//Each figure has an ID
+	bool Selected; //true if the figure is selected.
 	GfxInfo FigGfxInfo;	//Figure graphics info
-	static int Number_Of_Figures;
-	/// Add more parameters if needed.
+	static int Number_Of_Figures; //static member of number of figures drawn
 	bool Cut; // true if the shape is cut
-	double scale;
+	double scale; //scale of figure
 public:
 	CFigure(GfxInfo FigureGfxInfo);
 
@@ -27,23 +26,19 @@ public:
 
 	static void ChngNumberOfFigures(int num); //changes static value of Number_Of_Figures
 
-	
 	bool IsCut() const;  // checks whether the figure is cut
 	void SetCut(bool c); // cuts/ uncuts the figure
 
-	bool isFilled() { return FigGfxInfo.isFilled; };
-	color Get_Filled_Colour() { return FigGfxInfo.FillClr; };
-	color Get_Draw_Colour() { return FigGfxInfo.DrawClr; }
-	double Get_Scale() { return scale; }
+	bool isFilled() { return FigGfxInfo.isFilled; }; // returns if figure is filled
+	color Get_Filled_Colour() { return FigGfxInfo.FillClr; } // returns fill color
+	color Get_Draw_Colour() { return FigGfxInfo.DrawClr; } // returns border color
+	double Get_Scale() { return scale; } // returns scale
 
-	///The following functions should be supported by the figure class
-	///It should be overridden by each inherited figure:
-	virtual void Draw(Output* pOut) const  = 0 ;		//Draw the figure
-	virtual void PrintInfo(Output* pOut) = 0;          //print all figure info on the status bar
-	virtual bool IsWithin(Point P) = 0;
-	virtual void Move(Point P) = 0;
-	virtual void SetScale(double scale) = 0;
-	///Decide the parameters that you should pass to each function	
+	virtual void Draw(Output* pOut) const  = 0 ; //Draw the figure
+	virtual void PrintInfo(Output* pOut) = 0; //print all figure info on the status bar
+	virtual bool IsWithin(Point P) = 0; //checks if point is within the figure
+	virtual void Move(Point P) = 0; //moves center of figure to point
+	virtual void SetScale(double scale) = 0; //changes scale of figure
 
 	virtual void Save(ofstream& OutputFile) = 0; //Saves each figure's parameters and GfxInfo accordingly
 	virtual void Load(ifstream& InputFile) = 0;  //Loads each figure's parameters and GfxInfo accordingly

@@ -10,6 +10,7 @@ CCircle::CCircle(Point p1, Point p2, GfxInfo FigureGfxInfo):CFigure(FigureGfxInf
 
 CCircle::CCircle(CCircle* old, GfxInfo newGfxInfo):CFigure(newGfxInfo)
 {
+	//Loads values from old figure
 	Centre = old->Centre;
 	Radius = old->Radius;
 
@@ -36,6 +37,7 @@ void CCircle::PrintInfo(Output* pOut)
 
 bool CCircle::IsWithin(Point P)
 {
+	//checks if distance from point to center is less than or equal to radius
 	double r = sqrt(pow(Centre.x - P.x, 2) + pow(Centre.y - P.y, 2));
 	double rad = sqrt(pow(Centre.x - Radius.x, 2) + pow(Centre.y - Radius.y, 2));
 
@@ -46,6 +48,7 @@ bool CCircle::IsWithin(Point P)
 
 void CCircle::Move(Point P)
 {
+	//Moves Centre and Radius point by distance from old to new center
 	int dist_x = P.x - Centre.x;
 	int dist_y = P.y - Centre.y;
 	Centre.x = P.x; 
@@ -68,6 +71,7 @@ void CCircle::SetScale(double scale)
 	bool cond3 = (Centre.y - (radius * scale) < UI.ToolBarHeight);
 	bool cond4 = (Centre.y + (radius * scale) > (UI.height - UI.StatusBarHeight));
 
+	//moves centre depending on collision
 	if (cond1)
 		Centre.x = radius * scale;
 	else if (cond2)
@@ -77,6 +81,7 @@ void CCircle::SetScale(double scale)
 	else if (cond4)
 		Centre.y = UI.height - UI.StatusBarHeight - (radius * scale);
 
+	//moves radius point to scale
 	Radius.x = Centre.x + (dist_x * scale);
 	Radius.y = Centre.y + (dist_y * scale);
 }
