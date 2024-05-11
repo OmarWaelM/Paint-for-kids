@@ -15,13 +15,14 @@ void SaveGraphAction::ReadActionParameters()
 
 void SaveGraphAction::Execute()
 {
+	//To check whether the file is beinng saved naturally or due to switching to play mode, and not prompting the user to enter a file name in the latter case
 	Output* pOut = pManager->GetOutput();
-
-
-	if (!check)
+  
+	if (check == false)
 		ReadActionParameters();
 	else FileName = "Pre-switch File";
 
+	Output* pOut = pManager->GetOutput();
 	string CrntDrawColour;
 	string CrntFillColour;
 

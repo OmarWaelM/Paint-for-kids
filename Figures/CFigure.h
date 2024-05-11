@@ -45,8 +45,8 @@ public:
 	virtual void SetScale(double scale) = 0;
 	///Decide the parameters that you should pass to each function	
 
-	virtual void Save(ofstream& OutputFile) = 0;
-	virtual void Load(ifstream& InputFile) = 0;
+	virtual void Save(ofstream& OutputFile) = 0; //Saves each figure's parameters and GfxInfo accordingly
+	virtual void Load(ifstream& InputFile) = 0;  //Loads each figure's parameters and GfxInfo accordingly
 };
 
 #endif
