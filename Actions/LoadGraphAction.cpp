@@ -24,6 +24,7 @@ void LoadGraphAction::Execute()
 		ReadActionParameters();
 	else FileName = "Pre-switch File";
 
+	Input* pIn = pManager->GetInput();
 	Output* pOut = pManager->GetOutput();
 	ClearAllAction C(pManager);
 	C.Execute();
