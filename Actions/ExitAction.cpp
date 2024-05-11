@@ -9,6 +9,6 @@ void ExitAction::Execute()
 	Input* pIn = pManager->GetInput();
 	Output* pOut = pManager->GetOutput();
 	int x, y;
-	pOut->PrintMessage("Click anywhere to Exit, Goodbye!");
+	pOut->PrintMessage("Click anywhere to Exit, Goodbye!"); //waits for a click to end program
 	pIn->GetPointClicked(x,y);
 }

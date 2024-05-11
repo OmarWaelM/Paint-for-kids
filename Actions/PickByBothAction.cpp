@@ -50,7 +50,7 @@ void PickByBothAction::Execute()
 		else if (clr == BLUE) param[1] = 6;
 		
 		Total_Count = pManager->Get_Play_Mode_Count(param);
-
+		//Creating output message
 		string message = "Pick by both: Pick all ";
 
 		switch (param[1])
@@ -103,7 +103,7 @@ void PickByBothAction::Execute()
 
 			if (pFig != NULL)
 			{
-				if (clr == pFig->Get_Filled_Colour() && param[0] == getType(pFig))
+				if (clr == pFig->Get_Filled_Colour() && param[0] == getType(pFig)) //checks both type and fill conditions
 				{
 					Correct_Count++;
 					Total_Count--;

@@ -23,20 +23,19 @@ void SelectFigure::Execute()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
-	
-	if (pManager->GetFigCount() != 0)
+	if (pManager->GetFigCount() != 0) //checks that a figure has been drawn
 	{	
 		ReadActionParameters();
 		Fig_Clicked = pManager->GetFigure(Clicked.x, Clicked.y);
 
-		if (Fig_Clicked != NULL)
+		if (Fig_Clicked != NULL) 
 		{
-			if (Fig_Clicked->IsSelected())
+			if (Fig_Clicked->IsSelected()) //if clicked on selected figure, unselects it
 				pManager->DeleteSelected(0, Fig_Clicked);
 			else
 				pManager->AddSelected(Fig_Clicked);
 		}
-		else
+		else //if clickedo on empty area removes all figures from selected list
 		{
 			for (int i = pManager->GetSelectedCount() - 1; i >= 0 ; i--)
 				pManager->DeleteSelected(i);
@@ -65,15 +64,15 @@ void SelectFigure::PrintInfo() const
 
 	switch (pManager->GetSelectedCount())
 	{
-	case (0):
+	case (0): //if no selected figures
 		pOut->PrintMessage("No Figure Selected.");
 		break;
 
-	case (1):
+	case (1): //if only one selected figure prints its info
 		pManager->GetSelected(0)->PrintInfo(pOut);
 		break;
 
-	default:
+	default: // if more that one selected figure, prints count of each type of figure
 		for (int i = 0; i < pManager->GetSelectedCount(); i++)
 		{
 			Fig = pManager->GetSelected(i);
